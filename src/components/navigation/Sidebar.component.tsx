@@ -1,44 +1,7 @@
-import { TreeViewBaseItem } from "@mui/x-tree-view/models";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
-import { ChallengeMode, CMFight, CMFightId, CMId } from "../gw2/cms.ts";
+import { CMId, condiFights, powerFights } from "../gw2/cms.ts";
 import { alpha, styled } from "@mui/material";
 import { treeItemClasses } from "@mui/x-tree-view";
-
-const power: TreeViewBaseItem[] = [
-  {
-    id: CMId.Nightmare,
-    label: ChallengeMode.Nightmare,
-    children: [
-      { id: CMFightId.MAMA, label: CMFight.MAMA },
-      { id: CMFightId.Siax, label: CMFight.Siax },
-      { id: CMFightId.Ensolyss, label: CMFight.Ensolyss },
-    ],
-  },
-  {
-    id: CMId.ShatteredObservatory,
-    label: ChallengeMode.ShatteredObservatory,
-    children: [
-      { id: CMFightId.Skorvald, label: CMFight.Skorvald },
-      { id: CMFightId.Artsariiv, label: CMFight.Artsariiv },
-      { id: CMFightId.Arkk, label: CMFight.Arkk },
-    ],
-  },
-];
-
-const condi: TreeViewBaseItem[] = [
-  {
-    id: CMId.SunquaPeak,
-    label: ChallengeMode.SunquaPeak,
-    children: [
-      { id: CMFightId.ElementalAi, label: CMFight.ElementalAi },
-      { id: CMFightId.DarkAi, label: CMFight.DarkAi },
-    ],
-  },
-  {
-    id: CMId.SilentSurf,
-    label: ChallengeMode.SilentSurf,
-  },
-];
 
 const RichStyledTree = styled(RichTreeView)(({ theme }) => ({
   [`& .${treeItemClasses.content}`]: {
@@ -68,7 +31,7 @@ const ChallengeModeTreeView = (
   if (isPower && isCondi) {
     return (
       <RichStyledTree
-        items={[...power, ...condi]}
+        items={[...powerFights, ...condiFights]}
         defaultExpandedItems={[
           CMId.Nightmare,
           CMId.ShatteredObservatory,
@@ -80,7 +43,7 @@ const ChallengeModeTreeView = (
   if (isPower) {
     return (
       <RichStyledTree
-        items={power}
+        items={powerFights}
         defaultExpandedItems={[CMId.Nightmare, CMId.ShatteredObservatory]}
       />
     );
@@ -88,8 +51,8 @@ const ChallengeModeTreeView = (
   if (isCondi) {
     return (
       <RichStyledTree
-        items={condi}
-        defaultExpandedItems={[CMId.SunquaPeak]}
+        items={condiFights}
+        defaultExpandedItems={[CMId.SunquaPeak, CMId.SilentSurf]}
       />
     );
   }

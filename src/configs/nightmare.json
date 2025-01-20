@@ -12,7 +12,13 @@
           "dbb",
           "scarlet"
         ],
-        "skills": []
+        "skills": [
+          "U1",
+          "U2",
+          "U3",
+          "U4",
+          "U5"
+        ]
       }
     ]
   },
@@ -29,7 +35,13 @@
           "dbb",
           "scarlet"
         ],
-        "skills": []
+        "skills": [
+          "U1",
+          "U2",
+          "U3",
+          "U4",
+          "U5"
+        ]
       }
     ]
   },
@@ -46,7 +58,13 @@
           "cilantrosteak",
           "scarlet"
         ],
-        "skills": []
+        "skills": [
+          "U1",
+          "U2",
+          "U3",
+          "U4",
+          "U5"
+        ]
       }
     ]
   }

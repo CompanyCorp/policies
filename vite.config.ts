@@ -1,4 +1,4 @@
-import { defineConfig, Plugin } from "vite";
+import { defineConfig, Plugin, PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import deno from "@deno/vite-plugin";
 
@@ -6,9 +6,9 @@ import "react";
 import "react-dom";
 
 export default defineConfig({
-  base: "/",
+  base: "/policies",
   plugins: [
-    react(),
+    react() as PluginOption[],
     deno() as Plugin[],
   ],
   optimizeDeps: {

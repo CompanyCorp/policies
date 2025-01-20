@@ -1,4 +1,7 @@
+// @deno-types="npm:@types/react@18"
+import { useContext } from "react";
 import { TreeViewBaseItem } from "@mui/x-tree-view";
+import { SpecContext } from "../data/spec.context.tsx";
 
 export enum ChallengeMode {
   Nightmare = "Nightmare",
@@ -19,18 +22,6 @@ export enum CMType {
   Condi = "Condi",
 }
 
-export enum CMFight {
-  MAMA = "MAMA",
-  Siax = "Siax",
-  Ensolyss = "Ensolyss",
-  Skorvald = "Skorvald",
-  Artsariiv = "Artsariiv",
-  Arkk = "Arkk",
-  ElementalAi = "Elemental Ai",
-  DarkAi = "Dark Ai",
-  Kanaxai = "Kanaxai",
-}
-
 export enum NightmareFight {
   MAMA = "MAMA",
   Siax = "Siax",
@@ -44,8 +35,8 @@ export enum ShatteredObservatoryFight {
 }
 
 export enum SunquaPeakFight {
-  ElementalAi = "Elemental Ai",
-  DarkAi = "Dark Ai",
+  ElementalAi = "ElementalAi",
+  DarkAi = "DarkAi",
 }
 
 export enum SilentSurfFight {
@@ -93,61 +84,68 @@ export const isCMFight = (
   );
 };
 
-export const powerFights: TreeViewBaseItem<
-  { id?: string; label: string; href?: string }
->[] = [
-  {
-    id: CMId.Nightmare,
-    label: ChallengeMode.Nightmare,
-    children: [
-      {
-        id: NightmareFight.MAMA,
-        label: CMFight.MAMA,
-        href: `~/${CMId.Nightmare}/${NightmareFight.MAMA}`,
-      },
-      {
-        id: NightmareFight.Siax,
-        label: CMFight.Siax,
-        href: `~/${CMId.Nightmare}/${NightmareFight.Siax}`,
-      },
-      {
-        id: NightmareFight.Ensolyss,
-        label: CMFight.Ensolyss,
-        href: `~/${CMId.Nightmare}/${NightmareFight.Ensolyss}`,
-      },
-    ],
-    href: `~/${CMId.Nightmare}`,
-  },
-  {
-    id: CMId.ShatteredObservatory,
-    label: ChallengeMode.ShatteredObservatory,
-    children: [
-      {
-        id: ShatteredObservatoryFight.Skorvald,
-        label: CMFight.Skorvald,
-        href:
-          `~/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Skorvald}`,
-      },
-      {
-        id: ShatteredObservatoryFight.Artsariiv,
-        label: CMFight.Artsariiv,
-        href:
-          `~/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Artsariiv}`,
-      },
-      {
-        id: ShatteredObservatoryFight.Arkk,
-        label: CMFight.Arkk,
-        href:
-          `~/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Arkk}`,
-      },
-    ],
-    href: `~/${CMId.ShatteredObservatory}`,
-  },
-];
+export const usePowerFights = () => {
+  const { activeSpec } = useContext(SpecContext);
+  const powerFights: TreeViewBaseItem<
+    { id?: string; label: string; href?: string }
+  >[] = [
+    {
+      id: CMId.Nightmare,
+      label: ChallengeMode.Nightmare,
+      children: [
+        {
+          id: NightmareFight.MAMA,
+          label: NightmareFight.MAMA,
+          href:
+            `/policies/${CMId.Nightmare}/${NightmareFight.MAMA}?spec=${activeSpec}`,
+        },
+        {
+          id: NightmareFight.Siax,
+          label: NightmareFight.Siax,
+          href:
+            `/policies/${CMId.Nightmare}/${NightmareFight.Siax}?spec=${activeSpec}`,
+        },
+        {
+          id: NightmareFight.Ensolyss,
+          label: NightmareFight.Ensolyss,
+          href:
+            `/policies/${CMId.Nightmare}/${NightmareFight.Ensolyss}?spec=${activeSpec}`,
+        },
+      ],
+      href: `/policies/${CMId.Nightmare}?spec=${activeSpec}`,
+    },
+    {
+      id: CMId.ShatteredObservatory,
+      label: ChallengeMode.ShatteredObservatory,
+      children: [
+        {
+          id: ShatteredObservatoryFight.Skorvald,
+          label: ShatteredObservatoryFight.Skorvald,
+          href:
+            `/policies/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Skorvald}?spec=${activeSpec}`,
+        },
+        {
+          id: ShatteredObservatoryFight.Artsariiv,
+          label: ShatteredObservatoryFight.Artsariiv,
+          href:
+            `/policies/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Artsariiv}?spec=${activeSpec}`,
+        },
+        {
+          id: ShatteredObservatoryFight.Arkk,
+          label: ShatteredObservatoryFight.Arkk,
+          href:
+            `/policies/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Arkk}?spec=${activeSpec}`,
+        },
+      ],
+      href: `/policies/${CMId.ShatteredObservatory}?spec=${activeSpec}`,
+    },
+  ];
+  return powerFights;
+};
 
 export const isPowerFight = (input: string) => {
   const allFights: string[] = [];
-  powerFights.forEach((f) => {
+  usePowerFights().forEach((f) => {
     if (f.id) allFights.push(f.id);
     f.children?.forEach((c) => {
       if (c.id) allFights.push(c.id);
@@ -156,41 +154,48 @@ export const isPowerFight = (input: string) => {
   return allFights.some((id) => id === input);
 };
 
-export const condiFights: TreeViewBaseItem<
-  { id?: string; label: string; href?: string }
->[] = [
-  {
-    id: CMId.SunquaPeak,
-    label: ChallengeMode.SunquaPeak,
-    children: [
-      {
-        id: SunquaPeakFight.ElementalAi,
-        label: CMFight.ElementalAi,
-        href: `~/${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}`,
-      },
-      {
-        id: SunquaPeakFight.DarkAi,
-        label: CMFight.DarkAi,
-        href: `~/${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}`,
-      },
-    ],
-    href: `~/${CMId.SunquaPeak}`,
-  },
-  {
-    id: CMId.SilentSurf,
-    label: ChallengeMode.SilentSurf,
-    children: [{
-      id: SilentSurfFight.Kanaxai,
-      label: CMFight.Kanaxai,
-      href: `~/${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}`,
-    }],
-    href: `~/${CMId.SilentSurf}`,
-  },
-];
+export const useCondiFights = () => {
+  const { activeSpec } = useContext(SpecContext);
+  const condiFights: TreeViewBaseItem<
+    { id?: string; label: string; href?: string }
+  >[] = [
+    {
+      id: CMId.SunquaPeak,
+      label: ChallengeMode.SunquaPeak,
+      children: [
+        {
+          id: SunquaPeakFight.ElementalAi,
+          label: "Elemental Ai",
+          href:
+            `/policies/${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}?spec=${activeSpec}`,
+        },
+        {
+          id: SunquaPeakFight.DarkAi,
+          label: "Dark Ai",
+          href:
+            `/policies/${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}?spec=${activeSpec}`,
+        },
+      ],
+      href: `/policies/${CMId.SunquaPeak}?spec=${activeSpec}`,
+    },
+    {
+      id: CMId.SilentSurf,
+      label: ChallengeMode.SilentSurf,
+      children: [{
+        id: SilentSurfFight.Kanaxai,
+        label: SilentSurfFight.Kanaxai,
+        href:
+          `/policies/${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}?spec=${activeSpec}`,
+      }],
+      href: `/policies/${CMId.SilentSurf}?spec=${activeSpec}`,
+    },
+  ];
+  return condiFights;
+};
 
 export const isCondiFight = (input: string) => {
   const allFights: string[] = [];
-  condiFights.forEach((f) => {
+  useCondiFights().forEach((f) => {
     if (f.id) allFights.push(f.id);
     f.children?.forEach((c) => {
       if (c.id) allFights.push(c.id);

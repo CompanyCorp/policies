@@ -1,0 +1,53 @@
+{
+  "MAMA": {
+    "classes": [
+      {
+        "id": "Soulbeast",
+        "relic": "dragonhunter",
+        "sigils": [
+          "impact",
+          "force"
+        ],
+        "consumables": [
+          "dbb",
+          "scarlet"
+        ],
+        "skills": []
+      }
+    ]
+  },
+  "Siax": {
+    "classes": [
+      {
+        "id": "Soulbeast",
+        "relic": "fireworks",
+        "sigils": [
+          "serpent",
+          "force"
+        ],
+        "consumables": [
+          "dbb",
+          "scarlet"
+        ],
+        "skills": []
+      }
+    ]
+  },
+  "Ensolyss": {
+    "classes": [
+      {
+        "id": "Soulbeast",
+        "relic": "fireworks",
+        "sigils": [
+          "serpent",
+          "force"
+        ],
+        "consumables": [
+          "cilantrosteak",
+          "scarlet"
+        ],
+        "skills": []
+      }
+    ]
+  }
+}

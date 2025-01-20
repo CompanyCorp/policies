@@ -23,7 +23,7 @@ const NavigationBar = (
       <Grid2 size={{ xs: 2, md: 4 }}>
         <Button
           startIcon={<WebsiteIcon />}
-          href="/"
+          href="/policies"
           sx={{
             "&.MuiButtonBase-root:hover": {
               bgcolor: "transparent",

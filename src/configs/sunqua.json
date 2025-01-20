@@ -1,0 +1,40 @@
+{
+  "ElementalAi": {
+    "classes": [
+      {
+        "id": "Harbinger",
+        "relic": "fractal",
+        "consumables": [
+          "skewer",
+          "toxic"
+        ],
+        "skills": [
+          "promise",
+          "anguish",
+          "bip",
+          "plaguesignet",
+          "ambition"
+        ]
+      }
+    ]
+  },
+  "DarkAi": {
+    "classes": [
+      {
+        "id": "Harbinger",
+        "relic": "fractal",
+        "consumables": [
+          "skewer",
+          "toxic"
+        ],
+        "skills": [
+          "promise",
+          "signetofspite",
+          "bip",
+          "plaguesignet",
+          "ambition"
+        ]
+      }
+    ]
+  }
+}

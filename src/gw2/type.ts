@@ -1,4 +1,5 @@
 import { NotFoundError } from "./errors.ts";
+import { HARBTraitMap, HARBUtilityMap, HARBWeaponMap } from "./harbinger.ts";
 import { SLBTraitMap, SLBUtilityMap, SLBWeaponMap } from "./soulbeast.ts";
 
 export enum Symbols {
@@ -33,6 +34,13 @@ export const SpecTypeMap = {
 export enum Relics {
   DRAGONHUNTER = 100090,
   FIREWORKS = 100947,
+  FRACTAL = 100153,
+  VASS = 100775,
+  BALRIOR = 103872,
+  CERUS = 100074,
+  CLAW = 103574,
+  BRAWLER = 100012,
+  THIEF = 100916,
 }
 
 export enum Sigils {
@@ -40,13 +48,17 @@ export enum Sigils {
   IMPACT = 24868,
   SEVERANCE = 84505,
   SERPENT = 24658,
+  NIGHT = 36053,
 }
 
 export enum Consumables {
-  CILANTROSTEAK = 91805,
+  STEAK = 91805,
   SHARPENING = 43451,
   DBB = 43360,
   SCARLET = 50082,
+  SKEWER = 95942,
+  TOXIC = 48917,
+  CUREDFLATBREAD = 91878,
 }
 
 export const SpecMap = new Map(Object.entries(Specs));
@@ -65,6 +77,7 @@ export const getMap = (type: Symbols, spec?: Specs) => {
         case Specs.REN:
           break;
         case Specs.HARB:
+          result = HARBUtilityMap;
           break;
         default:
           break;
@@ -80,6 +93,7 @@ export const getMap = (type: Symbols, spec?: Specs) => {
         case Specs.REN:
           break;
         case Specs.HARB:
+          result = HARBWeaponMap;
           break;
         default:
           break;
@@ -95,6 +109,7 @@ export const getMap = (type: Symbols, spec?: Specs) => {
         case Specs.REN:
           break;
         case Specs.HARB:
+          result = HARBTraitMap;
           break;
         default:
           break;

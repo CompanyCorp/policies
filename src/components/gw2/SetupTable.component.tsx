@@ -1,3 +1,5 @@
+// @deno-types="npm:@types/react@18"
+import { useContext } from "react";
 import {
   Stack,
   Table,
@@ -10,6 +12,8 @@ import {
 import { Item } from "@discretize/gw2-ui-new";
 import { Skill } from "@discretize/gw2-ui-new";
 import { TemplateConfig } from "../../data/utils.ts";
+import { SpecContext } from "../../data/spec.context.tsx";
+import { Specs } from "../../gw2/type.ts";
 
 const LoadoutCell = ({ ids }: { ids: number[] }) => {
   return (
@@ -33,10 +37,35 @@ const WeaponCell = ({ ids }: { ids: number[] }) => {
 };
 
 const SetupTable = (
-  { skillIds, relicId, sigilIds, consumablesIds, weaponName }:
-    & TemplateConfig
-    & { weaponName?: string },
+  { skillIds, relicId, sigilIds, consumablesIds, weaponIds }: TemplateConfig,
 ) => {
+  const { activeSpec } = useContext(SpecContext);
+
+  const getUtilityName = () => {
+    switch (activeSpec) {
+      case Specs.SLB:
+        return "";
+      case Specs.REN:
+        return "";
+      case Specs.HARB:
+        return "Elixir";
+    }
+  };
+
+  const getWeaponName = () => {
+    switch (activeSpec) {
+      case Specs.SLB:
+        return "Hammer";
+      case Specs.REN:
+        return "";
+      case Specs.HARB:
+        return "";
+    }
+  };
+
+  const utilityName = getUtilityName();
+  const weaponName = getWeaponName();
+
   return (
     <TableContainer sx={{ flexGrow: 0, flexShrink: 1, flexBasis: "auto" }}>
       <Table>
@@ -45,7 +74,8 @@ const SetupTable = (
             <TableCell>Relic</TableCell>
             {sigilIds && <TableCell>Sigils</TableCell>}
             <TableCell>Food & Utility</TableCell>
-            {skillIds && <TableCell>{weaponName} Setup</TableCell>}
+            {weaponIds && <TableCell>{weaponName} Setup</TableCell>}
+            {skillIds && <TableCell>{utilityName} Setup</TableCell>}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +85,7 @@ const SetupTable = (
             </TableCell>
             {sigilIds && <LoadoutCell ids={sigilIds} />}
             <LoadoutCell ids={consumablesIds} />
+            {weaponIds && <WeaponCell ids={weaponIds} />}
             {skillIds && <WeaponCell ids={skillIds} />}
           </TableRow>
         </TableBody>

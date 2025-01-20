@@ -17,10 +17,17 @@ function App() {
   const search = useSearch();
   const searchParams = new URLSearchParams(search);
 
-  const [specType, setSpecType] = useState<SpecType>(SpecTypeMap[searchParams.get("spec") as Specs] || SpecType.POWER);
-  const [activeSpec, setSpec] = useState<Specs>(searchParams.get("spec") as Specs || Specs.SLB);
+  const [specType, setSpecType] = useState<SpecType>(
+    SpecTypeMap[searchParams.get("spec") as Specs] || SpecType.POWER,
+  );
+  const [activeSpec, setSpec] = useState<Specs>(
+    searchParams.get("spec") as Specs || Specs.SLB,
+  );
 
-  const handleChange = (_event: React.SyntheticEvent | null, newValue: Specs) => {
+  const handleChange = (
+    _event: React.SyntheticEvent | null,
+    newValue: Specs,
+  ) => {
     setSpec(newValue);
 
     navigate(`~${_path}?spec=${newValue}`);

@@ -12,8 +12,9 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { SpecType, CMId, condiFights, powerFights } from "@gw2";
 import { SpecContext, SpecContextType } from "../../data/spec.context.tsx";
+import { powerFights, condiFights, CMId } from "../../gw2/cms.ts";
+import { SpecType } from "../../gw2/type.ts";
 
 const RichStyledTree = styled(RichTreeView)(({ theme }: { theme: Theme }) => ({
   [`& .${treeItemClasses.content}`]: {

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Specs, SpecType } from "@gw2";
+import { Specs, SpecType } from "../gw2/type.ts";
 
 export interface SpecContextType {
   activeSpec: Specs;

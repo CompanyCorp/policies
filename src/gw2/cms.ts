@@ -45,7 +45,7 @@ export enum CMFightId {
 }
 
 export const powerFights: TreeViewBaseItem<
-  { id?: string; label: string; href?: string; specType?: SpecType }
+  { id?: string; label: string; href?: string }
 >[] = [
   {
     id: CMId.Nightmare,
@@ -68,7 +68,6 @@ export const powerFights: TreeViewBaseItem<
       },
     ],
     href: `/${CMId.Nightmare}`,
-    specType: SpecType.POWER,
   },
   {
     id: CMId.ShatteredObservatory,
@@ -91,12 +90,11 @@ export const powerFights: TreeViewBaseItem<
       },
     ],
     href: `/${CMId.ShatteredObservatory}`,
-    specType: SpecType.POWER,
   },
 ];
 
 export const condiFights: TreeViewBaseItem<
-  { id?: string; label: string; href?: string; specType?: SpecType }
+  { id?: string; label: string; href?: string; }
 >[] = [
   {
     id: CMId.SunquaPeak,
@@ -114,7 +112,6 @@ export const condiFights: TreeViewBaseItem<
       },
     ],
     href: `/${CMId.SunquaPeak}`,
-    specType: SpecType.POWER,
   },
   {
     id: CMId.SilentSurf,
@@ -125,6 +122,5 @@ export const condiFights: TreeViewBaseItem<
       href: `/${CMId.SilentSurf}`,
     }],
     href: `/${CMId.SilentSurf}`,
-    specType: SpecType.POWER,
   },
 ];

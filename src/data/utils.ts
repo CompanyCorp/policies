@@ -1,5 +1,8 @@
 import nightmareConfig from "../configs/nightmare.json" with { type: "json" };
-import { CMFightId, convertToIds, NotFoundError, Specs, Symbols } from "@gw2";
+import { CMFightId } from "../gw2/cms.ts";
+import { NotFoundError } from "../gw2/errors.ts";
+import { Specs, Symbols } from "../gw2/type.ts";
+import { convertToIds } from "../gw2/utils.ts";
 
 type ClassConfig = {
   id: string;

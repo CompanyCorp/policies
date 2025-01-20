@@ -2,11 +2,12 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { Route, Switch } from "wouter";
 
-import { CMId, Specs, SpecType, SpecTypeMap } from "@gw2";
 import { mainTheme } from "./components/styling/index.ts";
 import { SpecContext } from "./data/spec.context.tsx";
 import HomePage from "./pages/home.page.tsx";
 import NightmarePage from "./pages/nightmare.page.tsx";
+import { CMId } from "./gw2/cms.ts";
+import { Specs, SpecType, SpecTypeMap } from "./gw2/type.ts";
 
 function App() {
   const [specType, setSpecType] = useState<Specs>(SpecType.POWER);

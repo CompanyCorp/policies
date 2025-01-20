@@ -1,5 +1,4 @@
 import { TreeViewBaseItem } from "@mui/x-tree-view";
-import { SpecType } from "./type.ts";
 
 export enum ChallengeMode {
   Nightmare = "Nightmare",
@@ -32,17 +31,67 @@ export enum CMFight {
   Kanaxai = "Kanaxai",
 }
 
-export enum CMFightId {
+export enum NightmareFight {
   MAMA = "MAMA",
   Siax = "Siax",
   Ensolyss = "Ensolyss",
+}
+
+export enum ShatteredObservatoryFight {
   Skorvald = "Skorvald",
   Artsariiv = "Artsariiv",
   Arkk = "Arkk",
-  ElementalAi = "ElementalAi",
-  DarkAi = "DarkAi",
+}
+
+export enum SunquaPeakFight {
+  ElementalAi = "Elemental Ai",
+  DarkAi = "Dark Ai",
+}
+
+export enum SilentSurfFight {
   Kanaxai = "Kanaxai",
 }
+
+export type CMFightId =
+  | NightmareFight
+  | ShatteredObservatoryFight
+  | SunquaPeakFight
+  | SilentSurfFight;
+
+export const isNightmareFight = (
+  id: string,
+): id is NightmareFight => {
+  return new Map(Object.entries(NightmareFight)).has(id);
+};
+
+export const isShatteredObservatoryFight = (
+  id: string,
+): id is ShatteredObservatoryFight => {
+  return new Map(Object.entries(ShatteredObservatoryFight)).has(id);
+};
+
+export const isSunquaPeakFight = (
+  id: string,
+): id is SunquaPeakFight => {
+  return new Map(Object.entries(SunquaPeakFight)).has(id);
+};
+
+export const isSilentSurfFight = (
+  id: string,
+): id is SilentSurfFight => {
+  return new Map(Object.entries(SilentSurfFight)).has(id);
+};
+
+export const isCMFight = (
+  id: string,
+): id is CMFightId => {
+  return (
+    isNightmareFight(id) ||
+    isShatteredObservatoryFight(id) ||
+    isSunquaPeakFight(id) ||
+    isSilentSurfFight(id)
+  );
+};
 
 export const powerFights: TreeViewBaseItem<
   { id?: string; label: string; href?: string }
@@ -52,75 +101,100 @@ export const powerFights: TreeViewBaseItem<
     label: ChallengeMode.Nightmare,
     children: [
       {
-        id: CMFightId.MAMA,
+        id: NightmareFight.MAMA,
         label: CMFight.MAMA,
-        href: `/${CMId.Nightmare}#${CMFightId.MAMA}`,
+        href: `~/${CMId.Nightmare}/${NightmareFight.MAMA}`,
       },
       {
-        id: CMFightId.Siax,
+        id: NightmareFight.Siax,
         label: CMFight.Siax,
-        href: `/${CMId.Nightmare}#${CMFightId.Siax}`,
+        href: `~/${CMId.Nightmare}/${NightmareFight.Siax}`,
       },
       {
-        id: CMFightId.Ensolyss,
+        id: NightmareFight.Ensolyss,
         label: CMFight.Ensolyss,
-        href: `/${CMId.Nightmare}#${CMFightId.Ensolyss}`,
+        href: `~/${CMId.Nightmare}/${NightmareFight.Ensolyss}`,
       },
     ],
-    href: `/${CMId.Nightmare}`,
+    href: `~/${CMId.Nightmare}`,
   },
   {
     id: CMId.ShatteredObservatory,
     label: ChallengeMode.ShatteredObservatory,
     children: [
       {
-        id: CMFightId.Skorvald,
+        id: ShatteredObservatoryFight.Skorvald,
         label: CMFight.Skorvald,
-        href: `/${CMId.ShatteredObservatory}#${CMFightId.Skorvald}`,
+        href:
+          `~/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Skorvald}`,
       },
       {
-        id: CMFightId.Artsariiv,
+        id: ShatteredObservatoryFight.Artsariiv,
         label: CMFight.Artsariiv,
-        href: `/${CMId.ShatteredObservatory}#${CMFightId.Artsariiv}`,
+        href:
+          `~/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Artsariiv}`,
       },
       {
-        id: CMFightId.Arkk,
+        id: ShatteredObservatoryFight.Arkk,
         label: CMFight.Arkk,
-        href: `${CMId.ShatteredObservatory}#/${CMFightId.Arkk}`,
+        href:
+          `~/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Arkk}`,
       },
     ],
-    href: `/${CMId.ShatteredObservatory}`,
+    href: `~/${CMId.ShatteredObservatory}`,
   },
 ];
 
+export const isPowerFight = (input: string) => {
+  const allFights: string[] = [];
+  powerFights.forEach((f) => {
+    if (f.id) allFights.push(f.id);
+    f.children?.forEach((c) => {
+      if (c.id) allFights.push(c.id);
+    });
+  });
+  return allFights.some((id) => id === input);
+};
+
 export const condiFights: TreeViewBaseItem<
-  { id?: string; label: string; href?: string; }
+  { id?: string; label: string; href?: string }
 >[] = [
   {
     id: CMId.SunquaPeak,
     label: ChallengeMode.SunquaPeak,
     children: [
       {
-        id: CMFightId.ElementalAi,
+        id: SunquaPeakFight.ElementalAi,
         label: CMFight.ElementalAi,
-        href: `/${CMId.SunquaPeak}#${CMFightId.ElementalAi}`,
+        href: `~/${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}`,
       },
       {
-        id: CMFightId.DarkAi,
+        id: SunquaPeakFight.DarkAi,
         label: CMFight.DarkAi,
-        href: `/${CMId.SunquaPeak}#${CMFightId.DarkAi}`,
+        href: `~/${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}`,
       },
     ],
-    href: `/${CMId.SunquaPeak}`,
+    href: `~/${CMId.SunquaPeak}`,
   },
   {
     id: CMId.SilentSurf,
     label: ChallengeMode.SilentSurf,
     children: [{
-      id: CMFightId.Kanaxai,
+      id: SilentSurfFight.Kanaxai,
       label: CMFight.Kanaxai,
-      href: `/${CMId.SilentSurf}`,
+      href: `~/${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}`,
     }],
-    href: `/${CMId.SilentSurf}`,
+    href: `~/${CMId.SilentSurf}`,
   },
 ];
+
+export const isCondiFight = (input: string) => {
+  const allFights: string[] = [];
+  condiFights.forEach((f) => {
+    if (f.id) allFights.push(f.id);
+    f.children?.forEach((c) => {
+      if (c.id) allFights.push(c.id);
+    });
+  });
+  return allFights.some((id) => id === input);
+};

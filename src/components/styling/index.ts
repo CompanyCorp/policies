@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import type {} from "@mui/x-tree-view/themeAugmentation";
 
-export const theme = createTheme({
+export const mainTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {

@@ -1,18 +1,16 @@
 // @deno-types="npm:@types/react@18"
 import { useContext } from "react";
-import { useLocation, useRouter } from "wouter";
+import { useRouter } from "wouter";
 import SetupTable from "../components/gw2/SetupTable.component.tsx";
 import { parseLocation } from "../components/navigation/utils.ts";
 import { getTemplateConfig } from "../data/utils.ts";
 import { SpecContext } from "../data/spec.context.tsx";
-import { Specs } from "../gw2/type.ts";
 import {
   CMId,
   convertIdToName,
   nightmareMap,
   shatteredObservatoryMap,
   silentSurfMap,
-  SunquaPeakFight,
   sunquaPeakMap,
 } from "../gw2/cms.ts";
 import { Card, CardContent, Stack, Typography } from "@mui/material";

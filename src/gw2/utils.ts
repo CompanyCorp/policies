@@ -9,10 +9,11 @@ export const convertToIds = (
   const results: number[] = [];
   const map = getMap(type, spec);
   input.forEach((item) => {
-    const result = map.get(item);
+    const upperCaseInput = item.toUpperCase();
+    const result = map.get(upperCaseInput);
     if (typeof result !== "number") {
       throw new NotFoundError(
-        spec ? [item, spec] : [item],
+        spec ? [upperCaseInput, spec] : [upperCaseInput],
         spec ? [type, Symbols.SPEC] : [type],
       );
     }

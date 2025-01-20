@@ -5,7 +5,7 @@ import { Specs, SpecType } from "../gw2/type.ts";
 export interface SpecContextType {
   activeSpec: Specs;
   specList: Specs[];
-  setSpec: (_event: SyntheticEvent, spec: Specs) => void;
+  setSpec: (_event: SyntheticEvent | null, spec: Specs) => void;
   specType: SpecType;
 }
 

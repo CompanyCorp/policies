@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 // @deno-types="npm:@types/react@18"
 import { useState } from "react";
-import { Route, useLocation } from "wouter";
+import { Route, useLocation, useSearch } from "wouter";
 
 import { mainTheme } from "./components/styling/index.ts";
 import { SpecContext } from "./data/spec.context.tsx";
@@ -14,10 +14,13 @@ import FractalPage from "./pages/fractal.page.tsx";
 
 function App() {
   const [_path, navigate] = useLocation();
-  const [specType, setSpecType] = useState<SpecType>(SpecType.POWER);
-  const [activeSpec, setSpec] = useState<Specs>(Specs.SLB);
+  const search = useSearch();
+  const searchParams = new URLSearchParams(search);
 
-  const handleChange = (_event: React.SyntheticEvent, newValue: Specs) => {
+  const [specType, setSpecType] = useState<SpecType>(SpecTypeMap[searchParams.get("spec") as Specs] || SpecType.POWER);
+  const [activeSpec, setSpec] = useState<Specs>(searchParams.get("spec") as Specs || Specs.SLB);
+
+  const handleChange = (_event: React.SyntheticEvent | null, newValue: Specs) => {
     setSpec(newValue);
 
     navigate(`~${_path}?spec=${newValue}`);

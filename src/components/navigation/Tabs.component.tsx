@@ -1,4 +1,5 @@
-import { styled, Tab, Tabs } from "@mui/material";
+import { Tab, Tabs, Theme } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 interface StyledTabsProps {
   role: string;
@@ -12,7 +13,7 @@ export const NavigationTabs = styled((props: StyledTabsProps) => (
     {...props}
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
-))(({ theme }) => ({
+))(({ theme }: {theme: Theme}) => ({
   "& .MuiTabs-indicator": {
     display: "flex",
     justifyContent: "center",
@@ -23,7 +24,7 @@ export const NavigationTabs = styled((props: StyledTabsProps) => (
     width: "100%",
     backgroundColor: theme.palette.secondary.main,
   },
-}));
+})) as typeof Tabs;
 
 interface StyledTabProps {
   label: string;
@@ -32,12 +33,12 @@ interface StyledTabProps {
 
 export const NavigationTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
-))(({ theme }) => ({
-  marginRight: theme.spacing(1),
+))(({ theme }: {theme: Theme}) => ({
+  marginRight: 8,
   textTransform: "uppercase",
   fontSize: theme.typography.pxToRem(18),
   fontWeight: theme.typography.fontWeightBold,
   "&.Mui-selected": {
     color: "#fff",
   },
-}));
+})) as typeof Tab;

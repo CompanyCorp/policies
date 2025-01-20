@@ -1,10 +1,13 @@
-import { Stack, Typography } from "@mui/material";
+import { Card, CardContent, Stack, Typography } from "@mui/material";
 
 const HomePage = () => {
   return (
     <Stack>
-      <Typography>Home Page</Typography>
-      <Typography>Welcome to the home page!</Typography>
+      <Card>
+        <CardContent>
+          <Typography>Welcome to the home page!</Typography>
+        </CardContent>
+      </Card>
     </Stack>
   );
 };

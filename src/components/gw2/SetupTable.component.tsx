@@ -35,7 +35,7 @@ const WeaponCell = ({ ids }: { ids: number[] }) => {
 const SetupTable = (
   { skillIds, relicId, sigilIds, consumablesIds, weaponName }:
     & TemplateConfig
-    & { weaponName: string },
+    & { weaponName?: string },
 ) => {
   return (
     <TableContainer>

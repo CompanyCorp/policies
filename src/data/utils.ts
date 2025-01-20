@@ -26,6 +26,7 @@ export type TemplateConfig = {
   consumablesIds: number[];
   weaponIds?: number[];
   skillIds?: number[];
+  fight?: string;
 };
 
 export const getTemplateConfig = (
@@ -55,6 +56,7 @@ export const getTemplateConfig = (
     const result: TemplateConfig = {
       relicId,
       consumablesIds,
+      fight,
     };
     if (sigils) {
       const sigilIds = convertToIds(Symbols.SIGIL, sigils);

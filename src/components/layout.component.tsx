@@ -31,7 +31,6 @@ const Layout = ({ children }: { children?: ReactNode }) => {
         <Grid2
           size={10}
           sx={{ flexShrink: 0, flexGrow: 1, flexBasis: "auto" }}
-          bgcolor={theme.palette.background.paper}
         >
           {children}
         </Grid2>

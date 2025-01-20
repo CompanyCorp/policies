@@ -49,28 +49,44 @@ export type CMFightId =
   | SunquaPeakFight
   | SilentSurfFight;
 
+export const nightmareMap = new Map(Object.entries(NightmareFight));
 export const isNightmareFight = (
   id: string,
 ): id is NightmareFight => {
-  return new Map(Object.entries(NightmareFight)).has(id);
+  return nightmareMap.has(id);
 };
 
+export const shatteredObservatoryMap = new Map(
+  Object.entries(ShatteredObservatoryFight),
+);
 export const isShatteredObservatoryFight = (
   id: string,
 ): id is ShatteredObservatoryFight => {
-  return new Map(Object.entries(ShatteredObservatoryFight)).has(id);
+  return shatteredObservatoryMap.has(id);
 };
 
+export const sunquaPeakMap = new Map(Object.entries(SunquaPeakFight));
 export const isSunquaPeakFight = (
   id: string,
 ): id is SunquaPeakFight => {
-  return new Map(Object.entries(SunquaPeakFight)).has(id);
+  return sunquaPeakMap.has(id);
 };
 
+export const convertIdToName = (id?: string) => {
+  if (id === SunquaPeakFight.ElementalAi) {
+    return "Elemental Ai";
+  }
+  if (id === SunquaPeakFight.DarkAi) {
+    return "Dark Ai";
+  }
+  return id;
+};
+
+export const silentSurfMap = new Map(Object.entries(SilentSurfFight));
 export const isSilentSurfFight = (
   id: string,
 ): id is SilentSurfFight => {
-  return new Map(Object.entries(SilentSurfFight)).has(id);
+  return silentSurfMap.has(id);
 };
 
 export const isCMFight = (

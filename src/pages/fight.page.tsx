@@ -6,6 +6,8 @@ import { parseLocation } from "../components/navigation/utils.ts";
 import { getTemplateConfig } from "../data/utils.ts";
 import { SpecContext } from "../data/spec.context.tsx";
 import { Specs } from "../gw2/type.ts";
+import { Card, CardContent, Typography } from "@mui/material";
+import { convertIdToName } from "../gw2/cms.ts";
 
 const FightPage = () => {
   const [path] = useLocation();
@@ -19,10 +21,17 @@ const FightPage = () => {
     return null;
   }
   return (
-    <SetupTable
-      {...config}
-      weaponName={activeSpec === Specs.SLB ? "Hammer" : undefined}
-    />
+    <Card>
+      <CardContent>
+        <Typography variant="h4">
+          {convertIdToName(config?.fight)}
+        </Typography>
+        <SetupTable
+          {...config}
+          weaponName={activeSpec === Specs.SLB ? "Hammer" : undefined}
+        />
+      </CardContent>
+    </Card>
   );
 };
 

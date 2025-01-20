@@ -3,10 +3,20 @@ import NavigationBar from "./navigation/bar.component.tsx";
 import { useTheme } from "@mui/material";
 import Sidebar from "./navigation/Sidebar.component.tsx";
 // @deno-types="npm:@types/react@18"
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
+import { useRedirectSpec } from "./navigation/utils.ts";
+import { useLocation } from "wouter";
 
 const Layout = ({ children }: { children?: ReactNode }) => {
   const theme = useTheme();
+  const [page, navigate] = useLocation();
+  const newPage = useRedirectSpec(page);
+
+  useEffect(() => {
+    if (newPage) {
+      navigate(newPage);
+    }
+  }, [newPage]);
   return (
     <>
       <NavigationBar websiteName="Awooo" />

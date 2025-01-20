@@ -1,9 +1,21 @@
+// @deno-types="npm:@types/react@18"
+import { forwardRef, useContext } from "react";
+import { Link as WouterLink } from "wouter";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
-import { CMId, condiFights, powerFights } from "../gw2/cms.ts";
-import { alpha, styled } from "@mui/material";
-import { treeItemClasses } from "@mui/x-tree-view";
+import { TreeItem2, TreeItem2Props, treeItemClasses } from "@mui/x-tree-view";
+import { useTreeItem2Utils } from "@mui/x-tree-view/hooks";
+import {
+  alpha,
+  Link,
+  styled,
+  Theme,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import { SpecType, CMId, condiFights, powerFights } from "@gw2";
+import { SpecContext, SpecContextType } from "../../data/spec.context.tsx";
 
-const RichStyledTree = styled(RichTreeView)(({ theme }) => ({
+const RichStyledTree = styled(RichTreeView)(({ theme }: { theme: Theme }) => ({
   [`& .${treeItemClasses.content}`]: {
     borderRadius: 0,
     borderLeft: `1px solid ${alpha(theme.palette.text.primary, 0.4)}`,
@@ -23,35 +35,92 @@ const RichStyledTree = styled(RichTreeView)(({ theme }) => ({
       borderLeft: `1px solid ${theme.palette.secondary.main}`,
     },
   },
-}));
+})) as typeof RichTreeView;
 
-const ChallengeModeTreeView = (
-  { isPower, isCondi }: { isPower: boolean; isCondi: boolean },
+interface LinkLabelProps {
+  children: string;
+  className: string;
+  href?: string;
+}
+
+const LinkLabel = ({ children, className, href }: LinkLabelProps) => {
+  const theme = useTheme();
+  if (href) {
+    return (
+      <Link
+        color={theme.palette.text.primary}
+        component={WouterLink}
+        href={href}
+        className={className}
+        underline="none"
+        variant="body1"
+      >
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <div className={className}>
+      <Typography>{children}</Typography>
+    </div>
+  );
+};
+
+const LinkTreeItem = forwardRef((
+  props: Omit<TreeItem2Props, "ref">,
+  ref: React.Ref<HTMLLIElement>,
 ) => {
-  if (isPower && isCondi) {
+  const { publicAPI } = useTreeItem2Utils({
+    itemId: props.itemId,
+    children: props.children,
+  });
+
+  const item = publicAPI.getItem(props.itemId);
+
+  return (
+    <TreeItem2
+      {...props}
+      ref={ref}
+      slots={{
+        label: LinkLabel,
+      }}
+      slotProps={{
+        label: { href: item?.href } as LinkLabelProps,
+      }}
+    />
+  );
+});
+
+const ChallengeModeTreeView = () => {
+  const { specType } = useContext<SpecContextType>(SpecContext);
+  if (specType === SpecType.BOTH) {
     return (
       <RichStyledTree
         items={[...powerFights, ...condiFights]}
+        slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[
           CMId.Nightmare,
           CMId.ShatteredObservatory,
           CMId.SunquaPeak,
+          CMId.SilentSurf,
         ]}
       />
     );
   }
-  if (isPower) {
+  if (specType === SpecType.POWER) {
     return (
       <RichStyledTree
         items={powerFights}
+        slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[CMId.Nightmare, CMId.ShatteredObservatory]}
       />
     );
   }
-  if (isCondi) {
+  if (specType === SpecType.CONDI) {
     return (
       <RichStyledTree
         items={condiFights}
+        slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[CMId.SunquaPeak, CMId.SilentSurf]}
       />
     );

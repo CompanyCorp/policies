@@ -38,7 +38,7 @@ const SetupTable = (
     & { weaponName?: string },
 ) => {
   return (
-    <TableContainer>
+    <TableContainer sx={{ flexGrow: 0, flexShrink: 1, flexBasis: "auto" }}>
       <Table>
         <TableHead>
           <TableRow>

@@ -6,12 +6,11 @@ import { Route, useLocation } from "wouter";
 import { mainTheme } from "./components/styling/index.ts";
 import { SpecContext } from "./data/spec.context.tsx";
 import HomePage from "./pages/home.page.tsx";
-import {
-  CMId,
-} from "./gw2/cms.ts";
+import { CMId } from "./gw2/cms.ts";
 import { Specs, SpecType, SpecTypeMap } from "./gw2/type.ts";
 import Layout from "./components/layout.component.tsx";
 import FightPage from "./pages/fight.page.tsx";
+import FractalPage from "./pages/fractal.page.tsx";
 
 function App() {
   const [_path, navigate] = useLocation();
@@ -40,15 +39,19 @@ function App() {
           <Route path="/policies" nest>
             <Route path={`/${CMId.Nightmare}`} nest>
               <FightPage />
+              <Route path="/" component={FractalPage} />
             </Route>
             <Route path={`/${CMId.ShatteredObservatory}`} nest>
               <FightPage />
+              <Route path="/" component={FractalPage} />
             </Route>
             <Route path={`/${CMId.SunquaPeak}`} nest>
               <FightPage />
+              <Route path="/" component={FractalPage} />
             </Route>
             <Route path={`/${CMId.SilentSurf}`} nest>
               <FightPage />
+              <Route path="/" component={FractalPage} />
             </Route>
             <Route path="/" component={HomePage} />
           </Route>

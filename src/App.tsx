@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { Route, Switch } from "wouter";
 
-import { Specs, SpecType, SpecTypeMap, CMId } from "@gw2";
+import { CMId, Specs, SpecType, SpecTypeMap } from "@gw2";
 import { mainTheme } from "./components/styling/index.ts";
 import { SpecContext } from "./data/spec.context.tsx";
 import HomePage from "./pages/home.page.tsx";
@@ -28,10 +28,10 @@ function App() {
           specType,
         }}
       >
-          <Switch>
-            <Route path="/" component={HomePage}/>
-            <Route path={`/${CMId.Nightmare}`} component={NightmarePage}/>
-          </Switch>
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <Route path={`/${CMId.Nightmare}`} component={NightmarePage} />
+        </Switch>
       </SpecContext.Provider>
     </ThemeProvider>
   );

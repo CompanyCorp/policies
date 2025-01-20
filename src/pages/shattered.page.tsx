@@ -1,17 +1,18 @@
 import { useLocation } from "wouter";
-import SetupTable from "../components/gw2/SetupTable.component.tsx";
 import Layout from "../components/layout.component.tsx";
-import { getTemplateConfig } from "../data/utils.ts";
 // @deno-types="npm:@types/react@18"
 import { useContext } from "react";
-import { SpecContext } from "../data/spec.context.tsx";
-import { Specs } from "../gw2/type.ts";
+import SetupTable from "../components/gw2/SetupTable.component.tsx";
 import { parseLocation } from "../components/navigation/utils.ts";
+import { SpecContext } from "../data/spec.context.tsx";
+import { getTemplateConfig } from "../data/utils.ts";
+import { Specs } from "../gw2/type.ts";
 
-const NightmarePage = () => {
-  const [path] = useLocation();
+const ShatteredPage = () => {
   const { activeSpec } = useContext(SpecContext);
+  const [path] = useLocation();
   const config = getTemplateConfig(parseLocation(path), activeSpec);
+
   return (
     <Layout>
       {config && (
@@ -24,4 +25,4 @@ const NightmarePage = () => {
   );
 };
 
-export default NightmarePage;
+export default ShatteredPage;

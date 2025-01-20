@@ -1,0 +1,53 @@
+{
+  "Skorvald": {
+    "classes": [
+      {
+        "id": "Soulbeast",
+        "relic": "dragonhunter",
+        "sigils": [
+          "impact",
+          "force"
+        ],
+        "consumables": [
+          "dbb",
+          "sharpening"
+        ],
+        "skills": []
+      }
+    ]
+  },
+  "Artsariiv": {
+    "classes": [
+      {
+        "id": "Soulbeast",
+        "relic": "fireworks",
+        "sigils": [
+          "impact",
+          "force"
+        ],
+        "consumables": [
+          "cilantrosteak",
+          "scarlet"
+        ],
+        "skills": []
+      }
+    ]
+  },
+  "Arkk": {
+    "classes": [
+      {
+        "id": "Soulbeast",
+        "relic": "fireworks",
+        "sigils": [
+          "impact",
+          "force"
+        ],
+        "consumables": [
+          "dbb",
+          "scarlet"
+        ],
+        "skills": []
+      }
+    ]
+  }
+}

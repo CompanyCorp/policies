@@ -1,5 +1,5 @@
 import {
-  Tab,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -8,14 +8,35 @@ import {
   TableRow,
 } from "@mui/material";
 import { Item } from "@discretize/gw2-ui-new";
+import { Skill } from "@discretize/gw2-ui-new";
+import { TemplateConfig } from "../../data/utils.ts";
 
-type SetupTableProps = {
-  relicId: number;
-  sigilIds: [number, number];
-  consumablesIds: [number, number];
+const LoadoutCell = ({ ids }: { ids: number[] }) => {
+  return (
+    <TableCell>
+      <Stack direction={"column"}>
+        {ids.map((id) => <Item id={id} key={id} />)}
+      </Stack>
+    </TableCell>
+  );
 };
 
-const SetupTable = ({ relicId, sigilIds, consumablesIds }: SetupTableProps) => {
+const WeaponCell = ({ ids }: { ids: number[] }) => {
+  const style = { fontSize: "30px" };
+  return (
+    <TableCell>
+      <Stack direction={"row"}>
+        {ids.map((id) => <Skill id={id} key={id} disableText style={style} />)}
+      </Stack>
+    </TableCell>
+  );
+};
+
+const SetupTable = (
+  { skillIds, relicId, sigilIds, consumablesIds, weaponName }:
+    & TemplateConfig
+    & { weaponName: string },
+) => {
   return (
     <TableContainer>
       <Table>
@@ -24,7 +45,7 @@ const SetupTable = ({ relicId, sigilIds, consumablesIds }: SetupTableProps) => {
             <TableCell>Relic</TableCell>
             <TableCell>Sigils</TableCell>
             <TableCell>Food & Utility</TableCell>
-            <TableCell>Hammer Setup</TableCell>
+            {skillIds && <TableCell>{weaponName} Setup</TableCell>}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -32,18 +53,9 @@ const SetupTable = ({ relicId, sigilIds, consumablesIds }: SetupTableProps) => {
             <TableCell>
               <Item id={relicId} />
             </TableCell>
-            <TableCell>
-              <Item id={sigilIds[0]} />
-              <Item id={sigilIds[1]} />
-            </TableCell>
-            <TableCell>
-              <Item id={consumablesIds[0]} />
-              <Item id={consumablesIds[1]} />
-            </TableCell>
-            <TableCell>
-              <Item id={consumablesIds[0]} />
-              <Item id={consumablesIds[1]} />
-            </TableCell>
+            <LoadoutCell ids={sigilIds} />
+            <LoadoutCell ids={consumablesIds} />
+            {skillIds && <WeaponCell ids={skillIds} />}
           </TableRow>
         </TableBody>
       </Table>

@@ -12,7 +12,7 @@
           "dbb",
           "sharpening"
         ],
-        "skills": [
+        "weapons": [
           "U1",
           "U2",
           "U3",
@@ -32,10 +32,10 @@
           "force"
         ],
         "consumables": [
-          "cilantrosteak",
+          "steak",
           "scarlet"
         ],
-        "skills": [
+        "weapons": [
           "U1",
           "U2",
           "H3",
@@ -58,7 +58,7 @@
           "dbb",
           "scarlet"
         ],
-        "skills": [
+        "weapons": [
           "U1",
           "U2",
           "U3",

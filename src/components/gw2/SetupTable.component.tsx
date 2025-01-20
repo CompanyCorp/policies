@@ -43,7 +43,7 @@ const SetupTable = (
         <TableHead>
           <TableRow>
             <TableCell>Relic</TableCell>
-            <TableCell>Sigils</TableCell>
+            {sigilIds && <TableCell>Sigils</TableCell>}
             <TableCell>Food & Utility</TableCell>
             {skillIds && <TableCell>{weaponName} Setup</TableCell>}
           </TableRow>
@@ -53,7 +53,7 @@ const SetupTable = (
             <TableCell>
               <Item id={relicId} />
             </TableCell>
-            <LoadoutCell ids={sigilIds} />
+            {sigilIds && <LoadoutCell ids={sigilIds} />}
             <LoadoutCell ids={consumablesIds} />
             {skillIds && <WeaponCell ids={skillIds} />}
           </TableRow>

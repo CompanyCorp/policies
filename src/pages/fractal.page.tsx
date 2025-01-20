@@ -56,7 +56,6 @@ const FractalPage = () => {
             </Typography>
             <SetupTable
               {...config}
-              weaponName={activeSpec === Specs.SLB ? "Hammer" : undefined}
             />
           </CardContent>
         </Card>

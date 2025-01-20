@@ -5,7 +5,6 @@ import SetupTable from "../components/gw2/SetupTable.component.tsx";
 import { parseLocation } from "../components/navigation/utils.ts";
 import { getTemplateConfig } from "../data/utils.ts";
 import { SpecContext } from "../data/spec.context.tsx";
-import { Specs } from "../gw2/type.ts";
 import { Card, CardContent, Typography } from "@mui/material";
 import { convertIdToName } from "../gw2/cms.ts";
 
@@ -28,7 +27,6 @@ const FightPage = () => {
         </Typography>
         <SetupTable
           {...config}
-          weaponName={activeSpec === Specs.SLB ? "Hammer" : undefined}
         />
       </CardContent>
     </Card>

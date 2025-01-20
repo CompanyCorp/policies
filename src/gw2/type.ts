@@ -39,14 +39,14 @@ export enum Sigils {
   FORCE = 24615,
   IMPACT = 24868,
   SEVERANCE = 84505,
-  SERPENT = 0,
+  SERPENT = 24658,
 }
 
 export enum Consumables {
   CILANTROSTEAK = 91805,
   SHARPENING = 43451,
   DBB = 43360,
-  SCARLET = 0,
+  SCARLET = 50082,
 }
 
 export const SpecMap = new Map(Object.entries(Specs));

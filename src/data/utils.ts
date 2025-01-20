@@ -1,6 +1,6 @@
 import nightmareConfig from "../configs/nightmare.json" with { type: "json" };
-import { CMFightId } from "../gw2/cms.ts";
-import { NotFoundError } from "../gw2/errors.ts";
+import shatteredConfig from "../configs/shattered.json" with { type: "json" };
+import { isNightmareFight, isShatteredObservatoryFight } from "../gw2/cms.ts";
 import { Specs, Symbols } from "../gw2/type.ts";
 import { convertToIds } from "../gw2/utils.ts";
 
@@ -20,17 +20,15 @@ export type TemplateConfig = {
 };
 
 export const getTemplateConfig = (
-  fight: CMFightId,
+  fight: string,
   spec: Specs,
-): TemplateConfig => {
+): TemplateConfig | null => {
   let classes: ClassConfig[] = [];
-  switch (fight) {
-    case CMFightId.MAMA: {
-      classes = nightmareConfig[fight].classes;
-      break;
-    }
-    default:
-      throw new NotFoundError([fight], [Symbols.FIGHT]);
+  if (isNightmareFight(fight)) {
+    classes = nightmareConfig[fight].classes;
+  }
+  if (isShatteredObservatoryFight(fight)) {
+    classes = shatteredConfig[fight].classes;
   }
   const result = classes.find((c) => c.id === spec);
   if (result) {
@@ -53,5 +51,5 @@ export const getTemplateConfig = (
       consumablesIds,
     };
   }
-  throw new NotFoundError([spec], [Symbols.SPEC]);
+  return null;
 };

@@ -1,4 +1,4 @@
-import { Specs } from "../gw2/type.ts";
+import { Specs } from "@gw2";
 import { Button, Grid2, Typography, useTheme } from "@mui/material";
 import { NavigationTab, NavigationTabs } from "./Tabs.component.tsx";
 import { WebsiteIcon } from "./Icon.component.tsx";

@@ -1,6 +1,7 @@
 import { Button, Grid2, Typography, useTheme } from "@mui/material";
 import { NavigationTab, NavigationTabs } from "./Tabs.component.tsx";
 import { WebsiteIcon } from "./Icon.component.tsx";
+// @deno-types="npm:@types/react@18"
 import { useContext } from "react";
 import { SpecContext } from "../../data/spec.context.tsx";
 import { Specs } from "../../gw2/type.ts";

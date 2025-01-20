@@ -18,11 +18,14 @@ export enum UtilitySkills {
 
 export enum WeaponSkills {
   U1 = 63118,
+  H1 = 63118,
   U2 = 63335,
   U3 = 63197,
   U4 = 63131,
   U5 = 63208,
+  H2 = 63366,
   H3 = 63075,
+  H4 = 63073,
   H5 = 63330,
   A1 = 12466,
   A2 = 12480,

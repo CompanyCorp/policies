@@ -1,5 +1,5 @@
 import { assertEquals, assertThrows } from "jsr:@std/assert";
-import { getGw2Ids } from "../utils.ts";
+import { convertToIds, getGw2Ids } from "../utils.ts";
 import { Relics, Sigils, Specs, Symbols } from "../type.ts";
 import { WeaponSkills } from "../soulbeast.ts";
 import { NotFoundError } from "../errors.ts";
@@ -87,4 +87,8 @@ Deno.test("Test utility and spec skills", () => {
   };
   const result = getGw2Ids(example);
   assertEquals(result, expectedResult);
+});
+
+Deno.test("Test convertIds", () => {
+  convertToIds(Symbols.WEAPON, ["H1", "U2", "H3", "H4", "H5"], Specs.SLB);
 });

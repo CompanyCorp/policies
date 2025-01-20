@@ -6,6 +6,7 @@ import "react";
 import "react-dom";
 
 export default defineConfig({
+  base: "/",
   plugins: [
     react(),
     deno() as Plugin[],

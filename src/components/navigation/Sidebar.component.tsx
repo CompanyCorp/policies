@@ -12,8 +12,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { SpecContext, SpecContextType } from "../../data/spec.context.tsx";
-import { powerFights, condiFights, CMId } from "../../gw2/cms.ts";
+import { SpecContext } from "../../data/spec.context.tsx";
+import { CMId, condiFights, powerFights } from "../../gw2/cms.ts";
 import { SpecType } from "../../gw2/type.ts";
 
 const RichStyledTree = styled(RichTreeView)(({ theme }: { theme: Theme }) => ({
@@ -93,7 +93,7 @@ const LinkTreeItem = forwardRef((
 });
 
 const ChallengeModeTreeView = () => {
-  const { specType } = useContext<SpecContextType>(SpecContext);
+  const { specType } = useContext(SpecContext);
   if (specType === SpecType.BOTH) {
     return (
       <RichStyledTree

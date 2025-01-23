@@ -1,7 +1,7 @@
 import { assertEquals, assertThrows } from "jsr:@std/assert";
 import { convertToIds, getGw2Ids } from "../utils.ts";
 import { Relics, Sigils, Specs, Symbols } from "../type.ts";
-import { UtilitySkills, WeaponSkills } from "../soulbeast.ts";
+import { UtilitySkills, WeaponSkills } from "../specializations/soulbeast.ts";
 import { NotFoundError } from "../errors.ts";
 import { getRotation } from "../../data/utils.ts";
 
@@ -96,16 +96,23 @@ Deno.test("Test convertIds", () => {
 
 Deno.test("Test rotation conversion", () => {
   const rotation = [
-    [
-      ["sicem", "U4"],
-      "U2",
-    ],
-    [
-      "A4",
-      "A2",
-      "A3",
-      "maul",
-    ],
+    {
+      phaseName: "Opener / Phase 1",
+      skills: [
+        ["sicem", "U4"],
+        "U2",
+      ],
+    },
+    {
+      phaseName: "Phase 2",
+      skills: [
+        "A4",
+        "A2",
+        "A3",
+        "maul",
+      ],
+      lastPhase: true,
+    },
   ];
 
   const result = getRotation(Specs.SLB, rotation);
@@ -117,6 +124,7 @@ Deno.test("Test rotation conversion", () => {
         { main: WeaponSkills.U2 },
       ],
       phaseName: "Opener / Phase 1",
+      lastPhase: false,
     },
     {
       skills: [
@@ -126,6 +134,7 @@ Deno.test("Test rotation conversion", () => {
         { main: UtilitySkills.MAUL },
       ],
       phaseName: "Phase 2",
+      lastPhase: true,
     },
   ]);
 });

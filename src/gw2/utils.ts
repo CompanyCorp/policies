@@ -1,13 +1,92 @@
 import { InvalidInputError, NotFoundError } from "./errors.ts";
-import { getMap, SpecMap, Specs, Symbols } from "./type.ts";
+import {
+  HARBTraitMap,
+  HARBUtilityMap,
+  HARBWeaponMap,
+} from "./specializations/harbinger.ts";
+import {
+  SLBTraitMap,
+  SLBUtilityMap,
+  SLBWeaponMap,
+} from "./specializations/soulbeast.ts";
+import {
+  ConsumableMap,
+  RelicMap,
+  SigilMap,
+  SpecMap,
+  Specs,
+  Symbols,
+} from "./type.ts";
+
+export const getMap = (type: Symbols, spec?: Specs) => {
+  if (spec) {
+    switch (type) {
+      case Symbols.SKILL:
+        switch (spec) {
+          case Specs.SLB:
+            return SLBUtilityMap;
+          case Specs.REN:
+            break;
+          case Specs.HARB:
+            return HARBUtilityMap;
+          default:
+            throw new NotFoundError([type, spec], [
+              Symbols.SKILL,
+              Symbols.SPEC,
+            ]);
+        }
+        break;
+      case Symbols.WEAPON:
+        switch (spec) {
+          case Specs.SLB:
+            return SLBWeaponMap;
+          case Specs.REN:
+            break;
+          case Specs.HARB:
+            return HARBWeaponMap;
+          default:
+            break;
+        }
+        break;
+      case Symbols.TRAIT:
+        switch (spec) {
+          case Specs.SLB:
+            return SLBTraitMap;
+          case Specs.REN:
+            break;
+          case Specs.HARB:
+            return HARBTraitMap;
+          default:
+            break;
+        }
+        break;
+      default:
+        throw new NotFoundError([spec, type], [Symbols.SPEC]);
+    }
+  }
+  switch (type) {
+    case Symbols.RELIC:
+      return RelicMap;
+    case Symbols.SIGIL:
+      return SigilMap;
+    case Symbols.CONSUMABLE:
+      return ConsumableMap;
+    default:
+      throw new NotFoundError([type], [
+        Symbols.RELIC,
+        Symbols.SIGIL,
+        Symbols.CONSUMABLE,
+      ]);
+  }
+};
 
 export const convertToIds = (
-  types: Symbols[],
+  type: Symbols,
   input: string[],
   spec?: Specs,
 ) => {
   const results: number[] = [];
-  const map = getMap(types, spec);
+  const map = getMap(type, spec);
   input.forEach((item) => {
     const upperCaseInput = item.toUpperCase();
     if (upperCaseInput === "SWAP") {
@@ -17,7 +96,7 @@ export const convertToIds = (
       if (typeof result !== "number") {
         throw new NotFoundError(
           spec ? [upperCaseInput, spec] : [upperCaseInput],
-          spec ? [...types, Symbols.SPEC] : types,
+          spec ? [type, Symbols.SPEC] : [type],
         );
       }
       results.push(result);
@@ -87,6 +166,7 @@ type DecodedSymbol = {
 
 export const getGw2Ids = (input: string): DecodedSymbol => {
   const { type, spec, output } = parseInput(input);
+
   if (spec) {
     const specRes = SpecMap.get(spec);
     if (!specRes) {
@@ -95,11 +175,11 @@ export const getGw2Ids = (input: string): DecodedSymbol => {
     return {
       type,
       spec: specRes,
-      ids: convertToIds([type], output, specRes),
+      ids: convertToIds(type, output, specRes),
     };
   }
   return {
     type,
-    ids: convertToIds([type], output),
+    ids: convertToIds(type, output),
   };
 };

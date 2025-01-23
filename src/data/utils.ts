@@ -2,14 +2,14 @@ import nightmareConfig from "../configs/nightmare.json" with { type: "json" };
 import shatteredConfig from "../configs/shattered.json" with { type: "json" };
 import sunquaConfig from "../configs/sunqua.json" with { type: "json" };
 import silentSurfConfig from "../configs/silentsurf.json" with { type: "json" };
+import { Specs, Symbols } from "../gw2/type.ts";
+import { getGw2Ids } from "../gw2/utils.ts";
 import {
   isNightmareFight,
   isShatteredObservatoryFight,
   isSilentSurfFight,
   isSunquaPeakFight,
-} from "../gw2/cms.ts";
-import { Specs, Symbols } from "../gw2/type.ts";
-import { convertToIds } from "../gw2/utils.ts";
+} from "../gw2/cms.utils.ts";
 
 export type Skill = string | string[];
 
@@ -31,8 +31,14 @@ type ClassConfig = {
 
 export type PhaseRotation = {
   skills: {
-    main: number;
-    top?: number;
+    main: {
+      id: number;
+      type: Symbols;
+    };
+    top?: {
+      id: number;
+      type: Symbols;
+    };
   }[];
   phaseName: string;
   lastPhase: boolean;
@@ -49,28 +55,25 @@ export type TemplateConfig = {
 };
 
 export const getRotation = (
-  spec: Specs,
   rotation: Phase[],
 ): PhaseRotation[] => {
   const rotationResult = rotation.map((phase) => {
     const { phaseName, skills, lastPhase } = phase;
     const phaseRotation = skills.map((skill: Skill) => {
       if (typeof skill === "string") {
-        const [main] = convertToIds(
-          [Symbols.WEAPON, Symbols.SKILL],
-          [skill],
-          spec,
-        );
-        return { main };
+        const { ids, type } = getGw2Ids(skill);
+        return { main: { id: ids[0], type } };
       } else {
-        const [top, main] = convertToIds(
-          [Symbols.WEAPON, Symbols.SKILL],
-          skill,
-          spec,
-        );
+        const [top, main] = skill.map((s) => getGw2Ids(s));
         return {
-          main,
-          top,
+          main: {
+            id: main.ids[0],
+            type: main.type,
+          },
+          top: {
+            id: top.ids[0],
+            type: top.type,
+          },
         };
       }
     });
@@ -103,27 +106,31 @@ export const getTemplateConfig = (
   if (classConfig) {
     const { relic, sigils, consumables, weapons, skills, rotation } =
       classConfig;
-    const [relicId] = convertToIds([Symbols.RELIC], [relic]);
-    const consumablesIds = convertToIds([Symbols.CONSUMABLE], consumables);
+    const [relicId] = getGw2Ids(relic).ids;
+    const consumablesIds = consumables.map((c) => getGw2Ids(c).ids).flatMap((
+      c,
+    ) => c);
     const result: TemplateConfig = {
       relicId,
       consumablesIds,
       fight,
     };
     if (sigils) {
-      const sigilIds = convertToIds([Symbols.SIGIL], sigils);
+      const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((
+        s,
+      ) => s);
       result.sigilIds = sigilIds;
     }
     if (weapons) {
-      const weaponIds = convertToIds([Symbols.WEAPON], weapons, spec);
+      const weaponIds = weapons.map((s) => getGw2Ids(s).ids).flatMap((s) => s);
       result.weaponIds = weaponIds;
     }
     if (skills) {
-      const skillIds = convertToIds([Symbols.SKILL], skills, spec);
+      const skillIds = skills.map((s) => getGw2Ids(s).ids).flatMap((s) => s);
       result.skillIds = skillIds;
     }
     if (rotation) {
-      result.rotation = getRotation(spec, rotation);
+      result.rotation = getRotation(rotation);
     }
     return result;
   }

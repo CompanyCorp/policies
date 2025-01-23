@@ -3,98 +3,114 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "fireworks",
+        "relic": "relic.fireworks",
         "sigils": [
-          "force",
-          "impact"
+          "sigil.force",
+          "sigil.impact"
         ],
         "consumables": [
-          "dbb",
-          "scarlet"
+          "CONSUMABLE.dbb",
+          "CONSUMABLE.scarlet"
         ],
         "weapons": [
-          "U1",
-          "U2",
-          "H3",
-          "U4",
-          "U5"
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.H3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
         ],
         "rotation": [
+          {
+            "phaseName": "Precast",
+            "skills": [
+              "consumable.EQUIPTEMPLATE",
+              [
+                "skill.slb.beastmode",
+                "WEAPON.slb.LB5"
+              ],
+              [
+                "relic.brawler",
+                "weapon.slb.S3"
+              ],
+              "consumable.EQUIPTEMPLATE",
+              "SKILL.slb.frosttrap"
+            ]
+          },
           {
             "phaseName": "Opener / Phase 1",
             "skills": [
               [
-                "sicem",
-                "U4"
+                "SKILL.slb.sicem",
+                "WEAPON.slb.U4"
               ],
-              "U2",
-              "SWAP",
-              "A4",
-              "maul",
-              "A3",
-              "A2"
+              "WEAPON.slb.U2",
+              "WEAPON.slb.SWAP",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A2"
             ]
           },
           {
             "phaseName": "Knight 1",
             "skills": [
-              "brutalcharge",
-              "A5"
+              "SKILL.slb.brutalcharge",
+              "WEAPON.slb.A5"
             ]
           },
           {
             "phaseName": "Phase 2",
             "skills": [
-              "A2",
-              "A3",
-              "worldlyimpact",
-              "maul",
-              "A4",
-              "A2"
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "SKILL.slb.worldlyimpact",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2"
             ]
           },
           {
             "phaseName": "Knight 2",
             "skills": [
-              "H3"
+              "WEAPON.slb.H3"
             ]
           },
           {
             "phaseName": "Phase 3",
             "skills": [
               [
-                "sicem",
-                "U5"
+                "SKILL.slb.sicem",
+                "WEAPON.slb.U5"
               ],
-              "frosttrap",
-              "U4",
-              "U2",
-              "swap",
-              "A4",
-              "maul",
-              "A3",
-              "A2"
+              "SKILL.slb.frosttrap",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "weapon.slb.swap",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A2"
             ]
           },
           {
             "phaseName": "Knight 3",
             "skills": [
-              "brutalcharge",
-              "A5"
+              "SKILL.slb.brutalcharge",
+              "WEAPON.slb.A5"
             ]
           },
           {
             "phaseName": "Phase 4",
             "skills": [
-              "A2",
-              "A3",
-              "worldlyimpact",
-              "A4",
-              "maul",
-              "A2",
-              "U4",
-              "U2",
-              "U5"
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "weapon.slb.A2",
+              "weapon.slb.U4",
+              "weapon.slb.U2",
+              "weapon.slb.U5"
             ],
             "lastPhase": true
           }
@@ -106,21 +122,21 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "fireworks",
+        "relic": "relic.fireworks",
         "sigils": [
-          "serpent",
-          "impact"
+          "sigil.serpent",
+          "sigil.impact"
         ],
         "consumables": [
-          "dbb",
-          "scarlet"
+          "CONSUMABLE.dbb",
+          "CONSUMABLE.scarlet"
         ],
         "weapons": [
-          "U1",
-          "U2",
-          "U3",
-          "U4",
-          "U5"
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.U3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
         ]
       }
     ]
@@ -129,21 +145,21 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "fireworks",
+        "relic": "relic.fireworks",
         "sigils": [
-          "serpent",
-          "impact"
+          "sigil.serpent",
+          "sigil.impact"
         ],
         "consumables": [
           "steak",
           "scarlet"
         ],
         "weapons": [
-          "U1",
-          "U2",
-          "U3",
-          "U4",
-          "U5"
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.U3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
         ]
       }
     ]

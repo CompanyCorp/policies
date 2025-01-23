@@ -1,5 +1,5 @@
-import { Box, Paper, Stack } from "@mui/material";
-import { Skill } from "@discretize/gw2-ui-new";
+import { Box, Card, CardContent, CardHeader, Stack } from "@mui/material";
+import { Item, Skill, Trait } from "@discretize/gw2-ui-new";
 import { PhaseRotation } from "../../data/utils.ts";
 import {
   Timeline,
@@ -11,6 +11,7 @@ import {
   timelineOppositeContentClasses,
   TimelineSeparator,
 } from "@mui/lab";
+import { Symbols } from "../../gw2/type.ts";
 const WeaponSwapIcon = () => {
   return (
     <Box
@@ -24,6 +25,22 @@ const WeaponSwapIcon = () => {
       <img src="/policies/weaponswap.png" height="24px" />
     </Box>
   );
+};
+
+const RotationItem = (
+  { type, id, style }: {
+    type: Symbols;
+    id: number;
+    style: Record<string, string>;
+  },
+) => {
+  if ([Symbols.RELIC, Symbols.CONSUMABLE, Symbols.SIGIL].includes(type)) {
+    return <Item disableText id={id} style={style} />;
+  }
+  if (type === Symbols.TRAIT) {
+    return <Trait disableText id={id} style={style} />;
+  }
+  return <Skill disableText id={id} style={style} />;
 };
 
 const Phase = ({ skills, phaseName, lastPhase }: PhaseRotation) => {
@@ -41,11 +58,11 @@ const Phase = ({ skills, phaseName, lastPhase }: PhaseRotation) => {
       </TimelineSeparator>
       <TimelineContent>
         <Stack direction={"row"} spacing={0.5} sx={{ flexWrap: "wrap" }}>
-          {skills.map((skill) => (
+          {skills.map(({ top, main }) => (
             <>
               <Stack
                 direction={"column"}
-                key={skill.main}
+                key={main.id}
                 spacing={-1}
                 sx={{
                   alignItems: "center",
@@ -54,14 +71,22 @@ const Phase = ({ skills, phaseName, lastPhase }: PhaseRotation) => {
                   my: 0,
                 }}
               >
-                {skill?.top && (
-                  <Skill disableText id={skill.top} style={topSkillStyle} />
+                {top && (
+                  <RotationItem
+                    type={top.type}
+                    id={top.id}
+                    style={topSkillStyle}
+                  />
                 )}
-                {skill.main !== 0 && (
-                  <Skill disableText id={skill.main} style={mainSkillStyle} />
+                {main.id !== 0 && (
+                  <RotationItem
+                    type={main.type}
+                    id={main.id}
+                    style={mainSkillStyle}
+                  />
                 )}
               </Stack>
-              {skill.main === 0 && <WeaponSwapIcon />}
+              {main.id === 0 && <WeaponSwapIcon />}
             </>
           ))}
         </Stack>
@@ -72,16 +97,19 @@ const Phase = ({ skills, phaseName, lastPhase }: PhaseRotation) => {
 
 export const Rotation = ({ rotation }: { rotation: PhaseRotation[] }) => {
   return (
-    <Paper sx={{ flexShrink: 1 }} variant="outlined">
-      <Timeline
-        sx={{
-          [`& .${timelineOppositeContentClasses.root}`]: {
-            flex: 0.2,
-          },
-        }}
-      >
-        {rotation.map((phase) => <Phase {...phase} />)}
-      </Timeline>
-    </Paper>
+    <Card variant="outlined" sx={{ flexGrow: 1 }}>
+      <CardHeader title="Rotation" />
+      <CardContent>
+        <Timeline
+          sx={{
+            [`& .${timelineOppositeContentClasses.root}`]: {
+              flex: 0.2,
+            },
+          }}
+        >
+          {rotation.map((phase) => <Phase {...phase} />)}
+        </Timeline>
+      </CardContent>
+    </Card>
   );
 };

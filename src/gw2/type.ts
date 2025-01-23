@@ -61,15 +61,23 @@ export enum Consumables {
   CUREDFLATBREAD = 91878,
 }
 
-export const SpecMap = new Map(Object.entries(Specs));
-export const RelicMap = new Map(Object.entries(Relics));
-export const SigilMap = new Map(Object.entries(Sigils));
-export const ConsumableMap = new Map(Object.entries(Consumables));
+export const SpecMap = new Map(
+  Object.entries(Specs),
+);
+export const RelicMap = new Map(
+  Object.entries(Relics),
+);
+export const SigilMap = new Map(
+  Object.entries(Sigils),
+);
+export const ConsumableMap = new Map(
+  Object.entries(Consumables),
+);
 
-export const getMap = (type: Symbols, spec?: Specs) => {
+export const getMap = (types: Symbols[], spec?: Specs) => {
+  let result: Map<string, number | string> | undefined;
   if (spec) {
-    let result;
-    if (type === Symbols.SKILL) {
+    if (types.includes(Symbols.SKILL)) {
       switch (spec) {
         case Specs.SLB:
           result = SLBUtilityMap;
@@ -83,53 +91,97 @@ export const getMap = (type: Symbols, spec?: Specs) => {
           break;
       }
       if (!result) {
-        throw new NotFoundError([type, spec], [Symbols.SKILL, Symbols.SPEC]);
+        throw new NotFoundError([...types, spec], [
+          Symbols.SKILL,
+          Symbols.SPEC,
+        ]);
       }
-    } else if (type === Symbols.WEAPON) {
+    }
+    if (types.includes(Symbols.WEAPON)) {
       switch (spec) {
         case Specs.SLB:
-          result = SLBWeaponMap;
+          if (result) {
+            result = new Map([...SLBWeaponMap, ...result]);
+          } else {
+            result = SLBWeaponMap;
+          }
           break;
         case Specs.REN:
           break;
         case Specs.HARB:
-          result = HARBWeaponMap;
+          if (result) {
+            result = new Map([...HARBWeaponMap, ...result]);
+          } else {
+            result = HARBWeaponMap;
+          }
           break;
         default:
           break;
       }
       if (!result) {
-        throw new NotFoundError([type, spec], [Symbols.WEAPON, Symbols.SPEC]);
+        throw new NotFoundError([...types, spec], [
+          Symbols.WEAPON,
+          Symbols.SPEC,
+        ]);
       }
-    } else if (type === Symbols.TRAIT) {
+    }
+    if (types.includes(Symbols.TRAIT)) {
       switch (spec) {
         case Specs.SLB:
-          result = SLBTraitMap;
+          if (result) {
+            result = new Map([...SLBTraitMap, ...result]);
+          } else {
+            result = SLBTraitMap;
+          }
           break;
         case Specs.REN:
           break;
         case Specs.HARB:
-          result = HARBTraitMap;
+          if (result) {
+            result = new Map([...HARBTraitMap, ...result]);
+          } else {
+            result = HARBTraitMap;
+          }
           break;
         default:
           break;
       }
       if (!result) {
-        throw new NotFoundError([type, spec], [Symbols.TRAIT, Symbols.SPEC]);
+        throw new NotFoundError([...types, spec], [
+          Symbols.TRAIT,
+          Symbols.SPEC,
+        ]);
       }
-    } else {
-      throw new NotFoundError([spec, type], [Symbols.SPEC]);
+    }
+    if (!result) {
+      throw new NotFoundError([spec, ...types], [Symbols.SPEC]);
     }
     return result;
   }
-  switch (type) {
-    case Symbols.RELIC:
-      return RelicMap;
-    case Symbols.SIGIL:
-      return SigilMap;
-    case Symbols.CONSUMABLE:
-      return ConsumableMap;
-    default:
-      throw new NotFoundError([type], [Symbols.SPEC]);
+  if (types.includes(Symbols.RELIC)) {
+    if (result) {
+      result = new Map([...RelicMap, ...result]);
+    }
+    return RelicMap;
   }
+  if (types.includes(Symbols.SIGIL)) {
+    if (result) {
+      result = new Map([...SigilMap, ...result]);
+    }
+    return SigilMap;
+  }
+  if (types.includes(Symbols.CONSUMABLE)) {
+    if (result) {
+      result = new Map([...ConsumableMap, ...result]);
+    }
+    return ConsumableMap;
+  }
+  if (!result) {
+    throw new NotFoundError(types, [
+      Symbols.RELIC,
+      Symbols.SIGIL,
+      Symbols.CONSUMABLE,
+    ]);
+  }
+  return result;
 };

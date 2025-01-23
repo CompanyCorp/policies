@@ -45,7 +45,7 @@ const FractalPage = () => {
   return (
     <Stack spacing={2}>
       {configs.map((config) => (
-        <Card>
+        <Card variant="outlined">
           <CardContent>
             <Typography variant="h4">
               {convertIdToName(config?.fight)}

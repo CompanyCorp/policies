@@ -10,7 +10,7 @@ import {
 import { useTreeItem2Utils } from "@mui/x-tree-view/hooks";
 import {
   alpha,
-  Link,
+  Button,
   styled,
   Theme,
   Typography,
@@ -52,16 +52,19 @@ const LinkLabel = ({ children, className, href }: LinkLabelProps) => {
   const theme = useTheme();
   if (href) {
     return (
-      <Link
+      <Button
         color={theme.palette.text.primary}
         component={WouterLink}
         href={href}
         className={className}
         underline="none"
-        variant="body1"
+        disableFocusRipple
+        fullWidth
+        variant="text"
+        sx={{ justifyContent: "flex-start" }}
       >
         {children}
-      </Link>
+      </Button>
     );
   }
   return (
@@ -119,7 +122,7 @@ const ChallengeModeTreeView = () => {
   if (specType === SpecType.POWER) {
     return (
       <RichStyledTree
-        sx={{ backgroundColor: "transparent" }}
+        sx={{ backgroundColor: "transparent", width: "100%", flexGrow: 1 }}
         items={powerFights}
         slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[CMId.Nightmare, CMId.ShatteredObservatory]}

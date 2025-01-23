@@ -1,7 +1,3 @@
-import { NotFoundError } from "./errors.ts";
-import { HARBTraitMap, HARBUtilityMap, HARBWeaponMap } from "./harbinger.ts";
-import { SLBTraitMap, SLBUtilityMap, SLBWeaponMap } from "./soulbeast.ts";
-
 export enum Symbols {
   SPEC = "SPEC",
   RELIC = "RELIC",
@@ -39,7 +35,7 @@ export enum Relics {
   BALRIOR = 103872,
   CERUS = 100074,
   CLAW = 103574,
-  BRAWLER = 100012,
+  BRAWLER = 100527,
   THIEF = 100916,
 }
 
@@ -59,6 +55,13 @@ export enum Consumables {
   SKEWER = 95942,
   TOXIC = 48917,
   CUREDFLATBREAD = 91878,
+  EQUIPTEMPLATE = 92203,
+}
+
+export enum Novelties {
+  BELL = 88385,
+  EXEAXE = 49940,
+  PINATA = 85244,
 }
 
 export const SpecMap = new Map(
@@ -73,115 +76,3 @@ export const SigilMap = new Map(
 export const ConsumableMap = new Map(
   Object.entries(Consumables),
 );
-
-export const getMap = (types: Symbols[], spec?: Specs) => {
-  let result: Map<string, number | string> | undefined;
-  if (spec) {
-    if (types.includes(Symbols.SKILL)) {
-      switch (spec) {
-        case Specs.SLB:
-          result = SLBUtilityMap;
-          break;
-        case Specs.REN:
-          break;
-        case Specs.HARB:
-          result = HARBUtilityMap;
-          break;
-        default:
-          break;
-      }
-      if (!result) {
-        throw new NotFoundError([...types, spec], [
-          Symbols.SKILL,
-          Symbols.SPEC,
-        ]);
-      }
-    }
-    if (types.includes(Symbols.WEAPON)) {
-      switch (spec) {
-        case Specs.SLB:
-          if (result) {
-            result = new Map([...SLBWeaponMap, ...result]);
-          } else {
-            result = SLBWeaponMap;
-          }
-          break;
-        case Specs.REN:
-          break;
-        case Specs.HARB:
-          if (result) {
-            result = new Map([...HARBWeaponMap, ...result]);
-          } else {
-            result = HARBWeaponMap;
-          }
-          break;
-        default:
-          break;
-      }
-      if (!result) {
-        throw new NotFoundError([...types, spec], [
-          Symbols.WEAPON,
-          Symbols.SPEC,
-        ]);
-      }
-    }
-    if (types.includes(Symbols.TRAIT)) {
-      switch (spec) {
-        case Specs.SLB:
-          if (result) {
-            result = new Map([...SLBTraitMap, ...result]);
-          } else {
-            result = SLBTraitMap;
-          }
-          break;
-        case Specs.REN:
-          break;
-        case Specs.HARB:
-          if (result) {
-            result = new Map([...HARBTraitMap, ...result]);
-          } else {
-            result = HARBTraitMap;
-          }
-          break;
-        default:
-          break;
-      }
-      if (!result) {
-        throw new NotFoundError([...types, spec], [
-          Symbols.TRAIT,
-          Symbols.SPEC,
-        ]);
-      }
-    }
-    if (!result) {
-      throw new NotFoundError([spec, ...types], [Symbols.SPEC]);
-    }
-    return result;
-  }
-  if (types.includes(Symbols.RELIC)) {
-    if (result) {
-      result = new Map([...RelicMap, ...result]);
-    }
-    return RelicMap;
-  }
-  if (types.includes(Symbols.SIGIL)) {
-    if (result) {
-      result = new Map([...SigilMap, ...result]);
-    }
-    return SigilMap;
-  }
-  if (types.includes(Symbols.CONSUMABLE)) {
-    if (result) {
-      result = new Map([...ConsumableMap, ...result]);
-    }
-    return ConsumableMap;
-  }
-  if (!result) {
-    throw new NotFoundError(types, [
-      Symbols.RELIC,
-      Symbols.SIGIL,
-      Symbols.CONSUMABLE,
-    ]);
-  }
-  return result;
-};

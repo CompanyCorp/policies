@@ -7,13 +7,13 @@ import { getTemplateConfig } from "../data/utils.ts";
 import { SpecContext } from "../data/spec.context.tsx";
 import {
   CMId,
-  convertIdToName,
   nightmareMap,
   shatteredObservatoryMap,
   silentSurfMap,
   sunquaPeakMap,
 } from "../gw2/cms.ts";
 import { Card, CardContent, Stack, Typography } from "@mui/material";
+import { convertIdToName } from "../gw2/cms.utils.ts";
 
 const useFightList = () => {
   const router = useRouter();

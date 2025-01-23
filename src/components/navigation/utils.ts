@@ -1,23 +1,23 @@
 // @deno-types="npm:@types/react@18"
 import { useContext } from "react";
 import { SpecContext } from "../../data/spec.context.tsx";
+import { SpecType, SpecTypeMap } from "../../gw2/type.ts";
+import { useRouter } from "wouter";
 import {
   isCondiFight,
   isPowerFight,
   useCondiFights,
   usePowerFights,
-} from "../../gw2/cms.ts";
-import { SpecType, SpecTypeMap } from "../../gw2/type.ts";
-import { useRouter } from "wouter";
+} from "../../gw2/cms.utils.ts";
 
-export const parseLocation = (input: string, user?: string) => {
+export const parseLocation = (input: string, _user?: string) => {
   let page = input;
   // if forward-slash exists, remove it
   if (page.includes("/")) {
     const pages = page.split("/");
 
     page = pages[pages.length - 1];
-    console.log("parseLocation", pages, user);
+    // console.log("parseLocation", pages, _user);
   }
   // if ? exists, remove it and everything after it
   if (page.includes("?")) {

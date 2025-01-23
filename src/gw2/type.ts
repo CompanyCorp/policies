@@ -7,6 +7,8 @@ export enum Symbols {
   SKILL = "SKILL",
   TRAIT = "TRAIT",
   FIGHT = "FIGHT",
+  NOVELTY = "NOVELTY",
+  MISC = "MISC",
 }
 
 export enum Specs {
@@ -64,6 +66,17 @@ export enum Novelties {
   PINATA = 85244,
 }
 
+export enum Misc {
+  WEAPONSWAP = 0,
+  MISTLOCK = 1,
+}
+
+export enum Precasts {
+  BELLOWP = "BELLOWP",
+  BRAWLER = "BRAWLER",
+  EXEAXE = "EXEAXE",
+}
+
 export const SpecMap = new Map(
   Object.entries(Specs),
 );
@@ -75,4 +88,10 @@ export const SigilMap = new Map(
 );
 export const ConsumableMap = new Map(
   Object.entries(Consumables),
+);
+export const NoveltyMap = new Map(
+  Object.entries(Novelties),
+);
+export const MiscMap = new Map(
+  Object.entries(Misc),
 );

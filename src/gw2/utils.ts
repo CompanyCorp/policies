@@ -9,8 +9,10 @@ import {
   SLBUtilityMap,
   SLBWeaponMap,
 } from "./specializations/soulbeast.ts";
+import { MiscMap } from "./type.ts";
 import {
   ConsumableMap,
+  NoveltyMap,
   RelicMap,
   SigilMap,
   SpecMap,
@@ -71,6 +73,10 @@ export const getMap = (type: Symbols, spec?: Specs) => {
       return SigilMap;
     case Symbols.CONSUMABLE:
       return ConsumableMap;
+    case Symbols.NOVELTY:
+      return NoveltyMap;
+    case Symbols.MISC:
+      return MiscMap;
     default:
       throw new NotFoundError([type], [
         Symbols.RELIC,
@@ -124,6 +130,8 @@ const parseInput = (
     Symbols.RELIC,
     Symbols.SIGIL,
     Symbols.CONSUMABLE,
+    Symbols.NOVELTY,
+    Symbols.MISC,
   ];
   if (specBasedTypes.includes(type)) {
     // weapon input needs both type (weapon), spec, and the weapon skills themselves

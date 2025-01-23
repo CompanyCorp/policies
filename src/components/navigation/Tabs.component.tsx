@@ -1,14 +1,7 @@
-import { Tab, Tabs, Theme } from "@mui/material";
+import { Tab, Tabs, TabsProps, Theme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-interface StyledTabsProps {
-  role: string;
-  children?: React.ReactNode;
-  value: number;
-  onChange: (event: React.SyntheticEvent, newValue: number) => void;
-}
-
-export const NavigationTabs = styled((props: StyledTabsProps) => (
+export const NavigationTabs = styled((props: TabsProps) => (
   <Tabs
     {...props}
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}

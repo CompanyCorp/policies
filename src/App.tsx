@@ -8,7 +8,7 @@ import { SpecContext } from "./data/spec.context.tsx";
 import HomePage from "./pages/home.page.tsx";
 import { CMId } from "./gw2/cms.ts";
 import { Specs, SpecType, SpecTypeMap } from "./gw2/type.ts";
-import Layout from "./components/layout.component.tsx";
+import Layout from "./components/Layout.component.tsx";
 import FightPage from "./pages/fight.page.tsx";
 import FractalPage from "./pages/fractal.page.tsx";
 

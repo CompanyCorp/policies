@@ -18,9 +18,9 @@ const NavigationBar = (
     <Grid2
       container
       bgcolor={theme.palette.background.default}
-      sx={{ mx: 3, my: 1 }}
+      sx={{ px: 3, py: 1, m: 0, borderBottom: 1, borderColor: "divider" }}
     >
-      <Grid2 size={{ xs: 2, md: 4 }}>
+      <Grid2 size={{ xs: 5, md: 4 }}>
         <Button
           startIcon={<WebsiteIcon />}
           href="/policies"
@@ -39,7 +39,7 @@ const NavigationBar = (
           </Typography>
         </Button>
       </Grid2>
-      <Grid2 size={{ xs: 10, md: 8 }}>
+      <Grid2 size={{ xs: 7, md: 8 }}>
         <NavigationTabs role="navigation" value={activeSpec} onChange={setSpec}>
           {specList.map((spec: Specs) => (
             <NavigationTab key={spec} label={spec} value={spec} />

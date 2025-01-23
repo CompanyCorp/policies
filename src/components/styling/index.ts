@@ -13,7 +13,7 @@ export const mainTheme = createTheme({
       main: "#F54B29",
     },
     background: {
-      paper: "#1F223D",
+      paper: "#191B35",
       default: "#080B21",
     },
     divider: "#7f7fa0",

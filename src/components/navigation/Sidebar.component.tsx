@@ -2,7 +2,11 @@
 import { forwardRef, useContext } from "react";
 import { Link as WouterLink } from "wouter";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
-import { TreeItem2, TreeItem2Props, treeItemClasses } from "@mui/x-tree-view";
+import {
+  TreeItem2,
+  TreeItem2Props,
+  treeItemClasses,
+} from "@mui/x-tree-view";
 import { useTreeItem2Utils } from "@mui/x-tree-view/hooks";
 import {
   alpha,
@@ -19,7 +23,7 @@ import { SpecType } from "../../gw2/type.ts";
 const RichStyledTree = styled(RichTreeView)(({ theme }: { theme: Theme }) => ({
   [`& .${treeItemClasses.content}`]: {
     borderRadius: 0,
-    borderLeft: `1px solid ${alpha(theme.palette.text.primary, 0.4)}`,
+    borderLeft: `3px solid ${alpha(theme.palette.text.primary, 0.4)}`,
   },
   [`& .${treeItemClasses.label}`]: {
     fontSize: "1.2rem",
@@ -33,7 +37,7 @@ const RichStyledTree = styled(RichTreeView)(({ theme }: { theme: Theme }) => ({
     marginLeft: 10,
     paddingLeft: 18,
     [`& .${treeItemClasses.selected}`]: {
-      borderLeft: `1px solid ${theme.palette.secondary.main}`,
+      borderLeft: `3px solid ${theme.palette.secondary.main}`,
     },
   },
 })) as typeof RichTreeView;
@@ -100,6 +104,7 @@ const ChallengeModeTreeView = () => {
   if (specType === SpecType.BOTH) {
     return (
       <RichStyledTree
+        sx={{ backgroundColor: "transparent" }}
         items={[...powerFights, ...condiFights]}
         slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[
@@ -114,6 +119,7 @@ const ChallengeModeTreeView = () => {
   if (specType === SpecType.POWER) {
     return (
       <RichStyledTree
+        sx={{ backgroundColor: "transparent" }}
         items={powerFights}
         slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[CMId.Nightmare, CMId.ShatteredObservatory]}
@@ -123,6 +129,7 @@ const ChallengeModeTreeView = () => {
   if (specType === SpecType.CONDI) {
     return (
       <RichStyledTree
+        sx={{ backgroundColor: "transparent" }}
         items={condiFights}
         slots={{ item: LinkTreeItem }}
         defaultExpandedItems={[CMId.SunquaPeak, CMId.SilentSurf]}

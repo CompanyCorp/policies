@@ -1,8 +1,9 @@
 import { assertEquals, assertThrows } from "jsr:@std/assert";
 import { convertToIds, getGw2Ids } from "../utils.ts";
 import { Relics, Sigils, Specs, Symbols } from "../type.ts";
-import { WeaponSkills } from "../soulbeast.ts";
+import { UtilitySkills, WeaponSkills } from "../soulbeast.ts";
 import { NotFoundError } from "../errors.ts";
+import { getRotation } from "../../data/utils.ts";
 
 Deno.test("Test weapon skill conversion", () => {
   const example = "weapon.SLB.U1,U2,H3,U3,H5";
@@ -90,5 +91,41 @@ Deno.test("Test utility and spec skills", () => {
 });
 
 Deno.test("Test convertIds", () => {
-  convertToIds(Symbols.WEAPON, ["H1", "U2", "H3", "H4", "H5"], Specs.SLB);
+  convertToIds([Symbols.WEAPON], ["H1", "U2", "H3", "H4", "H5"], Specs.SLB);
+});
+
+Deno.test("Test rotation conversion", () => {
+  const rotation = [
+    [
+      ["sicem", "U4"],
+      "U2",
+    ],
+    [
+      "A4",
+      "A2",
+      "A3",
+      "maul",
+    ],
+  ];
+
+  const result = getRotation(Specs.SLB, rotation);
+
+  assertEquals(result, [
+    {
+      skills: [
+        { main: WeaponSkills.U4, top: UtilitySkills.SICEM },
+        { main: WeaponSkills.U2 },
+      ],
+      phaseName: "Opener / Phase 1",
+    },
+    {
+      skills: [
+        { main: WeaponSkills.A4 },
+        { main: WeaponSkills.A2 },
+        { main: WeaponSkills.A3 },
+        { main: UtilitySkills.MAUL },
+      ],
+      phaseName: "Phase 2",
+    },
+  ]);
 });

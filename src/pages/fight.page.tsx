@@ -5,8 +5,15 @@ import SetupTable from "../components/gw2/SetupTable.component.tsx";
 import { parseLocation } from "../components/navigation/utils.ts";
 import { getTemplateConfig } from "../data/utils.ts";
 import { SpecContext } from "../data/spec.context.tsx";
-import { Card, CardContent, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { convertIdToName } from "../gw2/cms.ts";
+import { Rotation } from "../components/gw2/Rotation.component.tsx";
 
 const FightPage = () => {
   const [path] = useLocation();
@@ -20,16 +27,20 @@ const FightPage = () => {
     return null;
   }
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h4">
-          {convertIdToName(config?.fight)}
-        </Typography>
-        <SetupTable
-          {...config}
-        />
-      </CardContent>
-    </Card>
+    <Stack spacing={4}>
+      <Typography variant="h2" color="secondary">
+        {convertIdToName(config?.fight)}
+      </Typography>
+      <Card variant="outlined">
+        <CardHeader title="LOADOUT" />
+        <CardContent>
+          <SetupTable
+            {...config}
+          />
+        </CardContent>
+      </Card>
+      {config?.rotation && <Rotation rotation={config.rotation} />}
+    </Stack>
   );
 };
 

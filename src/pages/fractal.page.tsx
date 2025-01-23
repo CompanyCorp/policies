@@ -17,7 +17,6 @@ import { Card, CardContent, Stack, Typography } from "@mui/material";
 
 const useFightList = () => {
   const router = useRouter();
-  console.log("useFightList path", router.base);
   const parsedPath = parseLocation(router.base, "FightPage");
   switch (parsedPath) {
     case CMId.Nightmare:
@@ -37,7 +36,6 @@ const FractalPage = () => {
   const { activeSpec } = useContext(SpecContext);
   const fightList = useFightList();
 
-  console.log("fightList", fightList);
   const configs = fightList.map((fight) => getTemplateConfig(fight, activeSpec))
     .filter((config) => config !== null);
 

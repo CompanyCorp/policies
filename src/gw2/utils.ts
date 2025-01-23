@@ -2,22 +2,26 @@ import { InvalidInputError, NotFoundError } from "./errors.ts";
 import { getMap, SpecMap, Specs, Symbols } from "./type.ts";
 
 export const convertToIds = (
-  type: Symbols,
+  types: Symbols[],
   input: string[],
   spec?: Specs,
 ) => {
   const results: number[] = [];
-  const map = getMap(type, spec);
+  const map = getMap(types, spec);
   input.forEach((item) => {
     const upperCaseInput = item.toUpperCase();
-    const result = map.get(upperCaseInput);
-    if (typeof result !== "number") {
-      throw new NotFoundError(
-        spec ? [upperCaseInput, spec] : [upperCaseInput],
-        spec ? [type, Symbols.SPEC] : [type],
-      );
+    if (upperCaseInput === "SWAP") {
+      results.push(0);
+    } else {
+      const result = map.get(upperCaseInput);
+      if (typeof result !== "number") {
+        throw new NotFoundError(
+          spec ? [upperCaseInput, spec] : [upperCaseInput],
+          spec ? [...types, Symbols.SPEC] : types,
+        );
+      }
+      results.push(result);
     }
-    results.push(result);
   });
   return results;
 };
@@ -91,11 +95,11 @@ export const getGw2Ids = (input: string): DecodedSymbol => {
     return {
       type,
       spec: specRes,
-      ids: convertToIds(type, output, specRes),
+      ids: convertToIds([type], output, specRes),
     };
   }
   return {
     type,
-    ids: convertToIds(type, output),
+    ids: convertToIds([type], output),
   };
 };

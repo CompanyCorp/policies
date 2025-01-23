@@ -3,10 +3,10 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "dragonhunter",
+        "relic": "fireworks",
         "sigils": [
-          "impact",
-          "force"
+          "force",
+          "impact"
         ],
         "consumables": [
           "dbb",
@@ -15,9 +15,89 @@
         "weapons": [
           "U1",
           "U2",
-          "U3",
+          "H3",
           "U4",
           "U5"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Opener / Phase 1",
+            "skills": [
+              [
+                "sicem",
+                "U4"
+              ],
+              "U2",
+              "SWAP",
+              "A4",
+              "maul",
+              "A3",
+              "A2"
+            ]
+          },
+          {
+            "phaseName": "Knight 1",
+            "skills": [
+              "brutalcharge",
+              "A5"
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "skills": [
+              "A2",
+              "A3",
+              "worldlyimpact",
+              "maul",
+              "A4",
+              "A2"
+            ]
+          },
+          {
+            "phaseName": "Knight 2",
+            "skills": [
+              "H3"
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "skills": [
+              [
+                "sicem",
+                "U5"
+              ],
+              "frosttrap",
+              "U4",
+              "U2",
+              "swap",
+              "A4",
+              "maul",
+              "A3",
+              "A2"
+            ]
+          },
+          {
+            "phaseName": "Knight 3",
+            "skills": [
+              "brutalcharge",
+              "A5"
+            ]
+          },
+          {
+            "phaseName": "Phase 4",
+            "skills": [
+              "A2",
+              "A3",
+              "worldlyimpact",
+              "A4",
+              "maul",
+              "A2",
+              "U4",
+              "U2",
+              "U5"
+            ],
+            "lastPhase": true
+          }
         ]
       }
     ]
@@ -29,7 +109,7 @@
         "relic": "fireworks",
         "sigils": [
           "serpent",
-          "force"
+          "impact"
         ],
         "consumables": [
           "dbb",
@@ -52,7 +132,7 @@
         "relic": "fireworks",
         "sigils": [
           "serpent",
-          "force"
+          "impact"
         ],
         "consumables": [
           "steak",

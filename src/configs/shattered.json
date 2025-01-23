@@ -3,21 +3,21 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "dragonhunter",
+        "relic": "relic.dragonhunter",
         "sigils": [
-          "force",
-          "impact"
+          "sigil.force",
+          "sigil.impact"
         ],
         "consumables": [
-          "dbb",
-          "sharpening"
+          "CONSUMABLE.dbb",
+          "CONSUMABLE.sharpening"
         ],
         "weapons": [
-          "U1",
-          "U2",
-          "U3",
-          "U4",
-          "U5"
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.U3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
         ]
       }
     ]
@@ -26,21 +26,21 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "fireworks",
+        "relic": "relic.fireworks",
         "sigils": [
-          "force",
-          "severance"
+          "sigil.force",
+          "sigil.severance"
         ],
         "consumables": [
-          "steak",
-          "sharpening"
+          "CONSUMABLE.steak",
+          "CONSUMABLE.sharpening"
         ],
         "weapons": [
-          "U1",
-          "U2",
-          "H3",
-          "U4",
-          "H5"
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.H3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.H5"
         ]
       }
     ]
@@ -49,21 +49,21 @@
     "classes": [
       {
         "id": "Soulbeast",
-        "relic": "fireworks",
+        "relic": "relic.fireworks",
         "sigils": [
-          "force",
-          "impact"
+          "sigil.force",
+          "sigil.impact"
         ],
         "consumables": [
-          "dbb",
-          "scarlet"
+          "CONSUMABLE.dbb",
+          "CONSUMABLE.scarlet"
         ],
         "weapons": [
-          "U1",
-          "U2",
-          "U3",
-          "U4",
-          "U5"
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.U3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
         ]
       }
     ]

@@ -44,7 +44,7 @@
                 "WEAPON.slb.U4"
               ],
               "WEAPON.slb.U2",
-              "WEAPON.slb.SWAP",
+              "MISC.WEAPONSWAP",
               "WEAPON.slb.A4",
               "SKILL.slb.maul",
               "WEAPON.slb.A3",
@@ -114,6 +114,10 @@
             ],
             "lastPhase": true
           }
+        ],
+        "precasts": [
+          "BRAWLER",
+          "EXEAXE"
         ]
       }
     ]
@@ -137,6 +141,10 @@
           "WEAPON.slb.U3",
           "WEAPON.slb.U4",
           "WEAPON.slb.U5"
+        ],
+        "precasts": [
+          "BRAWLER",
+          "BELLOWP"
         ]
       }
     ]
@@ -151,8 +159,8 @@
           "sigil.impact"
         ],
         "consumables": [
-          "steak",
-          "scarlet"
+          "consumable.steak",
+          "consumable.scarlet"
         ],
         "weapons": [
           "WEAPON.slb.U1",
@@ -160,6 +168,9 @@
           "WEAPON.slb.U3",
           "WEAPON.slb.U4",
           "WEAPON.slb.U5"
+        ],
+        "precasts": [
+          "BELLOWP"
         ]
       }
     ]

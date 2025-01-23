@@ -2,7 +2,7 @@ import nightmareConfig from "../configs/nightmare.json" with { type: "json" };
 import shatteredConfig from "../configs/shattered.json" with { type: "json" };
 import sunquaConfig from "../configs/sunqua.json" with { type: "json" };
 import silentSurfConfig from "../configs/silentsurf.json" with { type: "json" };
-import { Specs, Symbols } from "../gw2/type.ts";
+import { Precasts, Specs, Symbols } from "../gw2/type.ts";
 import { getGw2Ids } from "../gw2/utils.ts";
 import {
   isNightmareFight,
@@ -27,6 +27,7 @@ type ClassConfig = {
   weapons?: string[];
   skills?: string[];
   rotation?: Phase[];
+  precasts?: Precasts[];
 };
 
 export type PhaseRotation = {
@@ -52,6 +53,7 @@ export type TemplateConfig = {
   skillIds?: number[];
   fight?: string;
   rotation?: PhaseRotation[];
+  precasts?: Precasts[];
 };
 
 export const getRotation = (
@@ -104,7 +106,7 @@ export const getTemplateConfig = (
     c.id === spec
   );
   if (classConfig) {
-    const { relic, sigils, consumables, weapons, skills, rotation } =
+    const { relic, sigils, consumables, weapons, skills, rotation, precasts } =
       classConfig;
     const [relicId] = getGw2Ids(relic).ids;
     const consumablesIds = consumables.map((c) => getGw2Ids(c).ids).flatMap((
@@ -114,6 +116,7 @@ export const getTemplateConfig = (
       relicId,
       consumablesIds,
       fight,
+      precasts,
     };
     if (sigils) {
       const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((

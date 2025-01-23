@@ -5,8 +5,8 @@
         "id": "Soulbeast",
         "relic": "dragonhunter",
         "sigils": [
-          "impact",
-          "force"
+          "force",
+          "impact"
         ],
         "consumables": [
           "dbb",
@@ -28,12 +28,12 @@
         "id": "Soulbeast",
         "relic": "fireworks",
         "sigils": [
-          "impact",
-          "force"
+          "force",
+          "severance"
         ],
         "consumables": [
           "steak",
-          "scarlet"
+          "sharpening"
         ],
         "weapons": [
           "U1",
@@ -51,8 +51,8 @@
         "id": "Soulbeast",
         "relic": "fireworks",
         "sigils": [
-          "impact",
-          "force"
+          "force",
+          "impact"
         ],
         "consumables": [
           "dbb",

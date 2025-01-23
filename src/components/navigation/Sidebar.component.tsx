@@ -2,11 +2,7 @@
 import { forwardRef, useContext } from "react";
 import { Link as WouterLink } from "wouter";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
-import {
-  TreeItem2,
-  TreeItem2Props,
-  treeItemClasses,
-} from "@mui/x-tree-view";
+import { TreeItem2, TreeItem2Props, treeItemClasses } from "@mui/x-tree-view";
 import { useTreeItem2Utils } from "@mui/x-tree-view/hooks";
 import {
   alpha,

@@ -31,7 +31,10 @@ const Layout = ({ children }: { children?: ReactNode }) => {
           display: "flex",
         }}
       >
-        <Grid2 size={{ xs: 12, sm: 4, md: 3, lg: 2, xl: 2 }} sx={{ display: "flex", flexGrow: 1 }}>
+        <Grid2
+          size={{ xs: 12, sm: 4, md: 3, lg: 2, xl: 2 }}
+          sx={{ display: "flex", flexGrow: 1 }}
+        >
           <Paper
             variant="outlined"
             sx={{
@@ -45,7 +48,10 @@ const Layout = ({ children }: { children?: ReactNode }) => {
             <Sidebar />
           </Paper>
         </Grid2>
-        <Grid2 size={{ xs: 12, sm: 8, md: 9, xl: 10, lg: 10 }} sx={{ pt: 2, pr: 4, pl: 0, m: 0 }}>
+        <Grid2
+          size={{ xs: 12, sm: 8, md: 9, xl: 10, lg: 10 }}
+          sx={{ pt: 2, pr: 4, pl: 0, m: 0 }}
+        >
           {children}
         </Grid2>
       </Grid2>

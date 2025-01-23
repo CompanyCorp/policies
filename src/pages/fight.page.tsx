@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { Rotation } from "../components/gw2/Rotation.component.tsx";
 import { convertIdToName } from "../gw2/cms.utils.ts";
-import { Precasts } from "../components/gw2/Precast.component.tsx";
+import { PrecastComponent } from "../components/gw2/Precast.component.tsx";
 
 const Loadout = ({ config }: { config: TemplateConfig }) => {
   return (
@@ -53,7 +53,7 @@ const FightPage = () => {
           size={{ xs: 12, sm: 4, md: 6, lg: 4, xl: 4 }}
           sx={{ display: "flex" }}
         >
-          <Precasts />
+          <PrecastComponent precasts={config.precasts ?? []} />
         </Grid2>
         <Grid2
           item

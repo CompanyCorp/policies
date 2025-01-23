@@ -1,0 +1,24 @@
+{
+  "BELLOWP": [
+    "trait.slb.LEADEROFTHEPACK",
+    "skill.slb.onewolfpack",
+    "misc.mistlock",
+    "skill.slb.onewolfpack",
+    "novelty.bell",
+    "trait.slb.OPPRESSIVESUPERIORITY"
+  ],
+  "BRAWLER": [
+    "consumable.EQUIPTEMPLATE",
+    "skill.slb.beastmode",
+    [
+      "relic.brawler",
+      "weapon.slb.s3"
+    ],
+    "consumable.EQUIPTEMPLATE"
+  ],
+  "EXEAXE": [
+    "skill.slb.QUICKENINGZEPHYR",
+    "novelty.exeaxe",
+    "weapon.slb.lb5"
+  ]
+}

@@ -1,8 +1,34 @@
 import { Card, CardContent, CardHeader, Divider } from "@mui/material";
-import { BellOWP } from "./precasts/BellOWP.component.tsx";
-import { Brawler } from "./precasts/Brawler.component.tsx";
+import { WeaponSequence } from "./WeaponSequence.component.tsx";
+import PrecastConfigJson from "../../configs/precasts.json" with {
+  type: "json",
+};
+import { getRotation, Skill } from "../../data/utils.ts";
+import { Precasts } from "../../gw2/type.ts";
 
-export const Precasts = () => {
+export const PrecastComponent = ({ precasts }: { precasts: Precasts[] }) => {
+  const PrecastConfig = PrecastConfigJson as Record<Precasts, Skill[]>;
+  const rotations = precasts.map((precast) =>
+    getRotation([{
+      skills: PrecastConfig[precast],
+      phaseName: precast,
+      lastPhase: false,
+    }])
+  ).map((rotation) => rotation[0]);
+
+  const convertPrecastToHeader = (precast: string) => {
+    switch (precast) {
+      case Precasts.BELLOWP:
+        return "Bell OWP";
+      case Precasts.BRAWLER:
+        return "Brawler Relic Precast";
+      case Precasts.EXEAXE:
+        return "Executioner Axe Entry";
+      default:
+        return "Unknown";
+    }
+  };
+
   return (
     <Card
       variant="outlined"
@@ -14,15 +40,15 @@ export const Precasts = () => {
       }}
     >
       <CardHeader title="Precasts" />
-      <CardHeader subheader="Bell OWP" />
-      <CardContent sx={{ pt: 0 }}>
-        <BellOWP />
-      </CardContent>
-      <Divider sx={{ mx: 2 }} />
-      <CardHeader subheader="Brawler Relic Precast" />
-      <CardContent sx={{ pt: 0 }}>
-        <Brawler />
-      </CardContent>
+      {rotations.map((precast, index) => (
+        <>
+          <CardHeader subheader={convertPrecastToHeader(precast.phaseName)} />
+          <CardContent sx={{ pt: 0 }}>
+            <WeaponSequence skills={precast["skills"]} />
+          </CardContent>
+          {index < rotations.length - 1 && <Divider sx={{ mx: 2 }} />}
+        </>
+      ))}
     </Card>
   );
 };

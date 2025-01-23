@@ -3,17 +3,17 @@
     "classes": [
       {
         "id": "Harbinger",
-        "relic": "fractal",
+        "relic": "relic.fractal",
         "consumables": [
-          "skewer",
-          "toxic"
+          "CONSUMABLE.skewer",
+          "CONSUMABLE.toxic"
         ],
         "skills": [
-          "promise",
-          "anguish",
-          "bip",
-          "plaguesignet",
-          "ambition"
+          "skill.harb.promise",
+          "skill.harb.anguish",
+          "skill.harb.bip",
+          "skill.harb.plaguesignet",
+          "skill.harb.ambition"
         ]
       }
     ]
@@ -22,17 +22,17 @@
     "classes": [
       {
         "id": "Harbinger",
-        "relic": "fractal",
+        "relic": "relic.fractal",
         "consumables": [
-          "skewer",
-          "toxic"
+          "CONSUMABLE.skewer",
+          "CONSUMABLE.toxic"
         ],
         "skills": [
-          "promise",
-          "signetofspite",
-          "bip",
-          "plaguesignet",
-          "ambition"
+          "skill.harb.promise",
+          "skill.harb.signetofspite",
+          "skill.harb.bip",
+          "skill.harb.plaguesignet",
+          "skill.harb.ambition"
         ]
       }
     ]

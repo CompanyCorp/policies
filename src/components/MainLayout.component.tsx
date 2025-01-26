@@ -34,7 +34,6 @@ const Layout = ({ children }: { children?: ReactNode }) => {
         <Grid2
           size={{ xs: 12, sm: 4, md: 3, lg: 2, xl: 2 }}
           sx={{ display: "flex", flexGrow: 1 }}
-          item
         >
           <Paper
             variant="outlined"
@@ -50,7 +49,6 @@ const Layout = ({ children }: { children?: ReactNode }) => {
           </Paper>
         </Grid2>
         <Grid2
-          item
           size={{ xs: 12, sm: 8, md: 9, xl: 10, lg: 10 }}
           sx={{ pt: 2, pr: 4, pl: 0, m: 0 }}
         >

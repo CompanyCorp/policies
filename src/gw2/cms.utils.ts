@@ -62,7 +62,6 @@ export const isCMFight = (
 };
 
 export const usePowerFights = () => {
-  const { activeSpec } = useContext(SpecContext);
   const powerFights: TreeViewBaseItem<
     { id?: string; label: string; href?: string }
   >[] = [
@@ -74,22 +73,22 @@ export const usePowerFights = () => {
           id: NightmareFight.MAMA,
           label: NightmareFight.MAMA,
           href:
-            `/policies/${CMId.Nightmare}/${NightmareFight.MAMA}?spec=${activeSpec}`,
+            `${CMId.Nightmare}/${NightmareFight.MAMA}`,
         },
         {
           id: NightmareFight.Siax,
           label: NightmareFight.Siax,
           href:
-            `/policies/${CMId.Nightmare}/${NightmareFight.Siax}?spec=${activeSpec}`,
+            `${CMId.Nightmare}/${NightmareFight.Siax}`,
         },
         {
           id: NightmareFight.Ensolyss,
           label: NightmareFight.Ensolyss,
           href:
-            `/policies/${CMId.Nightmare}/${NightmareFight.Ensolyss}?spec=${activeSpec}`,
+            `${CMId.Nightmare}/${NightmareFight.Ensolyss}`,
         },
       ],
-      href: `/policies/${CMId.Nightmare}?spec=${activeSpec}`,
+      href: `${CMId.Nightmare}`,
     },
     {
       id: CMId.ShatteredObservatory,
@@ -99,22 +98,22 @@ export const usePowerFights = () => {
           id: ShatteredObservatoryFight.Skorvald,
           label: ShatteredObservatoryFight.Skorvald,
           href:
-            `/policies/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Skorvald}?spec=${activeSpec}`,
+            `${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Skorvald}`,
         },
         {
           id: ShatteredObservatoryFight.Artsariiv,
           label: ShatteredObservatoryFight.Artsariiv,
           href:
-            `/policies/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Artsariiv}?spec=${activeSpec}`,
+            `${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Artsariiv}`,
         },
         {
           id: ShatteredObservatoryFight.Arkk,
           label: ShatteredObservatoryFight.Arkk,
           href:
-            `/policies/${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Arkk}?spec=${activeSpec}`,
+            `${CMId.ShatteredObservatory}/${ShatteredObservatoryFight.Arkk}`,
         },
       ],
-      href: `/policies/${CMId.ShatteredObservatory}?spec=${activeSpec}`,
+      href: CMId.ShatteredObservatory,
     },
   ];
   return powerFights;
@@ -132,7 +131,6 @@ export const isPowerFight = (input: string) => {
 };
 
 export const useCondiFights = () => {
-  const { activeSpec } = useContext(SpecContext);
   const condiFights: TreeViewBaseItem<
     { id?: string; label: string; href?: string }
   >[] = [
@@ -144,16 +142,16 @@ export const useCondiFights = () => {
           id: SunquaPeakFight.ElementalAi,
           label: "Elemental Ai",
           href:
-            `/policies/${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}?spec=${activeSpec}`,
+            `${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}`,
         },
         {
           id: SunquaPeakFight.DarkAi,
           label: "Dark Ai",
           href:
-            `/policies/${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}?spec=${activeSpec}`,
+            `${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}`,
         },
       ],
-      href: `/policies/${CMId.SunquaPeak}?spec=${activeSpec}`,
+      href: CMId.SunquaPeak,
     },
     {
       id: CMId.SilentSurf,
@@ -162,9 +160,9 @@ export const useCondiFights = () => {
         id: SilentSurfFight.Kanaxai,
         label: SilentSurfFight.Kanaxai,
         href:
-          `/policies/${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}?spec=${activeSpec}`,
+          `${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}`,
       }],
-      href: `/policies/${CMId.SilentSurf}?spec=${activeSpec}`,
+      href: CMId.SilentSurf,
     },
   ];
   return condiFights;

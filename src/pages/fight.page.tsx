@@ -49,14 +49,12 @@ const FightPage = () => {
       <Loadout config={config} />
       <Grid2 container spacing={2} direction={"row"}>
         <Grid2
-          item
           size={{ xs: 12, sm: 4, md: 6, lg: 4, xl: 4 }}
           sx={{ display: "flex" }}
         >
           <PrecastComponent precasts={config.precasts ?? []} />
         </Grid2>
         <Grid2
-          item
           size={{ xs: 12, sm: 8, md: 6, lg: 8, xl: 8 }}
           sx={{ display: "flex", flexGrow: 1 }}
         >

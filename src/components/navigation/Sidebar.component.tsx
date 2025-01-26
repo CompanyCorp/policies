@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/react@18"
-import { forwardRef, useContext } from "react";
+import { forwardRef, useContext, ReactElement } from "react";
 import { Link as WouterLink } from "wouter";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
 import { TreeItem2, TreeItem2Props, treeItemClasses } from "@mui/x-tree-view";
@@ -96,7 +96,7 @@ const LinkTreeItem = forwardRef((
   );
 });
 
-const ChallengeModeTreeView = () => {
+const ChallengeModeTreeView = (): ReactElement => {
   const { specType } = useContext(SpecContext);
   const powerFights = usePowerFights();
   const condiFights = useCondiFights();
@@ -136,6 +136,7 @@ const ChallengeModeTreeView = () => {
       />
     );
   }
+  return <></>;
 };
 
 export default ChallengeModeTreeView;

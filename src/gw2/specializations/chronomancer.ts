@@ -14,6 +14,12 @@ export enum UtilitySkills {
   SINSPIRATION = 10236,
   SHUMILITY = 29519,
   TIMEWARP = 10311,
+  F1 = 56930,
+  F2 = 56928,
+  F3 = 56873,
+  F4 = 10192,
+  F5A = 29830,
+  F5B = 30747,
 }
 
 export enum WeaponSkills {

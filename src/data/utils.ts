@@ -27,7 +27,7 @@ type ClassConfig = {
   weapons?: string[];
   skills?: string[];
   rotation?: Phase[];
-  precasts?: Precasts[];
+  precasts?: string[];
 };
 
 export type PhaseRotation = {
@@ -116,7 +116,7 @@ export const getTemplateConfig = (
       relicId,
       consumablesIds,
       fight,
-      precasts,
+      precasts: precasts ? precasts as Precasts[] : [],
     };
     if (sigils) {
       const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((

@@ -43,7 +43,7 @@ function App() {
         value={{
           activeSpec,
           setSpec: handleChange,
-          specList: [Specs.SLB, Specs.HARB],
+          specList: [Specs.SLB, Specs.HARB, Specs.CHRONO],
           specType,
         }}
       >

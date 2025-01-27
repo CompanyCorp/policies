@@ -1,5 +1,9 @@
 import { InvalidInputError, NotFoundError } from "./errors.ts";
-import { CHRONOTraitMap, CHRONOUtilityMap, CHRONOWeaponMap } from "./specializations/chronomancer.ts";
+import {
+  CHRONOTraitMap,
+  CHRONOUtilityMap,
+  CHRONOWeaponMap,
+} from "./specializations/chronomancer.ts";
 import {
   HARBTraitMap,
   HARBUtilityMap,

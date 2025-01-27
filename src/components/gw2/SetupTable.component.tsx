@@ -16,13 +16,13 @@ import { TemplateConfig } from "../../data/utils.ts";
 import { SpecContext } from "../../data/spec.context.tsx";
 import { Specs } from "../../gw2/type.ts";
 
-const LoadoutCell = ({ ids }: { ids: number[] },) => {
+const LoadoutCell = ({ ids }: { ids: number[] }) => {
   return (
     <TableCell>
       <Stack direction={"column"}>
         {ids.map((id) => (
-          <Typography variant="body1">
-            <Item id={id} key={id} style={{ fontSize: "inherit" }} />
+          <Typography variant="body1" key={id}>
+            <Item id={id} style={{ fontSize: "inherit" }} />
           </Typography>
         ))}
       </Stack>
@@ -35,10 +35,9 @@ const WeaponCell = ({ ids }: { ids: number[] }) => {
     <TableCell>
       <Stack direction={"row"} sx={{ flexWrap: "wrap" }}>
         {ids.map((id) => (
-          <Typography variant="h3">
+          <Typography variant="h3" key={id}>
             <Skill
               id={id}
-              key={id}
               disableText
               style={{ fontSize: "inherit" }}
             />
@@ -84,14 +83,26 @@ const SetupTable = (
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell ><Typography variant="h6">Relic</Typography></TableCell>
-            {sigilIds && <TableCell><Typography variant="h6">Sigils</Typography></TableCell>}
-            <TableCell><Typography variant="h6">Food & Utility</Typography></TableCell>
+            <TableCell>
+              <Typography variant="h6">Relic</Typography>
+            </TableCell>
+            {sigilIds && (
+              <TableCell>
+                <Typography variant="h6">Sigils</Typography>
+              </TableCell>
+            )}
+            <TableCell>
+              <Typography variant="h6">Food & Utility</Typography>
+            </TableCell>
             {weaponIds && (
-              <TableCell><Typography variant="h6">{weaponName} Setup</Typography></TableCell>
+              <TableCell>
+                <Typography variant="h6">{weaponName} Setup</Typography>
+              </TableCell>
             )}
             {skillIds && (
-              <TableCell><Typography variant="h6">{utilityName} Setup</Typography></TableCell>
+              <TableCell>
+                <Typography variant="h6">{utilityName} Setup</Typography>
+              </TableCell>
             )}
           </TableRow>
         </TableHead>
@@ -101,7 +112,7 @@ const SetupTable = (
               <Typography variant="body1">
                 <Item
                   id={relicId}
-                  style={{ fontSize: 'inherit' }}
+                  style={{ fontSize: "inherit" }}
                 />
               </Typography>
             </TableCell>

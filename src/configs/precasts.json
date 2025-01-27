@@ -10,10 +10,14 @@
   "BRAWLER": [
     "consumable.EQUIPTEMPLATE",
     "skill.slb.beastmode",
-    [
-      "relic.brawler",
-      "weapon.slb.s3"
-    ],
+    {
+      "top": [
+        "relic.brawler"
+      ],
+      "main": [
+        "weapon.slb.s3"
+      ]
+    },
     "consumable.EQUIPTEMPLATE"
   ],
   "EXEAXE": [
@@ -23,10 +27,14 @@
   ],
   "CLAW": [
     "consumable.EQUIPTEMPLATE",
-    [
-      "relic.claw",
-      "novelty.chest"
-    ],
+    {
+      "top": [
+        "relic.claw"
+      ],
+      "main": [
+        "novelty.chest"
+      ]
+    },
     "consumable.EQUIPTEMPLATE"
   ]
 }

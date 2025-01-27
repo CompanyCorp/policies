@@ -48,7 +48,7 @@ const FractalPage = (): ReactElement | null => {
       {configs.map((config) => (
         <Card variant="outlined">
           <Typography
-            variant="h2"
+            variant="h3"
             color="secondary"
             component={Link}
             href={`/${config?.fight}`}

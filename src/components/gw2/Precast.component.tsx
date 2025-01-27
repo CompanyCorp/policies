@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Divider } from "@mui/material";
+import { Card, CardContent, CardHeader, Divider, Stack } from "@mui/material";
 import { WeaponSequence } from "./WeaponSequence.component.tsx";
 import PrecastConfigJson from "../../configs/precasts.json" with {
   type: "json",
@@ -6,7 +6,9 @@ import PrecastConfigJson from "../../configs/precasts.json" with {
 import { getRotation, Skill } from "../../data/utils.ts";
 import { Precasts } from "../../gw2/type.ts";
 
-export const PrecastComponent = ({ precasts, scale }: { precasts: Precasts[], scale: number }) => {
+export const PrecastComponent = (
+  { precasts, scale }: { precasts: Precasts[]; scale: number },
+) => {
   const PrecastConfig = PrecastConfigJson as Record<Precasts, Skill[]>;
   const rotations = precasts.map((precast) =>
     getRotation([{
@@ -32,7 +34,7 @@ export const PrecastComponent = ({ precasts, scale }: { precasts: Precasts[], sc
   };
 
   const sizes = {
-    top: `h${scale+1}`,
+    top: `h${scale + 1}`,
     main: `h${scale}`,
   };
 
@@ -51,7 +53,9 @@ export const PrecastComponent = ({ precasts, scale }: { precasts: Precasts[], sc
         <>
           <CardHeader subheader={convertPrecastToHeader(precast.phaseName)} />
           <CardContent sx={{ pt: 0 }}>
-            <WeaponSequence skills={precast["skills"]} sizes={sizes}/>
+            <Stack sx={{ flexDirection: "row" }}>
+              <WeaponSequence skills={precast["skills"]} sizes={sizes} />
+            </Stack>
           </CardContent>
           {index < rotations.length - 1 && <Divider sx={{ mx: 2 }} />}
         </>

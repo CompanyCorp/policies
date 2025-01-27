@@ -1,57 +1,55 @@
 import { CommonEffect, Item, Skill, Trait } from "@discretize/gw2-ui-new";
 import { PhaseRotation } from "../../data/utils.ts";
 import { Symbols } from "../../gw2/type.ts";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
+import { Variant } from "@mui/material/style/createTypography";
 
 const RotationItem = (
-  { type, id, style }: {
+  { type, id }: {
     type: Symbols;
     id: number;
-    style: Record<string, string>;
   },
 ) => {
   if (
     [Symbols.RELIC, Symbols.CONSUMABLE, Symbols.SIGIL, Symbols.NOVELTY]
       .includes(type)
   ) {
-    return <Item disableText id={id} style={style} />;
+    return <Item disableText id={id} style={{ fontSize: 'inherit'}} />;
   }
   if (type === Symbols.TRAIT) {
-    return <Trait disableText id={id} style={style} />;
+    return <Trait disableText id={id} style={{ fontSize: 'inherit'}} />;
   }
   if (type === Symbols.MISC && id === 1) {
     return (
       <CommonEffect
         name="Mistlock Singularity"
         disableText
-        style={style}
+        style={{ fontSize: 'inherit'}}
       />
     );
   }
-  return <Skill disableText id={id} style={style} />;
+  return <Skill disableText id={id} style={{ fontSize: 'inherit'}} />;
 };
 
 const WeaponSwapIcon = () => {
+  const style = useTheme();
   return (
     <Box
       sx={{
         display: "flex",
         alignSelf: "end",
-        height: "100%",
-        paddingBottom: "12px",
+        height: style.typography.h2.fontSize as string,
+        paddingBottom: style.typography.body2.fontSize as string,
       }}
     >
-      <img src="/policies/weaponswap.png" height="24px" />
+      <img src="/policies/weaponswap.png" height="100%" />
     </Box>
   );
 };
 
 export const WeaponSequence = (
-  { skills }: { skills: PhaseRotation["skills"] },
+  { skills, sizes }: { skills: PhaseRotation["skills"], sizes: { top: Variant, main: Variant } },
 ) => {
-  const mainSkillStyle = { fontSize: "30px", padding: "0px" };
-  const topSkillStyle = { fontSize: "20px" };
-
   return (
     <Stack direction={"row"} spacing={0.5} sx={{ flexWrap: "wrap" }}>
       {skills.map(({ top, main }) => (
@@ -68,18 +66,20 @@ export const WeaponSequence = (
             }}
           >
             {top && (
+              <Typography variant={sizes.top}>
               <RotationItem
                 type={top.type}
                 id={top.id}
-                style={topSkillStyle}
               />
+              </Typography>
             )}
             {main.id !== 0 && (
-              <RotationItem
-                type={main.type}
-                id={main.id}
-                style={mainSkillStyle}
-              />
+              <Typography variant={sizes.main}>
+                <RotationItem
+                  type={main.type}
+                  id={main.id}
+                />
+              </Typography>
             )}
           </Stack>
           {main.id === 0 && <WeaponSwapIcon />}

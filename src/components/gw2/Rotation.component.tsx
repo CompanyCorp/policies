@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@mui/material";
+import { Card, CardHeader } from "@mui/material";
 import { PhaseRotation } from "../../data/utils.ts";
 import {
   Timeline,
@@ -12,7 +12,12 @@ import {
 } from "@mui/lab";
 import { WeaponSequence } from "./WeaponSequence.component.tsx";
 
-const Phase = ({ skills, phaseName, lastPhase }: PhaseRotation) => {
+const Phase = ({ skills, phaseName, lastPhase, scale }: PhaseRotation & { scale: number }) => {
+  const sizes = {
+    top: `h${scale+1}`,
+    main: `h${scale}`,
+  };
+
   return (
     <TimelineItem key={phaseName}>
       <TimelineOppositeContent color="textSecondary">
@@ -23,27 +28,26 @@ const Phase = ({ skills, phaseName, lastPhase }: PhaseRotation) => {
         {!lastPhase && <TimelineConnector />}
       </TimelineSeparator>
       <TimelineContent>
-        <WeaponSequence skills={skills} />
+        <WeaponSequence skills={skills} sizes={sizes}/>
       </TimelineContent>
     </TimelineItem>
   );
 };
 
 export const Rotation = ({ rotation }: { rotation: PhaseRotation[] }) => {
+  const scale = 3;
   return (
     <Card variant="outlined" sx={{ flexGrow: 1 }}>
-      <CardHeader title="Rotation" />
-      <CardContent>
-        <Timeline
-          sx={{
-            [`& .${timelineOppositeContentClasses.root}`]: {
-              flex: 0.4,
-            },
-          }}
-        >
-          {rotation.map((phase) => <Phase {...phase} />)}
-        </Timeline>
-      </CardContent>
+      <CardHeader title="Rotation" subheader={`Scale: ${scale}`}/>
+      <Timeline
+        sx={{
+          [`& .${timelineOppositeContentClasses.root}`]: {
+            flex: 0.4,
+          },
+        }}
+      >
+        {rotation.map((phase) => <Phase {...phase} scale={scale} />)}
+      </Timeline>
     </Card>
   );
 };

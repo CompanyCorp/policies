@@ -8,6 +8,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import { Item } from "@discretize/gw2-ui-new";
 import { Skill } from "@discretize/gw2-ui-new";
@@ -15,22 +16,34 @@ import { TemplateConfig } from "../../data/utils.ts";
 import { SpecContext } from "../../data/spec.context.tsx";
 import { Specs } from "../../gw2/type.ts";
 
-const LoadoutCell = ({ ids }: { ids: number[] }) => {
+const LoadoutCell = ({ ids }: { ids: number[] },) => {
   return (
     <TableCell>
       <Stack direction={"column"}>
-        {ids.map((id) => <Item id={id} key={id} />)}
+        {ids.map((id) => (
+          <Typography variant="body1">
+            <Item id={id} key={id} style={{ fontSize: "inherit" }} />
+          </Typography>
+        ))}
       </Stack>
     </TableCell>
   );
 };
 
 const WeaponCell = ({ ids }: { ids: number[] }) => {
-  const style = { fontSize: "30px" };
   return (
     <TableCell>
-      <Stack direction={"row"}>
-        {ids.map((id) => <Skill id={id} key={id} disableText style={style} />)}
+      <Stack direction={"row"} sx={{ flexWrap: "wrap" }}>
+        {ids.map((id) => (
+          <Typography variant="h3">
+            <Skill
+              id={id}
+              key={id}
+              disableText
+              style={{ fontSize: "inherit" }}
+            />
+          </Typography>
+        ))}
       </Stack>
     </TableCell>
   );
@@ -71,21 +84,38 @@ const SetupTable = (
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Relic</TableCell>
-            {sigilIds && <TableCell>Sigils</TableCell>}
-            <TableCell>Food & Utility</TableCell>
-            {weaponIds && <TableCell>{weaponName} Setup</TableCell>}
-            {skillIds && <TableCell>{utilityName} Setup</TableCell>}
+            <TableCell ><Typography variant="h6">Relic</Typography></TableCell>
+            {sigilIds && <TableCell><Typography variant="h6">Sigils</Typography></TableCell>}
+            <TableCell><Typography variant="h6">Food & Utility</Typography></TableCell>
+            {weaponIds && (
+              <TableCell><Typography variant="h6">{weaponName} Setup</Typography></TableCell>
+            )}
+            {skillIds && (
+              <TableCell><Typography variant="h6">{utilityName} Setup</Typography></TableCell>
+            )}
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
             <TableCell>
-              <Item id={relicId} />
+              <Typography variant="body1">
+                <Item
+                  id={relicId}
+                  style={{ fontSize: 'inherit' }}
+                />
+              </Typography>
             </TableCell>
-            {sigilIds && <LoadoutCell ids={sigilIds} />}
+            {sigilIds && (
+              <LoadoutCell
+                ids={sigilIds}
+              />
+            )}
             <LoadoutCell ids={consumablesIds} />
-            {weaponIds && <WeaponCell ids={weaponIds} />}
+            {weaponIds && (
+              <WeaponCell
+                ids={weaponIds}
+              />
+            )}
             {skillIds && <WeaponCell ids={skillIds} />}
           </TableRow>
         </TableBody>

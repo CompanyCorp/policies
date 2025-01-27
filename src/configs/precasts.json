@@ -20,5 +20,13 @@
     "skill.slb.QUICKENINGZEPHYR",
     "novelty.exeaxe",
     "weapon.slb.lb5"
+  ],
+  "CLAW": [
+    "consumable.EQUIPTEMPLATE",
+    [
+      "relic.claw",
+      "novelty.chest"
+    ],
+    "consumable.EQUIPTEMPLATE"
   ]
 }

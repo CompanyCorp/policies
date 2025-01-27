@@ -24,9 +24,18 @@ export const PrecastComponent = ({ precasts }: { precasts: Precasts[] }) => {
         return "Brawler Relic Precast";
       case Precasts.EXEAXE:
         return "Executioner Axe Entry";
+      case Precasts.CLAW:
+        return "Claw Relic Precast";
       default:
         return "Unknown";
     }
+  };
+
+  const scale = 3;
+
+  const sizes = {
+    top: `h${scale+1}`,
+    main: `h${scale}`,
   };
 
   return (
@@ -44,7 +53,7 @@ export const PrecastComponent = ({ precasts }: { precasts: Precasts[] }) => {
         <>
           <CardHeader subheader={convertPrecastToHeader(precast.phaseName)} />
           <CardContent sx={{ pt: 0 }}>
-            <WeaponSequence skills={precast["skills"]} />
+            <WeaponSequence skills={precast["skills"]} sizes={sizes}/>
           </CardContent>
           {index < rotations.length - 1 && <Divider sx={{ mx: 2 }} />}
         </>

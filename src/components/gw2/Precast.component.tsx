@@ -6,7 +6,7 @@ import PrecastConfigJson from "../../configs/precasts.json" with {
 import { getRotation, Skill } from "../../data/utils.ts";
 import { Precasts } from "../../gw2/type.ts";
 
-export const PrecastComponent = ({ precasts }: { precasts: Precasts[] }) => {
+export const PrecastComponent = ({ precasts, scale }: { precasts: Precasts[], scale: number }) => {
   const PrecastConfig = PrecastConfigJson as Record<Precasts, Skill[]>;
   const rotations = precasts.map((precast) =>
     getRotation([{
@@ -30,8 +30,6 @@ export const PrecastComponent = ({ precasts }: { precasts: Precasts[] }) => {
         return "Unknown";
     }
   };
-
-  const scale = 3;
 
   const sizes = {
     top: `h${scale+1}`,

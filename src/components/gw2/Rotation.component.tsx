@@ -34,11 +34,10 @@ const Phase = ({ skills, phaseName, lastPhase, scale }: PhaseRotation & { scale:
   );
 };
 
-export const Rotation = ({ rotation }: { rotation: PhaseRotation[] }) => {
-  const scale = 3;
+export const Rotation = ({ rotation, scale }: { rotation: PhaseRotation[], scale: number }) => {
   return (
     <Card variant="outlined" sx={{ flexGrow: 1 }}>
-      <CardHeader title="Rotation" subheader={`Scale: ${scale}`}/>
+      <CardHeader title="Rotation"/>
       <Timeline
         sx={{
           [`& .${timelineOppositeContentClasses.root}`]: {

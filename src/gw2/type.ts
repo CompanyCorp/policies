@@ -66,6 +66,7 @@ export enum Novelties {
   BELL = 88385,
   EXEAXE = 49940,
   PINATA = 85244,
+  CHEST = 91377,
 }
 
 export enum Misc {
@@ -77,6 +78,7 @@ export enum Precasts {
   BELLOWP = "BELLOWP",
   BRAWLER = "BRAWLER",
   EXEAXE = "EXEAXE",
+  CLAW = "CLAW",
 }
 
 export const SpecMap = new Map(

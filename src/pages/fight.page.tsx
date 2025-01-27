@@ -20,7 +20,7 @@ import { PrecastComponent } from "../components/gw2/Precast.component.tsx";
 const Loadout = ({ config }: { config: TemplateConfig }) => {
   return (
     <Card variant="outlined">
-      <CardHeader title="LOADOUT" />
+      <CardHeader subheader="LOADOUT" slotProps={{ subheader: { variant: 'h5' }}} />
       <CardContent>
         <SetupTable
           {...config}
@@ -37,6 +37,7 @@ const FightPage = () => {
     parseLocation(path, "FightPage"),
     activeSpec,
   );
+  const scale = 3;
 
   if (!config) {
     return null;
@@ -52,13 +53,13 @@ const FightPage = () => {
           size={{ xs: 12, sm: 4, md: 6, lg: 4, xl: 4 }}
           sx={{ display: "flex" }}
         >
-          <PrecastComponent precasts={config.precasts ?? []} />
+          <PrecastComponent precasts={config.precasts ?? []} scale={scale} />
         </Grid2>
         <Grid2
           size={{ xs: 12, sm: 8, md: 6, lg: 8, xl: 8 }}
           sx={{ display: "flex", flexGrow: 1 }}
         >
-          {config?.rotation && <Rotation rotation={config.rotation} />}
+          {config?.rotation && <Rotation rotation={config.rotation} scale={scale} />}
         </Grid2>
       </Grid2>
     </Stack>

@@ -1,4 +1,5 @@
 import { InvalidInputError, NotFoundError } from "./errors.ts";
+import { CHRONOTraitMap, CHRONOUtilityMap, CHRONOWeaponMap } from "./specializations/chronomancer.ts";
 import {
   HARBTraitMap,
   HARBUtilityMap,
@@ -31,6 +32,8 @@ export const getMap = (type: Symbols, spec?: Specs) => {
             break;
           case Specs.HARB:
             return HARBUtilityMap;
+          case Specs.CHRONO:
+            return CHRONOUtilityMap;
           default:
             throw new NotFoundError([type, spec], [
               Symbols.SKILL,
@@ -46,6 +49,8 @@ export const getMap = (type: Symbols, spec?: Specs) => {
             break;
           case Specs.HARB:
             return HARBWeaponMap;
+          case Specs.CHRONO:
+            return CHRONOWeaponMap;
           default:
             break;
         }
@@ -58,6 +63,8 @@ export const getMap = (type: Symbols, spec?: Specs) => {
             break;
           case Specs.HARB:
             return HARBTraitMap;
+          case Specs.CHRONO:
+            return CHRONOTraitMap;
           default:
             break;
         }

@@ -15,6 +15,7 @@ export enum Specs {
   SLB = "Soulbeast",
   REN = "Renegade",
   HARB = "Harbinger",
+  CHRONO = "Chronomancer",
 }
 
 export enum SpecType {
@@ -27,6 +28,7 @@ export const SpecTypeMap = {
   [Specs.SLB]: SpecType.POWER,
   [Specs.REN]: SpecType.BOTH,
   [Specs.HARB]: SpecType.CONDI,
+  [Specs.CHRONO]: SpecType.BOTH,
 };
 
 export enum Relics {

@@ -12,6 +12,6 @@ export interface SpecContextType {
 export const SpecContext = createContext<SpecContextType>({
   activeSpec: Specs.SLB,
   specType: SpecType.POWER,
-  specList: [Specs.SLB, Specs.HARB],
+  specList: [],
   setSpec: (_event, _spec: Specs) => {},
 });

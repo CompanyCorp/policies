@@ -5,6 +5,7 @@ import { WebsiteIcon } from "./Icon.component.tsx";
 import { useContext } from "react";
 import { SpecContext } from "../../data/spec.context.tsx";
 import { Specs } from "../../gw2/type.ts";
+import { maxHeight } from "../../../../../../AppData/Local/deno/npm/registry.npmjs.org/@mui/system/6.4.0/index.d.ts";
 
 const NavigationBar = (
   { websiteName }: {
@@ -18,7 +19,15 @@ const NavigationBar = (
     <Grid2
       container
       bgcolor={theme.palette.background.default}
-      sx={{ px: 3, py: 1, m: 0, borderBottom: 1, borderColor: "divider" }}
+      sx={{
+        px: 3,
+        py: 1,
+        m: 0,
+        borderBottom: 1,
+        borderColor: "divider",
+        height: "fit-content",
+        maxHeight: "100lvh",
+      }}
     >
       <Grid2 size={{ xs: 5, md: 4 }}>
         <Button

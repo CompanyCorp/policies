@@ -18,6 +18,11 @@
           "WEAPON.slb.U3",
           "WEAPON.slb.U4",
           "WEAPON.slb.U5"
+        ],
+        "precasts": [
+          "BRAWLER",
+          "CLAW",
+          "BELLOWP"
         ]
       }
     ]
@@ -41,6 +46,10 @@
           "WEAPON.slb.H3",
           "WEAPON.slb.U4",
           "WEAPON.slb.H5"
+        ],
+        "precasts": [
+          "BRAWLER",
+          "CLAW"
         ]
       }
     ]
@@ -64,6 +73,11 @@
           "WEAPON.slb.U3",
           "WEAPON.slb.U4",
           "WEAPON.slb.U5"
+        ],
+        "precasts": [
+          "BRAWLER",
+          "CLAW",
+          "BELLOWP"
         ]
       }
     ]

@@ -1,7 +1,7 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import type {} from "@mui/x-tree-view/themeAugmentation";
 
-export const mainTheme = createTheme({
+const _mainTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -31,3 +31,5 @@ export const mainTheme = createTheme({
     },
   },
 });
+
+export const mainTheme = responsiveFontSizes(_mainTheme);

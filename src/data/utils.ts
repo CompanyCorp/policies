@@ -11,38 +11,22 @@ import {
   isSunquaPeakFight,
 } from "../gw2/cms.utils.ts";
 
-export type Skill = string | string[];
-
-export type Phase = {
-  skills: Skill[];
-  phaseName: string;
-  lastPhase?: boolean;
-};
-
-type ClassConfig = {
-  id: string;
-  relic: string;
-  sigils?: string[];
-  consumables: string[];
-  weapons?: string[];
-  skills?: string[];
-  rotation?: Phase[];
-  precasts?: Precasts[];
+export type PhaseSkill = {
+  main: {
+    id: number;
+    type: Symbols;
+  }[];
+  top?: {
+    id: number;
+    type: Symbols;
+  }[];
 };
 
 export type PhaseRotation = {
-  skills: {
-    main: {
-      id: number;
-      type: Symbols;
-    };
-    top?: {
-      id: number;
-      type: Symbols;
-    };
-  }[];
+  skills: PhaseSkill[];
   phaseName: string;
   lastPhase: boolean;
+  bossPhase: boolean;
 };
 
 export type TemplateConfig = {
@@ -56,30 +40,61 @@ export type TemplateConfig = {
   precasts?: Precasts[];
 };
 
+export type Skill = {
+  top: string[];
+  main: string[];
+} | string;
+
+export type Phase = {
+  skills: Skill[];
+  phaseName: string;
+  lastPhase?: boolean;
+  bossPhase?: boolean;
+};
+
+type ClassRawConfig = {
+  id: string;
+  relic: string;
+  sigils?: string[];
+  consumables: string[];
+  weapons?: string[];
+  skills?: string[];
+  rotation?: Phase[];
+  precasts?: string[];
+};
+
 export const getRotation = (
   rotation: Phase[],
 ): PhaseRotation[] => {
   const rotationResult = rotation.map((phase) => {
-    const { phaseName, skills, lastPhase } = phase;
-    const phaseRotation = skills.map((skill: Skill) => {
-      if (typeof skill === "string") {
-        const { ids, type } = getGw2Ids(skill);
-        return { main: { id: ids[0], type } };
+    const { phaseName, skills, lastPhase, bossPhase } = phase;
+    const phaseRotation = skills.map((phaseSkill) => {
+      let result: PhaseSkill;
+      if (typeof phaseSkill === "string") {
+        const { ids, type } = getGw2Ids(phaseSkill);
+        const main = ids.map((id) => ({ id, type: type }));
+        result = { main };
       } else {
-        const [top, main] = skill.map((s) => getGw2Ids(s));
-        return {
-          main: {
-            id: main.ids[0],
-            type: main.type,
-          },
-          top: {
-            id: top.ids[0],
-            type: top.type,
-          },
-        };
+        const mainIds = phaseSkill.main ? phaseSkill.main.map(getGw2Ids) : [];
+        const topIds = phaseSkill.top ? phaseSkill.top.map(getGw2Ids) : [];
+
+        const main = mainIds.flatMap((s) =>
+          s.ids.map((id) => ({ id, type: s.type }))
+        );
+        const top = topIds.flatMap((s) =>
+          s.ids.map((id) => ({ id, type: s.type }))
+        );
+
+        result = { main, top };
       }
+      return result;
     });
-    const result = { skills: phaseRotation, phaseName, lastPhase: !!lastPhase };
+    const result = {
+      skills: phaseRotation,
+      phaseName,
+      lastPhase: !!lastPhase,
+      bossPhase: !!bossPhase,
+    };
     return result;
   });
   return rotationResult;
@@ -89,7 +104,7 @@ export const getTemplateConfig = (
   fight: string,
   spec: Specs,
 ): TemplateConfig | null => {
-  let classes: ClassConfig[] = [];
+  let classes: ClassRawConfig[] = [];
   if (isNightmareFight(fight)) {
     classes = nightmareConfig[fight].classes;
   }
@@ -102,7 +117,7 @@ export const getTemplateConfig = (
   if (isSilentSurfFight(fight)) {
     classes = silentSurfConfig[fight].classes;
   }
-  const classConfig: ClassConfig | undefined = classes.find((c) =>
+  const classConfig: ClassRawConfig | undefined = classes.find((c) =>
     c.id === spec
   );
   if (classConfig) {
@@ -116,7 +131,7 @@ export const getTemplateConfig = (
       relicId,
       consumablesIds,
       fight,
-      precasts,
+      precasts: precasts ? precasts as Precasts[] : [],
     };
     if (sigils) {
       const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((

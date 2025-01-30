@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/react@18"
-import { forwardRef, useContext, ReactElement } from "react";
+import { forwardRef, ReactElement, useContext } from "react";
 import { Link as WouterLink } from "wouter";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
 import { TreeItem2, TreeItem2Props, treeItemClasses } from "@mui/x-tree-view";

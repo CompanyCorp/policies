@@ -72,20 +72,17 @@ export const usePowerFights = () => {
         {
           id: NightmareFight.MAMA,
           label: NightmareFight.MAMA,
-          href:
-            `${CMId.Nightmare}/${NightmareFight.MAMA}`,
+          href: `${CMId.Nightmare}/${NightmareFight.MAMA}`,
         },
         {
           id: NightmareFight.Siax,
           label: NightmareFight.Siax,
-          href:
-            `${CMId.Nightmare}/${NightmareFight.Siax}`,
+          href: `${CMId.Nightmare}/${NightmareFight.Siax}`,
         },
         {
           id: NightmareFight.Ensolyss,
           label: NightmareFight.Ensolyss,
-          href:
-            `${CMId.Nightmare}/${NightmareFight.Ensolyss}`,
+          href: `${CMId.Nightmare}/${NightmareFight.Ensolyss}`,
         },
       ],
       href: `${CMId.Nightmare}`,
@@ -141,14 +138,12 @@ export const useCondiFights = () => {
         {
           id: SunquaPeakFight.ElementalAi,
           label: "Elemental Ai",
-          href:
-            `${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}`,
+          href: `${CMId.SunquaPeak}/${SunquaPeakFight.ElementalAi}`,
         },
         {
           id: SunquaPeakFight.DarkAi,
           label: "Dark Ai",
-          href:
-            `${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}`,
+          href: `${CMId.SunquaPeak}/${SunquaPeakFight.DarkAi}`,
         },
       ],
       href: CMId.SunquaPeak,
@@ -159,8 +154,7 @@ export const useCondiFights = () => {
       children: [{
         id: SilentSurfFight.Kanaxai,
         label: SilentSurfFight.Kanaxai,
-        href:
-          `${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}`,
+        href: `${CMId.SilentSurf}/${SilentSurfFight.Kanaxai}`,
       }],
       href: CMId.SilentSurf,
     },

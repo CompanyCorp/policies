@@ -20,7 +20,10 @@ import { PrecastComponent } from "../components/gw2/Precast.component.tsx";
 const Loadout = ({ config }: { config: TemplateConfig }) => {
   return (
     <Card variant="outlined">
-      <CardHeader title="LOADOUT" />
+      <CardHeader
+        subheader="LOADOUT"
+        slotProps={{ subheader: { variant: "h5" } }}
+      />
       <CardContent>
         <SetupTable
           {...config}
@@ -37,28 +40,31 @@ const FightPage = () => {
     parseLocation(path, "FightPage"),
     activeSpec,
   );
+  const scale = 3;
 
   if (!config) {
     return null;
   }
   return (
-    <Stack spacing={4}>
-      <Typography variant="h2" color="secondary">
+    <Stack spacing={2}>
+      <Typography variant="h3" color="secondary">
         {convertIdToName(config?.fight)}
       </Typography>
       <Loadout config={config} />
-      <Grid2 container spacing={2} direction={"row"}>
+      <Grid2 container spacing={2} direction={"row"} sx={{ pb: 10 }}>
         <Grid2
-          size={{ xs: 12, sm: 4, md: 6, lg: 4, xl: 4 }}
+          size={{ xs: 12, sm: 4, md: 4, lg: 4, xl: 4 }}
           sx={{ display: "flex" }}
         >
-          <PrecastComponent precasts={config.precasts ?? []} />
+          <PrecastComponent precasts={config.precasts ?? []} scale={scale} />
         </Grid2>
         <Grid2
-          size={{ xs: 12, sm: 8, md: 6, lg: 8, xl: 8 }}
-          sx={{ display: "flex", flexGrow: 1 }}
+          size={{ xs: 12, sm: 8, md: 8, lg: 8, xl: 8 }}
+          sx={{ display: "flex", width: "100%", height: "fit-content" }}
         >
-          {config?.rotation && <Rotation rotation={config.rotation} />}
+          {config?.rotation && (
+            <Rotation rotation={config.rotation} scale={scale} />
+          )}
         </Grid2>
       </Grid2>
     </Stack>

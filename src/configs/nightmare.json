@@ -22,27 +22,42 @@
         "rotation": [
           {
             "phaseName": "Precast",
+            "bossPhase": true,
             "skills": [
               "consumable.EQUIPTEMPLATE",
-              [
-                "skill.slb.beastmode",
-                "WEAPON.slb.LB5"
-              ],
-              [
-                "relic.brawler",
-                "weapon.slb.S3"
-              ],
+              {
+                "top": [
+                  "skill.slb.beastmode"
+                ],
+                "main": [
+                  "WEAPON.slb.LB5"
+                ]
+              },
+              "MISC.WEAPONSWAP",
+              {
+                "top": [
+                  "relic.brawler"
+                ],
+                "main": [
+                  "WEAPON.slb.S3"
+                ]
+              },
               "consumable.EQUIPTEMPLATE",
               "SKILL.slb.frosttrap"
             ]
           },
           {
             "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
             "skills": [
-              [
-                "SKILL.slb.sicem",
-                "WEAPON.slb.U4"
-              ],
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
               "WEAPON.slb.U2",
               "MISC.WEAPONSWAP",
               "WEAPON.slb.A4",
@@ -60,13 +75,15 @@
           },
           {
             "phaseName": "Phase 2",
+            "bossPhase": true,
             "skills": [
               "WEAPON.slb.A2",
               "WEAPON.slb.A3",
               "SKILL.slb.worldlyimpact",
               "SKILL.slb.maul",
               "WEAPON.slb.A4",
-              "WEAPON.slb.A2"
+              "WEAPON.slb.A2",
+              "MISC.WEAPONSWAP"
             ]
           },
           {
@@ -77,15 +94,20 @@
           },
           {
             "phaseName": "Phase 3",
+            "bossPhase": true,
             "skills": [
-              [
-                "SKILL.slb.sicem",
-                "WEAPON.slb.U5"
-              ],
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U5"
+                ]
+              },
               "SKILL.slb.frosttrap",
               "WEAPON.slb.U4",
               "WEAPON.slb.U2",
-              "weapon.slb.swap",
+              "MISC.WEAPONSWAP",
               "WEAPON.slb.A4",
               "SKILL.slb.maul",
               "WEAPON.slb.A3",
@@ -101,6 +123,7 @@
           },
           {
             "phaseName": "Phase 4",
+            "bossPhase": true,
             "skills": [
               "WEAPON.slb.A2",
               "WEAPON.slb.A3",
@@ -108,6 +131,7 @@
               "WEAPON.slb.A4",
               "SKILL.slb.maul",
               "weapon.slb.A2",
+              "MISC.WEAPONSWAP",
               "weapon.slb.U4",
               "weapon.slb.U2",
               "weapon.slb.U5"
@@ -117,6 +141,7 @@
         ],
         "precasts": [
           "BRAWLER",
+          "CLAW",
           "EXEAXE"
         ]
       }
@@ -144,7 +169,7 @@
         ],
         "precasts": [
           "BRAWLER",
-          "BELLOWP"
+          "CLAW"
         ]
       }
     ]

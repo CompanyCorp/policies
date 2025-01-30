@@ -47,9 +47,14 @@ const FractalPage = (): ReactElement | null => {
     <Stack spacing={2}>
       {configs.map((config) => (
         <Card variant="outlined">
-          <Typography variant="h2" color="secondary" component={Link} href={`/${config?.fight}`}>
-              {convertIdToName(config?.fight)}
-            </Typography>
+          <Typography
+            variant="h3"
+            color="secondary"
+            component={Link}
+            href={`/${config?.fight}`}
+          >
+            {convertIdToName(config?.fight)}
+          </Typography>
           <CardContent>
             <SetupTable
               {...config}

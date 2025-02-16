@@ -17,7 +17,7 @@
     "@emotion/react": "npm:@emotion/react@11.14.0",
     "@emotion/styled": "npm:@emotion/styled@11.14.0",
     "@fontsource/nunito": "npm:@fontsource/nunito@5.1.1",
-    "@mui/material": "npm:@mui/material@6.4.0",
+    "@mui/material": "npm:@mui/material@6.4.4",
     "@mui/x-tree-view": "npm:@mui/x-tree-view@7.24.0",
     "@discretize/gw2-ui-new": "npm:@discretize/gw2-ui-new@3.1.0",
     "@discretize/typeface-menomonia": "npm:@discretize/typeface-menomonia@0.1.3",

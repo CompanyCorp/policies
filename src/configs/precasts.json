@@ -1,40 +1,82 @@
 {
-  "BELLOWP": [
-    "trait.slb.LEADEROFTHEPACK",
-    "skill.slb.onewolfpack",
-    "misc.mistlock",
-    "skill.slb.onewolfpack",
-    "novelty.bell",
-    "trait.slb.OPPRESSIVESUPERIORITY"
-  ],
-  "BRAWLER": [
-    "consumable.EQUIPTEMPLATE",
-    "skill.slb.beastmode",
-    {
-      "top": [
-        "relic.brawler"
-      ],
-      "main": [
-        "weapon.slb.s3"
-      ]
-    },
-    "consumable.EQUIPTEMPLATE"
-  ],
-  "EXEAXE": [
-    "skill.slb.QUICKENINGZEPHYR",
-    "novelty.exeaxe",
-    "weapon.slb.lb5"
-  ],
-  "CLAW": [
-    "consumable.EQUIPTEMPLATE",
-    {
-      "top": [
-        "relic.claw"
-      ],
-      "main": [
-        "novelty.chest"
-      ]
-    },
-    "consumable.EQUIPTEMPLATE"
-  ]
+  "BELLOWP": {
+    "id": "BELLOWP",
+    "name": "Bell OWP",
+    "skills": [
+      "trait.slb.LEADEROFTHEPACK",
+      "skill.slb.onewolfpack",
+      "misc.mistlock",
+      "skill.slb.onewolfpack",
+      "novelty.bell",
+      "trait.slb.OPPRESSIVESUPERIORITY"
+    ],
+    "notes": [
+      "You want to swap to :trait.slb.OPPRESSIVESUPERIORITY: with :novelty.bell: open before the fight starts, otherwise trait-swapping will remove your boons."
+    ]
+  },
+  "BRAWLER": {
+    "id": "BRAWLER",
+    "name": "Brawler Relic Precast",
+    "skills": [
+      "consumable.EQUIPTEMPLATE",
+      "skill.slb.beastmode",
+      {
+        "top": [
+          "relic.brawler"
+        ],
+        "main": [
+          "weapon.slb.s3"
+        ]
+      },
+      "consumable.EQUIPTEMPLATE"
+    ],
+    "notes": [
+      "Use :consumable.EQUIPTEMPLATE: keybinds to swap or swap :relic.brawler: from inventory.",
+      "You want to be merged :skill.slb.beastmode: before using :weapon.slb.s3: to apply protection on yourself to trigger the relic."
+    ]
+  },
+  "EXEAXE": {
+    "id": "EXEAXE",
+    "name": "Executioner Axe Entry",
+    "skills": [
+      "skill.slb.QUICKENINGZEPHYR",
+      "novelty.exeaxe",
+      "weapon.slb.lb5"
+    ],
+    "notes": [
+      "Use :skill.slb.QUICKENINGZEPHYR: at the mistlock to give yourself enough superspeed before entering the fight."
+    ]
+  },
+  "CLAW": {
+    "id": "CLAW",
+    "name": "Claw Relic Precast",
+    "skills": [
+      "consumable.EQUIPTEMPLATE",
+      {
+        "top": [
+          "relic.claw"
+        ],
+        "main": [
+          "novelty.chest"
+        ]
+      },
+      "consumable.EQUIPTEMPLATE"
+    ],
+    "notes": [
+      "Use :consumable.EQUIPTEMPLATE: keybinds to swap or swap :relic.claw: from inventory.",
+      "You can bind :novelty.chest: novelties to a keybind to open and use them."
+    ]
+  },
+  "PRETRAP": {
+    "id": "PRETRAP",
+    "name": "Trap Precast",
+    "skills": [
+      "skill.slb.frosttrap",
+      "skill.slb.flametrap",
+      "skill.slb.spiketrap"
+    ],
+    "notes": [
+      "You will need to use a trap->dodge technique to be able to switch your traps back to normal utility skills."
+    ]
+  }
 }

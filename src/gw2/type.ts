@@ -79,6 +79,7 @@ export enum Precasts {
   BRAWLER = "BRAWLER",
   EXEAXE = "EXEAXE",
   CLAW = "CLAW",
+  PRETRAP = "PRETRAP",
 }
 
 export const SpecMap = new Map(

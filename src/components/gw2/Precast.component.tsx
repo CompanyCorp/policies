@@ -100,6 +100,7 @@ export const PrecastComponent = (
                     return (
                       <CardMedia
                         component="iframe"
+                        allow="fullscreen;"
                         src={v}
                         controls
                         key={v}

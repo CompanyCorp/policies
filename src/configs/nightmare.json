@@ -147,15 +147,15 @@
           {
             "id": "BRAWLER",
             "videos": [
-              "https://www.youtube.com/embed/iIIYH0z0Xw8"
+              "https://www.youtube.com/embed/iIIYH0z0Xw8?rel=0"
             ]
           },
           "CLAW",
           {
             "id": "EXEAXE",
             "videos": [
-              "https://www.youtube.com/embed/AKEfeQQ0tzg",
-              "https://www.youtube.com/embed/sFXVe5aaVmA"
+              "https://www.youtube.com/embed/AKEfeQQ0tzg?rel=0",
+              "https://www.youtube.com/embed/sFXVe5aaVmA?rel=0"
             ]
           }
         ]

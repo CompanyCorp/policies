@@ -27,6 +27,7 @@ export type PhaseRotation = {
   phaseName: string;
   lastPhase: boolean;
   bossPhase: boolean;
+  notes: string[];
 };
 
 export type TemplateConfig = {
@@ -50,6 +51,7 @@ export type Phase = {
   phaseName: string;
   lastPhase?: boolean;
   bossPhase?: boolean;
+  notes?: string[];
 };
 
 type ClassRawConfig = {
@@ -63,11 +65,18 @@ type ClassRawConfig = {
   precasts?: string[];
 };
 
+export type Precast = {
+  id: string;
+  name: string;
+  skills: Skill[];
+  notes?: string[];
+};
+
 export const getRotation = (
   rotation: Phase[],
 ): PhaseRotation[] => {
   const rotationResult = rotation.map((phase) => {
-    const { phaseName, skills, lastPhase, bossPhase } = phase;
+    const { phaseName, skills, lastPhase, bossPhase, notes } = phase;
     const phaseRotation = skills.map((phaseSkill) => {
       let result: PhaseSkill;
       if (typeof phaseSkill === "string") {
@@ -94,6 +103,7 @@ export const getRotation = (
       phaseName,
       lastPhase: !!lastPhase,
       bossPhase: !!bossPhase,
+      notes: notes || [],
     };
     return result;
   });

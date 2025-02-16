@@ -1,37 +1,34 @@
-import { Card, CardContent, CardHeader, Divider, Stack } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  FormControlLabel,
+  Stack,
+  Switch,
+} from "@mui/material";
 import { WeaponSequence } from "./WeaponSequence.component.tsx";
 import PrecastConfigJson from "../../configs/precasts.json" with {
   type: "json",
 };
-import { getRotation, Skill } from "../../data/utils.ts";
+import { getRotation, Precast } from "../../data/utils.ts";
 import { Precasts } from "../../gw2/type.ts";
+import { NoteComponent } from "./Notes.component.tsx";
 
 export const PrecastComponent = (
   { precasts, scale }: { precasts: Precasts[]; scale: number },
 ) => {
-  const PrecastConfig = PrecastConfigJson as Record<Precasts, Skill[]>;
+  const [includeNotes, setIncludeNotes] = useState(false);
+  const PrecastConfig = PrecastConfigJson as Record<Precasts, Precast>;
   const rotations = precasts.map((precast) =>
     getRotation([{
-      skills: PrecastConfig[precast],
+      skills: PrecastConfig[precast].skills,
       phaseName: precast,
       lastPhase: false,
+      notes: PrecastConfig[precast].notes,
     }])
   ).map((rotation) => rotation[0]);
-
-  const convertPrecastToHeader = (precast: string) => {
-    switch (precast) {
-      case Precasts.BELLOWP:
-        return "Bell OWP";
-      case Precasts.BRAWLER:
-        return "Brawler Relic Precast";
-      case Precasts.EXEAXE:
-        return "Executioner Axe Entry";
-      case Precasts.CLAW:
-        return "Claw Relic Precast";
-      default:
-        return "Unknown";
-    }
-  };
 
   const sizes = {
     top: `h${scale + 1}`,
@@ -49,17 +46,41 @@ export const PrecastComponent = (
       }}
     >
       <CardHeader title="Precasts" />
-      {rotations.map((precast, index) => (
-        <>
-          <CardHeader subheader={convertPrecastToHeader(precast.phaseName)} />
-          <CardContent sx={{ pt: 0 }}>
-            <Stack sx={{ flexDirection: "row" }}>
+      <CardContent sx={{ pt: 0 }}>
+        <FormControlLabel
+          control={
+            <Switch
+              color="secondary"
+              // @ts-ignore <type is right, deno is wrong lol>
+              checked={includeNotes}
+              onChange={() => setIncludeNotes(!includeNotes)}
+              inputProps={{ "aria-label": "include-notes", role: "switch" }}
+            />
+          }
+          label="Include notes"
+          slotProps={{
+            typography: {
+              variant: "body2",
+              color: "text.secondary",
+            },
+          }}
+        />
+
+        {rotations.map((precast, index) => (
+          <Stack direction="column">
+            <CardHeader
+              subheader={PrecastConfig[precast.phaseName as Precasts].name}
+            />
+            <Stack sx={{ flexDirection: "row", px: 2 }}>
               <WeaponSequence skills={precast["skills"]} sizes={sizes} />
             </Stack>
-          </CardContent>
-          {index < rotations.length - 1 && <Divider sx={{ mx: 2 }} />}
-        </>
-      ))}
+            {includeNotes && precast.notes && (
+              precast.notes.map((note) => <NoteComponent notes={note} />)
+            )}
+            {index < rotations.length - 1 && <Divider sx={{ mx: 2 }} />}
+          </Stack>
+        ))}
+      </CardContent>
     </Card>
   );
 };

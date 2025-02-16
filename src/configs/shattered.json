@@ -23,6 +23,172 @@
           "BRAWLER",
           "CLAW",
           "BELLOWP"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Precast",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "relic.brawler"
+                ],
+                "main": [
+                  "WEAPON.slb.S3"
+                ]
+              },
+              "consumable.EQUIPTEMPLATE",
+              "SKILL.slb.frosttrap"
+            ],
+            "notes": [
+              "If you do not use :relic.dragonhunter: you can use :weapon.slb.t5: or :weapon.slb.lb5: to proc :relic.fireworks:."
+            ]
+          },
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A2",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A5"
+            ]
+          },
+          {
+            "phaseName": "Island 1",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A1"
+            ]
+          },
+          {
+            "phaseName": "Island 2",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.A4",
+              "skill.slb.maul",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A1"
+            ]
+          },
+          {
+            "phaseName": "Island 3",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.A2",
+              "misc.weaponswap",
+              "WEAPON.slb.U2",
+              "WEAPON.slb.H1"
+            ]
+          },
+          {
+            "phaseName": "Island 4",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.U5",
+              "WEAPON.slb.H3",
+              "WEAPON.slb.H1"
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              "skill.slb.frosttrap",
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A2",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A5"
+            ]
+          },
+          {
+            "phaseName": "Island 1",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A1"
+            ]
+          },
+          {
+            "phaseName": "Island 2",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.A4",
+              "skill.slb.maul",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A1"
+            ]
+          },
+          {
+            "phaseName": "Island 3",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.A2",
+              "misc.weaponswap",
+              "WEAPON.slb.U2",
+              "WEAPON.slb.H1"
+            ]
+          },
+          {
+            "phaseName": "Island 4",
+            "bossPhase": false,
+            "skills": [
+              "WEAPON.slb.U5",
+              "WEAPON.slb.H3",
+              "WEAPON.slb.H1"
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "bossPhase": true,
+            "skills": [
+              "skill.slb.frosttrap",
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A2",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A5"
+            ],
+            "lastPhase": true
+          }
         ]
       }
     ]

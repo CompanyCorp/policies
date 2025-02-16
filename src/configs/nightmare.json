@@ -44,6 +44,9 @@
               },
               "consumable.EQUIPTEMPLATE",
               "SKILL.slb.frosttrap"
+            ],
+            "notes": [
+              ":weapon.slb.lb5: needs proper positioning to not hit MAMA's invisible hitbox."
             ]
           },
           {
@@ -89,7 +92,8 @@
           {
             "phaseName": "Knight 2",
             "skills": [
-              "WEAPON.slb.H3"
+              "WEAPON.slb.H3",
+              "WEAPON.slb.H1"
             ]
           },
           {
@@ -168,10 +172,32 @@
           "WEAPON.slb.U5"
         ],
         "precasts": [
+          "BELLOWP",
           "BRAWLER",
-          "CLAW"
+          "CLAW",
+          "PRETRAP"
         ],
         "rotation": [
+          {
+            "phaseName": "Precast",
+            "bossPhase": false,
+            "skills": [
+              "weapon.slb.t5",
+              "skill.slb.beastmode",
+              {
+                "top": [
+                  "relic.brawler"
+                ],
+                "main": [
+                  "weapon.slb.s3"
+                ]
+              },
+              "consumable.EQUIPTEMPLATE"
+            ],
+            "notes": [
+              "Only do :weapon.slb.t5: if you know your group will not insta-start."
+            ]
+          },
           {
             "phaseName": "Opener / Phase 1",
             "bossPhase": true,
@@ -320,6 +346,10 @@
             "skills": [
               "SKILL.slb.beastmode",
               "SKILL.slb.wehealasone"
+            ],
+            "notes": [
+              "You can unmerge :SKILL.slb.beastmode: to avoid getting unmerged right before the next phase.",
+              "You can use :skill.slb.wehealasone: to heal up or reapply boons before the next phase."
             ]
           },
           {
@@ -360,6 +390,9 @@
               "weapon.slb.u5",
               "weapon.slb.u3",
               "weapon.slb.u1"
+            ],
+            "notes": [
+              "You can open with :weapon.slb.u5: to proc :relic.fireworks: and delay :skill.slb.brutalcharge: to help break Ensolyss."
             ]
           },
           {
@@ -367,6 +400,10 @@
             "skills": [
               "SKILL.slb.beastmode",
               "SKILL.slb.wehealasone"
+            ],
+            "notes": [
+              "You can unmerge :SKILL.slb.beastmode: to avoid getting unmerged right before the next phase.",
+              "You can use :skill.slb.wehealasone: to heal up or reapply boons before the next phase."
             ]
           },
           {
@@ -408,7 +445,10 @@
               "weapon.slb.u3",
               "weapon.slb.u1"
             ],
-            "lastPhase": true
+            "lastPhase": true,
+            "notes": [
+              "You can open with :weapon.slb.u5: to proc :relic.fireworks: and delay :skill.slb.brutalcharge: to help break Ensolyss."
+            ]
           }
         ]
       }

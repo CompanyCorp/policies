@@ -154,7 +154,7 @@
         "relic": "relic.fireworks",
         "sigils": [
           "sigil.serpent",
-          "sigil.impact"
+          "sigil.force"
         ],
         "consumables": [
           "CONSUMABLE.dbb",
@@ -170,6 +170,87 @@
         "precasts": [
           "BRAWLER",
           "CLAW"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              "SKILL.slb.frosttrap",
+              "SKILL.slb.worldlyimpact",
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A5",
+              "WEAPON.slb.A1"
+            ]
+          },
+          {
+            "phaseName": "Split 1",
+            "skills": [
+              "WEAPON.slb.A1",
+              "WEAPON.slb.A2"
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              "SKILL.slb.brutalcharge",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "WEAPON.slb.U1"
+            ]
+          },
+          {
+            "phaseName": "Split 2",
+            "skills": [
+              "WEAPON.slb.U3",
+              "WEAPON.slb.U1"
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U5"
+                ]
+              },
+              "SKILL.slb.frosttrap",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A5",
+              "WEAPON.slb.A1",
+              "WEAPON.slb.A2"
+            ],
+            "lastPhase": true
+          }
         ]
       }
     ]
@@ -196,6 +277,139 @@
         ],
         "precasts": [
           "BELLOWP"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              "SKILL.slb.frosttrap",
+              "SKILL.slb.brutalcharge",
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A5",
+              "WEAPON.slb.A1",
+              "WEAPON.slb.A2",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A3",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "WEAPON.slb.U5",
+              "WEAPON.slb.U3",
+              "WEAPON.slb.U1"
+            ]
+          },
+          {
+            "phaseName": "Split 1",
+            "skills": [
+              "SKILL.slb.beastmode",
+              "SKILL.slb.wehealasone"
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              "skill.slb.beastmode",
+              "weapon.slb.u5",
+              "skill.slb.onewolfpack",
+              "weapon.slb.u3",
+              "skill.slb.brutalcharge",
+              "skill.slb.frosttrap",
+              {
+                "top": [
+                  "skill.slb.sicem"
+                ],
+                "main": [
+                  "weapon.slb.u4"
+                ]
+              },
+              "weapon.slb.u2",
+              "misc.weaponswap",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "weapon.slb.a2",
+              "weapon.slb.a3",
+              "weapon.slb.a5",
+              "weapon.slb.a1",
+              "weapon.slb.a2",
+              "skill.slb.worldlyimpact",
+              "weapon.slb.a3",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "weapon.slb.a2",
+              "misc.weaponswap",
+              "weapon.slb.u4",
+              "weapon.slb.u2",
+              "weapon.slb.u5",
+              "weapon.slb.u3",
+              "weapon.slb.u1"
+            ]
+          },
+          {
+            "phaseName": "Split 2",
+            "skills": [
+              "SKILL.slb.beastmode",
+              "SKILL.slb.wehealasone"
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "bossPhase": true,
+            "skills": [
+              "skill.slb.beastmode",
+              "weapon.slb.u5",
+              "skill.slb.onewolfpack",
+              "weapon.slb.u3",
+              "skill.slb.brutalcharge",
+              "skill.slb.frosttrap",
+              {
+                "top": [
+                  "skill.slb.sicem"
+                ],
+                "main": [
+                  "weapon.slb.u4"
+                ]
+              },
+              "weapon.slb.u2",
+              "misc.weaponswap",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "weapon.slb.a2",
+              "weapon.slb.a3",
+              "weapon.slb.a5",
+              "weapon.slb.a1",
+              "weapon.slb.a2",
+              "skill.slb.worldlyimpact",
+              "weapon.slb.a3",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "weapon.slb.a2",
+              "misc.weaponswap",
+              "weapon.slb.u4",
+              "weapon.slb.u2",
+              "weapon.slb.u5",
+              "weapon.slb.u3",
+              "weapon.slb.u1"
+            ],
+            "lastPhase": true
+          }
         ]
       }
     ]

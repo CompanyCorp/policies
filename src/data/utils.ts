@@ -2,7 +2,7 @@ import nightmareConfig from "../configs/nightmare.json" with { type: "json" };
 import shatteredConfig from "../configs/shattered.json" with { type: "json" };
 import sunquaConfig from "../configs/sunqua.json" with { type: "json" };
 import silentSurfConfig from "../configs/silentsurf.json" with { type: "json" };
-import { Precasts, Specs, Symbols } from "../gw2/type.ts";
+import { PrecastOptions, Specs, Symbols } from "../gw2/type.ts";
 import { getGw2Ids } from "../gw2/utils.ts";
 import {
   isNightmareFight,
@@ -30,6 +30,11 @@ export type PhaseRotation = {
   notes: string[];
 };
 
+export type Precast<T> = {
+  id: T;
+  videos?: string[];
+} | T;
+
 export type TemplateConfig = {
   relicId: number;
   sigilIds?: number[];
@@ -38,7 +43,7 @@ export type TemplateConfig = {
   skillIds?: number[];
   fight?: string;
   rotation?: PhaseRotation[];
-  precasts?: Precasts[];
+  precasts?: Precast<PrecastOptions>[];
 };
 
 export type Skill = {
@@ -62,14 +67,7 @@ type ClassRawConfig = {
   weapons?: string[];
   skills?: string[];
   rotation?: Phase[];
-  precasts?: string[];
-};
-
-export type Precast = {
-  id: string;
-  name: string;
-  skills: Skill[];
-  notes?: string[];
+  precasts?: Precast<string>[];
 };
 
 export const getRotation = (
@@ -131,17 +129,28 @@ export const getTemplateConfig = (
     c.id === spec
   );
   if (classConfig) {
-    const { relic, sigils, consumables, weapons, skills, rotation, precasts } =
-      classConfig;
+    const {
+      relic,
+      sigils,
+      consumables,
+      weapons,
+      skills,
+      rotation,
+      precasts,
+    } = classConfig;
     const [relicId] = getGw2Ids(relic).ids;
     const consumablesIds = consumables.map((c) => getGw2Ids(c).ids).flatMap((
       c,
     ) => c);
+
+    const precastConfig = (precasts || []) as unknown as Precast<
+      PrecastOptions
+    >[];
     const result: TemplateConfig = {
       relicId,
       consumablesIds,
       fight,
-      precasts: precasts ? precasts as Precasts[] : [],
+      precasts: precastConfig,
     };
     if (sigils) {
       const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((

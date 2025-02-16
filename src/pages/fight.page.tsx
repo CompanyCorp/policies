@@ -56,7 +56,10 @@ const FightPage = () => {
           size={{ xs: 12, sm: 4, md: 4, lg: 4, xl: 4 }}
           sx={{ display: "flex" }}
         >
-          <PrecastComponent precasts={config.precasts ?? []} scale={scale} />
+          <PrecastComponent
+            precasts={config.precasts ?? []}
+            scale={scale}
+          />
         </Grid2>
         <Grid2
           size={{ xs: 12, sm: 8, md: 8, lg: 8, xl: 8 }}

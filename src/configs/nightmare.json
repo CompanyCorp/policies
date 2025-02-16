@@ -144,9 +144,20 @@
           }
         ],
         "precasts": [
-          "BRAWLER",
+          {
+            "id": "BRAWLER",
+            "videos": [
+              "/policies/MAMA_Soulbeast_BRAWLER.mp4"
+            ]
+          },
           "CLAW",
-          "EXEAXE"
+          {
+            "id": "EXEAXE",
+            "videos": [
+              "/policies/MAMA_Soulbeast_EXEAXE.mp4",
+              "/policies/MAMA_Soulbeast_EXEAXE_FAILED.mp4"
+            ]
+          }
         ]
       }
     ]

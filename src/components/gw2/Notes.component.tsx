@@ -38,7 +38,7 @@ export const NoteComponent = ({ notes }: NoteProps) => {
     }
   });
   return (
-    <Typography color="text.secondary" sx={{ px: 2 }} variant="body2">
+    <Typography color="text.secondary" variant="body2">
       {...childText}
     </Typography>
   );

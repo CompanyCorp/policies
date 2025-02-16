@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardMedia,
   Divider,
   FormControlLabel,
   Stack,
@@ -12,23 +13,32 @@ import { WeaponSequence } from "./WeaponSequence.component.tsx";
 import PrecastConfigJson from "../../configs/precasts.json" with {
   type: "json",
 };
-import { getRotation, Precast } from "../../data/utils.ts";
-import { Precasts } from "../../gw2/type.ts";
+import { getRotation, Precast, Skill } from "../../data/utils.ts";
+import { PrecastOptions } from "../../gw2/type.ts";
 import { NoteComponent } from "./Notes.component.tsx";
 
 export const PrecastComponent = (
-  { precasts, scale }: { precasts: Precasts[]; scale: number },
+  { precasts, scale }: {
+    precasts: Precast<PrecastOptions>[];
+    scale: number;
+  },
 ) => {
   const [includeNotes, setIncludeNotes] = useState(false);
-  const PrecastConfig = PrecastConfigJson as Record<Precasts, Precast>;
-  const rotations = precasts.map((precast) =>
-    getRotation([{
-      skills: PrecastConfig[precast].skills,
-      phaseName: precast,
+  const PrecastConfig = PrecastConfigJson as Record<PrecastOptions, {
+    id: string;
+    name: string;
+    skills: Skill[];
+    notes?: string[];
+  }>;
+  const rotations = precasts.map((precast) => {
+    const id = typeof precast === "object" ? precast.id : precast;
+    return getRotation([{
+      skills: PrecastConfig[id].skills,
+      phaseName: id,
       lastPhase: false,
-      notes: PrecastConfig[precast].notes,
-    }])
-  ).map((rotation) => rotation[0]);
+      notes: PrecastConfig[id].notes,
+    }]);
+  }).map((rotation) => rotation[0]);
 
   const sizes = {
     top: `h${scale + 1}`,
@@ -66,20 +76,51 @@ export const PrecastComponent = (
           }}
         />
 
-        {rotations.map((precast, index) => (
-          <Stack direction="column">
-            <CardHeader
-              subheader={PrecastConfig[precast.phaseName as Precasts].name}
-            />
-            <Stack sx={{ flexDirection: "row", px: 2 }}>
-              <WeaponSequence skills={precast["skills"]} sizes={sizes} />
+        {rotations.map((precast, index) => {
+          const video = precasts.find((p) =>
+            typeof p === "object" && p.id === precast.phaseName
+          );
+
+          return (
+            <Stack direction="column" sx={{ px: 2 }}>
+              <CardHeader
+                sx={{ px: 0 }}
+                subheader={PrecastConfig[precast.phaseName as PrecastOptions]
+                  .name}
+              />
+              <Stack sx={{ flexDirection: "row" }}>
+                <WeaponSequence skills={precast["skills"]} sizes={sizes} />
+              </Stack>
+              {includeNotes && precast.notes && (
+                precast.notes.map((note) => <NoteComponent notes={note} />)
+              )}
+              {includeNotes && typeof video === "object" && video.videos && (
+                video.videos.map((v) => {
+                  if (v.includes("youtube")) {
+                    return (
+                      <CardMedia
+                        component="iframe"
+                        src={v}
+                        controls
+                        key={v}
+                        sx={{ mt: 1, height: 360, width: "100%" }}
+                      />
+                    );
+                  }
+                  return (
+                    <CardMedia
+                      component="video"
+                      src={v}
+                      controls
+                      key={v}
+                    />
+                  );
+                })
+              )}
+              {index < rotations.length - 1 && <Divider sx={{ my: 1 }} />}
             </Stack>
-            {includeNotes && precast.notes && (
-              precast.notes.map((note) => <NoteComponent notes={note} />)
-            )}
-            {index < rotations.length - 1 && <Divider sx={{ mx: 2 }} />}
-          </Stack>
-        ))}
+          );
+        })}
       </CardContent>
     </Card>
   );

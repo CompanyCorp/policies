@@ -74,12 +74,13 @@ export enum Misc {
   MISTLOCK = 1,
 }
 
-export enum Precasts {
+export enum PrecastOptions {
   BELLOWP = "BELLOWP",
   BRAWLER = "BRAWLER",
   EXEAXE = "EXEAXE",
   CLAW = "CLAW",
   PRETRAP = "PRETRAP",
+  EXEAXEFAILED = "EXEAXE_FAILED",
 }
 
 export const SpecMap = new Map(

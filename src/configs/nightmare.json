@@ -147,15 +147,15 @@
           {
             "id": "BRAWLER",
             "videos": [
-              "/policies/MAMA_Soulbeast_BRAWLER.mp4"
+              "https://www.youtube.com/embed/iIIYH0z0Xw8"
             ]
           },
           "CLAW",
           {
             "id": "EXEAXE",
             "videos": [
-              "/policies/MAMA_Soulbeast_EXEAXE.mp4",
-              "/policies/MAMA_Soulbeast_EXEAXE_FAILED.mp4"
+              "https://www.youtube.com/embed/AKEfeQQ0tzg",
+              "https://www.youtube.com/embed/sFXVe5aaVmA"
             ]
           }
         ]

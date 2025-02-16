@@ -216,6 +216,125 @@
         "precasts": [
           "BRAWLER",
           "CLAW"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Precast",
+            "bossPhase": true,
+            "skills": [
+              "weapon.slb.lb5",
+              {
+                "top": [
+                  "relic.brawler"
+                ],
+                "main": [
+                  "WEAPON.slb.S3"
+                ]
+              },
+              "consumable.EQUIPTEMPLATE"
+            ]
+          },
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "weapon.slb.A4",
+              "weapon.slb.A2",
+              "skill.slb.frosttrap",
+              "weapon.slb.A5",
+              "weapon.slb.A3",
+              "weapon.slb.A2",
+              "SKILL.slb.maul",
+              "weapon.slb.A1",
+              "misc.weaponswap"
+            ],
+            "notes": [
+              "You should try to move through the boss and away from the beams by the time you finish :weapon.slb.A2:."
+            ]
+          },
+          {
+            "phaseName": "Split 1",
+            "bossPhase": false,
+            "skills": [
+              "weapon.slb.H5",
+              "weapon.slb.H3",
+              "skill.slb.brutalcharge"
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "skill.slb.worldlyimpact"
+                ]
+              },
+              "skill.slb.frosttrap",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "skill.slb.maul",
+              "weapon.slb.A4",
+              "weapon.slb.A2",
+              "weapon.slb.A3",
+              "weapon.slb.A5",
+              "weapon.slb.A1"
+            ]
+          },
+          {
+            "phaseName": "Split 2",
+            "bossPhase": false,
+            "skills": [
+              "weapon.slb.A3",
+              "weapon.slb.A4",
+              "MISC.WEAPONSWAP",
+              "weapon.slb.H5",
+              "weapon.slb.H3",
+              "skill.slb.brutalcharge"
+            ],
+            "notes": [
+              "Use axe skills on one add and then swap to hammer to cc the other add."
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "skill.slb.worldlyimpact"
+                ]
+              },
+              "skill.slb.frosttrap",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "skill.slb.maul",
+              "weapon.slb.A4",
+              "weapon.slb.A2",
+              "weapon.slb.A3",
+              "weapon.slb.A5",
+              "weapon.slb.A1"
+            ],
+            "lastPhase": true
+          }
         ]
       }
     ]

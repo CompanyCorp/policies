@@ -1,5 +1,6 @@
 export enum UtilitySkills {
-  SHROUD = 62567,
+  SHROUD1 = 62567,
+  SHROUD0 = 62540,
   PROMISE = 62667,
   RISK = 62530,
   ANGUISH = 62662,

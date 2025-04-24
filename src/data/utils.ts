@@ -36,7 +36,13 @@ export type Precast<T> = {
   notes?: string[];
 } | T;
 
+export enum CompType {
+  Heal = "heal",
+  NoHeal = "noHeal",
+}
+
 export type TemplateConfig = {
+  compType: CompType;
   relicId: number;
   sigilIds?: number[];
   consumablesIds: number[];
@@ -59,11 +65,6 @@ export type Phase = {
   bossPhase?: boolean;
   notes?: string[];
 };
-
-export enum CompType {
-  Heal = "heal",
-  NoHeal = "noHeal",
-}
 
 type ClassRawConfig = {
   compType: string;
@@ -120,7 +121,11 @@ type TemplateConfigParams = {
   spec: Specs;
 };
 
-const formatConfig = (rawConfig: ClassRawConfig, fight: string) => {
+const formatConfig = (
+  rawConfig: ClassRawConfig,
+  fight: string,
+  compType: CompType,
+) => {
   const {
     relic,
     sigils,
@@ -143,6 +148,7 @@ const formatConfig = (rawConfig: ClassRawConfig, fight: string) => {
     consumablesIds,
     fight,
     precasts: precastConfig,
+    compType,
   };
   if (sigils) {
     const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((
@@ -190,10 +196,10 @@ export const getTemplateConfig = ({
     c.compType === CompType.NoHeal
   );
   const classConfigHeal = rawClassConfigHeal
-    ? formatConfig(rawClassConfigHeal, fight)
+    ? formatConfig(rawClassConfigHeal, fight, CompType.Heal)
     : null;
   const classConfigNoHeal = rawClassConfigNoHeal
-    ? formatConfig(rawClassConfigNoHeal, fight)
+    ? formatConfig(rawClassConfigNoHeal, fight, CompType.NoHeal)
     : null;
   return [
     classConfigHeal,

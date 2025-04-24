@@ -11,15 +11,12 @@ import {
   CardHeader,
   Grid2,
   Stack,
-  ToggleButton,
-  ToggleButtonGroup,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { Rotation } from "../components/gw2/Rotation.component.tsx";
 import { convertIdToName } from "../gw2/cms.utils.ts";
 import { PrecastComponent } from "../components/gw2/Precast.component.tsx";
-import { Attribute } from "@discretize/gw2-ui-new";
+import { ToggleCompButtons } from "../components/navigation/ToggleComp.component.tsx";
 
 const Loadout = ({ config }: { config: TemplateConfig }) => {
   return (
@@ -80,45 +77,12 @@ const FightPage = () => {
         <Typography variant="h3" color="secondary">
           {convertIdToName(fight)}
         </Typography>
-        <ToggleButtonGroup
-          size="small"
-          exclusive
-          color="secondary"
-          value={activeCompType}
-          onChange={(_, newCompType) => setCompType(newCompType)}
-        >
-          <Tooltip title="Heal">
-            <ToggleButton
-              value={CompType.Heal}
-              sx={{ p: 2 }}
-              disabled={!heal}
-            >
-              <Attribute
-                style={{ fontSize: "1.5rem" }}
-                name="Healing Power"
-                disableText={true}
-                disableLink={true}
-                disableTooltip={true}
-              />
-              {/* <Favorite /> */}
-            </ToggleButton>
-          </Tooltip>
-          <Tooltip title="No Heal">
-            <ToggleButton
-              value={CompType.NoHeal}
-              sx={{ p: 2 }}
-              disabled={!noHeal}
-            >
-              <Attribute
-                style={{ fontSize: "1.5rem" }}
-                name="Power"
-                disableText={true}
-                disableLink={true}
-                disableTooltip={true}
-              />
-            </ToggleButton>
-          </Tooltip>
-        </ToggleButtonGroup>
+        <ToggleCompButtons
+          activeCompType={activeCompType}
+          setCompType={setCompType}
+          healDisabled={heal === null}
+          noHealDisabled={noHeal === null}
+        />
       </Stack>
 
       <Loadout config={activeConfig} />

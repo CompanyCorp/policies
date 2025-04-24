@@ -2,6 +2,7 @@
   "MAMA": {
     "classes": [
       {
+        "compType": "heal",
         "id": "Soulbeast",
         "relic": "relic.fireworks",
         "sigils": [
@@ -43,10 +44,12 @@
                 ]
               },
               "consumable.EQUIPTEMPLATE",
-              "SKILL.slb.frosttrap"
+              "SKILL.slb.frosttrap",
+              "WEAPON.slb.U4"
             ],
             "notes": [
-              ":weapon.slb.lb5: needs proper positioning to not hit MAMA's invisible hitbox."
+              ":weapon.slb.lb5: needs proper positioning to not hit MAMA's invisible hitbox.",
+              "Using :weapon.slb.u4: right after precasts tends to keep most of the cast time before the fight and the damage after she is vulnerable."
             ]
           },
           {
@@ -58,7 +61,7 @@
                   "SKILL.slb.sicem"
                 ],
                 "main": [
-                  "WEAPON.slb.U4"
+                  "skill.slb.onewolfpack"
                 ]
               },
               "WEAPON.slb.U2",
@@ -86,7 +89,12 @@
               "SKILL.slb.maul",
               "WEAPON.slb.A4",
               "WEAPON.slb.A2",
-              "MISC.WEAPONSWAP"
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2"
+            ],
+            "notes": [
+              "You might be able to cast :weapon.slb.u4: :weapon.slb.u2: if you are fast enough."
             ]
           },
           {
@@ -159,12 +167,213 @@
             ]
           }
         ]
+      },
+      {
+        "compType": "noHeal",
+        "id": "Soulbeast",
+        "relic": "relic.fireworks",
+        "sigils": [
+          "sigil.frenzy",
+          "sigil.impact"
+        ],
+        "consumables": [
+          "CONSUMABLE.dbb",
+          "CONSUMABLE.scarlet"
+        ],
+        "weapons": [
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.H3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
+        ],
+        "skills": [
+          "skill.slb.wehealasone",
+          "skill.slb.sicem",
+          "skill.slb.frosttrap",
+          "skill.slb.stormspirit",
+          "skill.slb.onewolfpack"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Precast",
+            "bossPhase": true,
+            "skills": [
+              "consumable.EQUIPTEMPLATE",
+              "skill.slb.beastmode",
+              {
+                "top": [
+                  "skill.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.LB5"
+                ]
+              },
+              "MISC.WEAPONSWAP",
+              {
+                "top": [
+                  "relic.brawler"
+                ],
+                "main": [
+                  "WEAPON.slb.S3"
+                ]
+              },
+              "consumable.EQUIPTEMPLATE",
+              "WEAPON.slb.U4"
+            ],
+            "notes": [
+              ":weapon.slb.lb5: needs proper positioning to not hit MAMA's invisible hitbox.",
+              "Using :weapon.slb.u4: right after precasts tends to keep most of the cast time before the fight and the damage after she is vulnerable."
+            ]
+          },
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3"
+            ],
+            "notes": [
+              "You may not be able to cast :weapon.slb.a3: if you are too slow."
+            ]
+          },
+          {
+            "phaseName": "Knight 1",
+            "skills": [
+              {
+                "top": [
+                  "skill.slb.stormspirit"
+                ],
+                "main": [
+                  "SKILL.slb.brutalcharge"
+                ]
+              },
+              "WEAPON.slb.A5",
+              "skill.slb.stormspirit"
+            ],
+            "notes": [
+              "You can use :skill.slb.stormspirit: or :skill.slb.brutalcharge: K1 or P2, but it is recommended to coordinate with your fellow players.",
+              "The late :skill.slb.stormspirit: is here to indicate that it should be cast early to help break MAMA and apply vulnerability."
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              "WEAPON.slb.A2",
+              "skill.slb.frosttrap",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A4",
+              "skill.slb.worldlyimpact",
+              "MISC.WEAPONSWAP",
+              "weapon.slb.U4"
+            ],
+            "notes": [
+              ":weapon.slb.a2: is before :skill.slb.frosttrap: to cast damage while you are moving closer to MAMA.",
+              "Try to delay :skill.slb.worldlyimpact: to extend :relic.fireworks: duration.",
+              "If you're slow you can do :weapon.slb.u2: instead of :weapon.slb.u4:."
+            ]
+          },
+          {
+            "phaseName": "Knight 2",
+            "skills": [
+              "WEAPON.slb.H3",
+              "WEAPON.slb.H1",
+              "WEAPON.slb.U5"
+            ],
+            "notes": [
+              "Cast :weapon.slb.u5: to get back to MAMA and proc :relic.fireworks:."
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3"
+            ]
+          },
+          {
+            "phaseName": "Knight 3",
+            "skills": [
+              {
+                "top": [
+                  "skill.slb.stormspirit"
+                ],
+                "main": [
+                  "SKILL.slb.brutalcharge"
+                ]
+              },
+              "WEAPON.slb.A5",
+              "skill.slb.stormspirit"
+            ],
+            "notes": [
+              "You can use :skill.slb.stormspirit: or :skill.slb.brutalcharge: K1 or P2, but it is recommended to coordinate with your fellow players.",
+              "The late :skill.slb.stormspirit: is here to indicate that it should be cast early to help break MAMA and apply vulnerability."
+            ]
+          },
+          {
+            "phaseName": "Phase 4",
+            "bossPhase": true,
+            "skills": [
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A4",
+              "SKILL.slb.maul",
+              "MISC.WEAPONSWAP",
+              "weapon.slb.U4",
+              "weapon.slb.U2",
+              "skill.slb.frosttrap"
+            ],
+            "lastPhase": true
+          }
+        ],
+        "precasts": [
+          {
+            "id": "BELLOWP",
+            "notes": [
+              "Only do this if you have more than 1 Soulbeast."
+            ]
+          },
+          {
+            "id": "BRAWLER",
+            "videos": [
+              "https://www.youtube.com/embed/346KajIP0FE?rel=0"
+            ]
+          },
+          "CLAW",
+          {
+            "id": "EXEAXE",
+            "videos": [
+              "https://www.youtube.com/embed/AKEfeQQ0tzg?rel=0",
+              "https://www.youtube.com/embed/sFXVe5aaVmA?rel=0"
+            ]
+          }
+        ]
       }
     ]
   },
   "Siax": {
     "classes": [
       {
+        "compType": "heal",
         "id": "Soulbeast",
         "relic": "relic.fireworks",
         "sigils": [
@@ -183,7 +392,6 @@
           "WEAPON.slb.U5"
         ],
         "precasts": [
-          "BELLOWP",
           "BRAWLER",
           "CLAW",
           "PRETRAP"
@@ -289,12 +497,103 @@
             "lastPhase": true
           }
         ]
+      },
+      {
+        "compType": "noHeal",
+        "id": "Soulbeast",
+        "relic": "relic.fireworks",
+        "sigils": [
+          "sigil.serpent",
+          "sigil.force"
+        ],
+        "consumables": [
+          "CONSUMABLE.steak",
+          "CONSUMABLE.scarlet"
+        ],
+        "weapons": [
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.U3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
+        ],
+        "precasts": [
+          "BRAWLER",
+          "CLAW",
+          "PRETRAP"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Precast",
+            "bossPhase": false,
+            "skills": [
+              "weapon.slb.lb5",
+              "skill.slb.beastmode",
+              {
+                "top": [
+                  "relic.brawler"
+                ],
+                "main": [
+                  "weapon.slb.s3"
+                ]
+              },
+              "consumable.EQUIPTEMPLATE"
+            ]
+          },
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "SKILL.slb.frosttrap",
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A5",
+              "WEAPON.slb.A2"
+            ]
+          },
+          {
+            "phaseName": "Split 1",
+            "skills": [
+              "WEAPON.slb.a1"
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "SKILL.slb.maul",
+              "skill.slb.worldlyimpact",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2",
+              "WEAPON.slb.U5",
+              "WEAPON.slb.U3",
+              "WEAPON.slb.U1"
+            ],
+            "lastPhase": true
+          }
+        ]
       }
     ]
   },
   "Ensolyss": {
     "classes": [
       {
+        "compType": "heal",
         "id": "Soulbeast",
         "relic": "relic.fireworks",
         "sigils": [

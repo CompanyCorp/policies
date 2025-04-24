@@ -1,7 +1,4 @@
 import { TreeViewBaseItem } from "@mui/x-tree-view";
-// @deno-types="npm:@types/react@18"
-import { useContext } from "react";
-import { SpecContext } from "../data/spec.context.tsx";
 import {
   ChallengeMode,
   CMFightId,

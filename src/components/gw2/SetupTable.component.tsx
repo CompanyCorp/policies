@@ -55,12 +55,10 @@ const SetupTable = (
 
   const getUtilityName = () => {
     switch (activeSpec) {
-      case Specs.SLB:
-        return "";
-      case Specs.REN:
-        return "";
       case Specs.HARB:
         return "Elixir";
+      default:
+        return "Utility";
     }
   };
 
@@ -78,19 +76,29 @@ const SetupTable = (
   const utilityName = getUtilityName();
   const weaponName = getWeaponName();
 
+  const isBoth = !!weaponIds && !!skillIds;
+
   return (
     <TableContainer sx={{ flexGrow: 0, flexShrink: 1, flexBasis: "auto" }}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>
-              <Typography variant="h6">Relic</Typography>
-            </TableCell>
-            {sigilIds && (
-              <TableCell>
-                <Typography variant="h6">Sigils</Typography>
-              </TableCell>
-            )}
+            {isBoth
+              ? (
+                <TableCell>
+                  <Typography variant="h6">Equipment</Typography>
+                </TableCell>
+              )
+              : (
+                <>
+                  <TableCell>
+                    <Typography variant="h6">Relic</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="h6">Sigils</Typography>
+                  </TableCell>
+                </>
+              )}
             <TableCell>
               <Typography variant="h6">Food & Utility</Typography>
             </TableCell>
@@ -108,19 +116,28 @@ const SetupTable = (
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell>
-              <Typography variant="body1">
-                <Item
-                  id={relicId}
-                  style={{ fontSize: "inherit" }}
-                />
-              </Typography>
-            </TableCell>
-            {sigilIds && (
-              <LoadoutCell
-                ids={sigilIds}
-              />
-            )}
+            {isBoth
+              ? (
+                <TableCell>
+                  {sigilIds && (
+                    <LoadoutCell
+                      ids={[...sigilIds, relicId]}
+                    />
+                  )}
+                </TableCell>
+              )
+              : (
+                <>
+                  <LoadoutCell
+                    ids={[relicId]}
+                  />
+                  {sigilIds && (
+                    <LoadoutCell
+                      ids={sigilIds}
+                    />
+                  )}
+                </>
+              )}
             <LoadoutCell ids={consumablesIds} />
             {weaponIds && (
               <WeaponCell

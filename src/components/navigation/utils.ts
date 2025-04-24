@@ -17,7 +17,6 @@ export const parseLocation = (input: string, _user?: string) => {
     const pages = page.split("/");
 
     page = pages[pages.length - 1];
-    // console.log("parseLocation", pages, _user);
   }
   // if ? exists, remove it and everything after it
   if (page.includes("?")) {

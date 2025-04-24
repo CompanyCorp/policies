@@ -49,6 +49,7 @@ export enum Sigils {
   SEVERANCE = 84505,
   SERPENT = 24658,
   NIGHT = 36053,
+  FRENZY = 82876,
 }
 
 export enum Consumables {

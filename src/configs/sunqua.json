@@ -2,6 +2,7 @@
   "ElementalAi": {
     "classes": [
       {
+        "compType": "heal",
         "id": "Harbinger",
         "relic": "relic.fractal",
         "consumables": [
@@ -21,6 +22,7 @@
   "DarkAi": {
     "classes": [
       {
+        "compType": "heal",
         "id": "Harbinger",
         "relic": "relic.fractal",
         "consumables": [

@@ -2,6 +2,7 @@
   "Kanaxai": {
     "classes": [
       {
+        "compType": "heal",
         "id": "Harbinger",
         "relic": "relic.fractal",
         "consumables": [

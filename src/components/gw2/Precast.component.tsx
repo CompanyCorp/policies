@@ -32,11 +32,15 @@ export const PrecastComponent = (
   }>;
   const rotations = precasts.map((precast) => {
     const id = typeof precast === "object" ? precast.id : precast;
+    const notes = PrecastConfig[id].notes ? PrecastConfig[id].notes : [];
+    const fightNotes = typeof precast === "object" && precast.notes
+      ? precast.notes
+      : [];
     return getRotation([{
       skills: PrecastConfig[id].skills,
       phaseName: id,
       lastPhase: false,
-      notes: PrecastConfig[id].notes,
+      notes: [...notes, ...fightNotes],
     }]);
   }).map((rotation) => rotation[0]);
 
@@ -82,7 +86,11 @@ export const PrecastComponent = (
           );
 
           return (
-            <Stack direction="column" sx={{ px: 2 }}>
+            <Stack
+              direction="column"
+              sx={{ px: 2 }}
+              key={`${index}-${precast.phaseName}`}
+            >
               <CardHeader
                 sx={{ px: 0 }}
                 subheader={PrecastConfig[precast.phaseName as PrecastOptions]

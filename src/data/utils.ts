@@ -33,6 +33,7 @@ export type PhaseRotation = {
 export type Precast<T> = {
   id: T;
   videos?: string[];
+  notes?: string[];
 } | T;
 
 export type TemplateConfig = {
@@ -59,7 +60,13 @@ export type Phase = {
   notes?: string[];
 };
 
+export enum CompType {
+  Heal = "heal",
+  NoHeal = "noHeal",
+}
+
 type ClassRawConfig = {
+  compType: string;
   id: string;
   relic: string;
   sigils?: string[];
@@ -108,10 +115,59 @@ export const getRotation = (
   return rotationResult;
 };
 
-export const getTemplateConfig = (
-  fight: string,
-  spec: Specs,
-): TemplateConfig | null => {
+type TemplateConfigParams = {
+  fight: string;
+  spec: Specs;
+};
+
+const formatConfig = (rawConfig: ClassRawConfig, fight: string) => {
+  const {
+    relic,
+    sigils,
+    consumables,
+    weapons,
+    skills,
+    rotation,
+    precasts,
+  } = rawConfig;
+  const [relicId] = getGw2Ids(relic).ids;
+  const consumablesIds = consumables.map((c) => getGw2Ids(c).ids).flatMap((
+    c,
+  ) => c);
+
+  const precastConfig = (precasts || []) as unknown as Precast<
+    PrecastOptions
+  >[];
+  const result: TemplateConfig = {
+    relicId,
+    consumablesIds,
+    fight,
+    precasts: precastConfig,
+  };
+  if (sigils) {
+    const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((
+      s,
+    ) => s);
+    result.sigilIds = sigilIds;
+  }
+  if (weapons) {
+    const weaponIds = weapons.map((s) => getGw2Ids(s).ids).flatMap((s) => s);
+    result.weaponIds = weaponIds;
+  }
+  if (skills) {
+    const skillIds = skills.map((s) => getGw2Ids(s).ids).flatMap((s) => s);
+    result.skillIds = skillIds;
+  }
+  if (rotation) {
+    result.rotation = getRotation(rotation);
+  }
+  return result;
+};
+
+export const getTemplateConfig = ({
+  fight,
+  spec,
+}: TemplateConfigParams): (TemplateConfig | null)[] => {
   let classes: ClassRawConfig[] = [];
   if (isNightmareFight(fight)) {
     classes = nightmareConfig[fight].classes;
@@ -125,51 +181,22 @@ export const getTemplateConfig = (
   if (isSilentSurfFight(fight)) {
     classes = silentSurfConfig[fight].classes;
   }
-  const classConfig: ClassRawConfig | undefined = classes.find((c) =>
-    c.id === spec
+  const rawClassConfigHeal: ClassRawConfig | undefined = classes.find((c) =>
+    c.id === spec &&
+    c.compType === CompType.Heal
   );
-  if (classConfig) {
-    const {
-      relic,
-      sigils,
-      consumables,
-      weapons,
-      skills,
-      rotation,
-      precasts,
-    } = classConfig;
-    const [relicId] = getGw2Ids(relic).ids;
-    const consumablesIds = consumables.map((c) => getGw2Ids(c).ids).flatMap((
-      c,
-    ) => c);
-
-    const precastConfig = (precasts || []) as unknown as Precast<
-      PrecastOptions
-    >[];
-    const result: TemplateConfig = {
-      relicId,
-      consumablesIds,
-      fight,
-      precasts: precastConfig,
-    };
-    if (sigils) {
-      const sigilIds = sigils.map((s) => getGw2Ids(s).ids).flatMap((
-        s,
-      ) => s);
-      result.sigilIds = sigilIds;
-    }
-    if (weapons) {
-      const weaponIds = weapons.map((s) => getGw2Ids(s).ids).flatMap((s) => s);
-      result.weaponIds = weaponIds;
-    }
-    if (skills) {
-      const skillIds = skills.map((s) => getGw2Ids(s).ids).flatMap((s) => s);
-      result.skillIds = skillIds;
-    }
-    if (rotation) {
-      result.rotation = getRotation(rotation);
-    }
-    return result;
-  }
-  return null;
+  const rawClassConfigNoHeal: ClassRawConfig | undefined = classes.find((c) =>
+    c.id === spec &&
+    c.compType === CompType.NoHeal
+  );
+  const classConfigHeal = rawClassConfigHeal
+    ? formatConfig(rawClassConfigHeal, fight)
+    : null;
+  const classConfigNoHeal = rawClassConfigNoHeal
+    ? formatConfig(rawClassConfigNoHeal, fight)
+    : null;
+  return [
+    classConfigHeal,
+    classConfigNoHeal,
+  ];
 };

@@ -40,26 +40,36 @@ const Loadout = ({ config }: { config: TemplateConfig }) => {
 const FightPage = () => {
   const [activeCompType, setCompType] = useState<CompType>(CompType.Heal);
   const [path] = useLocation();
+  const [fight, setFight] = useState<string>("");
   const { activeSpec } = useContext(SpecContext);
-  const fight = parseLocation(path, "FightPage");
-  const [heal, noHeal] = getTemplateConfig(
-    {
-      fight,
-      spec: activeSpec,
-    },
-  );
+  const [[heal, noHeal], setConfigs] = useState<(TemplateConfig | null)[]>([]);
   const [activeConfig, setActiveConfig] = useState<TemplateConfig | null>(null);
   const scale = 3;
 
   useEffect(() => {
+    const fightFromPath = parseLocation(path, "FightPage");
+    setFight(fightFromPath);
+    const configs = getTemplateConfig(
+      {
+        fight: fightFromPath,
+        spec: activeSpec,
+      },
+    );
+    const [heal, noHeal] = configs;
+    setConfigs(configs);
+    if (activeCompType === CompType.NoHeal && !noHeal) {
+      setCompType(CompType.Heal);
+    }
+    if (activeCompType === CompType.Heal && !heal) {
+      setCompType(CompType.NoHeal);
+    }
     if (activeCompType === CompType.NoHeal && noHeal) {
       setActiveConfig(noHeal);
-    } else if (activeCompType === CompType.Heal && heal) {
+    }
+    if (activeCompType === CompType.Heal && heal) {
       setActiveConfig(heal);
     }
-  }, [
-    activeCompType,
-  ]);
+  }, [activeCompType, path]);
 
   if (!activeConfig) {
     return null;

@@ -1,4 +1,24 @@
 {
+  "MOA_LOTP": {
+    "id": "MOA_LOTP",
+    "name": "Moa LOTP",
+    "skills": [
+      "trait.slb.LEADEROFTHEPACK",
+      "skill.slb.onewolfpack",
+      {
+        "top": [
+          "misc.mistlock"
+        ],
+        "main": [
+          "skill.slb.moastance"
+        ]
+      },
+      "skill.slb.onewolfpack"
+    ],
+    "notes": [
+      "If you cast :skill.slb.moastance: with :misc.mistlock: it will apply 40s of the stance on you, and an extended duration on your allies."
+    ]
+  },
   "BELLOWP": {
     "id": "BELLOWP",
     "name": "Bell OWP",

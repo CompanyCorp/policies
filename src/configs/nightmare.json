@@ -761,6 +761,170 @@
             ]
           }
         ]
+      },
+      {
+        "compType": "noHeal",
+        "id": "Soulbeast",
+        "relic": "relic.fireworks",
+        "sigils": [
+          "sigil.serpent",
+          "sigil.impact"
+        ],
+        "consumables": [
+          "consumable.steak",
+          "consumable.scarlet"
+        ],
+        "weapons": [
+          "WEAPON.slb.U1",
+          "WEAPON.slb.U2",
+          "WEAPON.slb.U3",
+          "WEAPON.slb.U4",
+          "WEAPON.slb.U5"
+        ],
+        "skills": [
+          "skill.slb.wehealasone",
+          "skill.slb.sicem",
+          "skill.slb.frosttrap",
+          "skill.slb.moastance",
+          "skill.slb.signetofthewild",
+          "skill.slb.onewolfpack"
+        ],
+        "precasts": [
+          "BELLOWP",
+          "MOA_LOTP"
+        ],
+        "rotation": [
+          {
+            "phaseName": "Opener / Phase 1",
+            "bossPhase": true,
+            "skills": [
+              "SKILL.slb.frosttrap",
+              "SKILL.slb.brutalcharge",
+              {
+                "top": [
+                  "SKILL.slb.sicem"
+                ],
+                "main": [
+                  "WEAPON.slb.U4"
+                ]
+              },
+              "WEAPON.slb.U2",
+              "MISC.WEAPONSWAP",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "WEAPON.slb.A2",
+              "WEAPON.slb.A3",
+              "WEAPON.slb.A5",
+              "WEAPON.slb.A1",
+              "WEAPON.slb.A2",
+              "SKILL.slb.worldlyimpact",
+              "WEAPON.slb.A3",
+              "SKILL.slb.maul",
+              "WEAPON.slb.A4",
+              "MISC.WEAPONSWAP",
+              "WEAPON.slb.U4",
+              "WEAPON.slb.U2"
+            ]
+          },
+          {
+            "phaseName": "Split 1",
+            "skills": [
+              "SKILL.slb.beastmode",
+              "SKILL.slb.wehealasone",
+              "skill.slb.beastmode"
+            ],
+            "notes": [
+              "You can unmerge :SKILL.slb.beastmode: to avoid getting unmerged right before the next phase.",
+              "You can use :skill.slb.wehealasone: to heal up or reapply boons before the next phase."
+            ]
+          },
+          {
+            "phaseName": "Phase 2",
+            "bossPhase": true,
+            "skills": [
+              "skill.slb.moastance",
+              "weapon.slb.u5",
+              "weapon.slb.u3",
+              "skill.slb.frosttrap",
+              "skill.slb.onewolfpack",
+              "skill.slb.brutalcharge",
+              {
+                "top": [
+                  "skill.slb.sicem"
+                ],
+                "main": [
+                  "weapon.slb.u4"
+                ]
+              },
+              "weapon.slb.u2",
+              "misc.weaponswap",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "weapon.slb.a2",
+              "weapon.slb.a3",
+              "weapon.slb.a5",
+              "weapon.slb.a1",
+              "weapon.slb.a2",
+              "skill.slb.worldlyimpact",
+              "weapon.slb.a3",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "misc.weaponswap",
+              "weapon.slb.u4",
+              "weapon.slb.u2"
+            ],
+            "notes": [
+              "Coordinate usage of :skill.slb.moastance: with your Renegade to make sure :skill.slb.moastance: is applied them before they apply alacrity.",
+              "You can open with :weapon.slb.u5: to proc :relic.fireworks: and delay :skill.slb.brutalcharge: to help break Ensolyss."
+            ]
+          },
+          {
+            "phaseName": "Split 2",
+            "skills": [
+              "SKILL.slb.beastmode",
+              "SKILL.slb.wehealasone",
+              "skill.slb.beastmode"
+            ],
+            "notes": [
+              "You can unmerge :SKILL.slb.beastmode: to avoid getting unmerged right before the next phase.",
+              "You can use :skill.slb.wehealasone: to heal up or reapply boons before the next phase."
+            ]
+          },
+          {
+            "phaseName": "Phase 3",
+            "bossPhase": true,
+            "skills": [
+              "skill.slb.moastance",
+              "weapon.slb.u5",
+              "weapon.slb.u3",
+              "skill.slb.brutalcharge",
+              "skill.slb.frosttrap",
+              {
+                "top": [
+                  "skill.slb.sicem"
+                ],
+                "main": [
+                  "weapon.slb.u4"
+                ]
+              },
+              "weapon.slb.u2",
+              "misc.weaponswap",
+              "skill.slb.maul",
+              "weapon.slb.a4",
+              "weapon.slb.a2",
+              "weapon.slb.a3",
+              "skill.slb.onewolfpack",
+              "skill.slb.worldlyimpact",
+              "weapon.slb.a2",
+              "weapon.slb.a3"
+            ],
+            "lastPhase": true,
+            "notes": [
+              "Coordinate usage of :skill.slb.moastance: with your Renegade to make sure :skill.slb.moastance: is applied them before they apply alacrity.",
+              "You can open with :weapon.slb.u5: to proc :relic.fireworks: and delay :skill.slb.brutalcharge: to help break Ensolyss."
+            ]
+          }
+        ]
       }
     ]
   }

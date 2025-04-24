@@ -76,6 +76,7 @@ export enum Misc {
 }
 
 export enum PrecastOptions {
+  MOA_LOTP = "MOA_LOTP",
   BELLOWP = "BELLOWP",
   BRAWLER = "BRAWLER",
   EXEAXE = "EXEAXE",
